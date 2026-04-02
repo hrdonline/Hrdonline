@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>hrdonline · Виртуальный HRD · Зинаида Чумакова</title>
+  <meta name="description" content="hrdonline — виртуальный HRD. Зинаида Чумакова: 20 лет опыта в HR плюс AI-агенты. Услуги для бизнеса и HR-специалистов." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ============ VARIABLES ============ */
+    :root {
+      --navy:       #0F2033;
+      --navy-mid:   #1A3347;
+      --navy-deep:  #080F1A;
+      --teal:       #1A8A7E;
+      --teal-light: #24B5A5;
+      --teal-mid:   #60C4B8;
+      --teal-pale:  #E0F5F3;
+      --gold:       #E8A730;
+      --gold-light: #FFF5DC;
+      --white:      #FFFFFF;
+      --off-white:  #F8FAFB;
+      --gray-100:   #F3F4F6;
+      --gray-300:   #D1D5DB;
+      --gray-500:   #6B7280;
+      --gray-700:   #374151;
+      --gray-900:   #111827;
+      --radius:     16px;
+      --radius-sm:  8px;
+      --shadow:     0 4px 24px rgba(15,32,51,.12);
+      --shadow-lg:  0 16px 56px rgba(15,32,51,.2);
+    }
+
+    /* ============ RESET ============ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Manrope', sans-serif; color: var(--gray-900); background: var(--white); line-height: 1.6; overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a   { color: inherit; text-decoration: none; }
+
+    /* ============ UTILITY ============ */
+    .container   { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+    .section     { padding: 88px 0; }
+    .text-center { text-align: center; }
+    .section-label { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .16em; color: var(--teal); margin-bottom: 14px; }
+    .section-label.light { color: var(--teal-mid); }
+    .section-label.gold  { color: var(--gold); }
+
+    /* ============ TYPOGRAPHY ============ */
+    h1 { font-size: clamp(2.4rem, 6vw, 4.4rem);   font-weight: 800; line-height: 1.08; letter-spacing: -.02em; }
+    h2 { font-size: clamp(1.8rem, 4vw, 3rem);      font-weight: 800; line-height: 1.12; letter-spacing: -.01em; }
+    h3 { font-size: clamp(1.15rem, 2.5vw, 1.55rem); font-weight: 700; line-height: 1.3; }
+    h4 { font-size: 1.05rem; font-weight: 700; }
+    p  { font-size: 1rem; line-height: 1.75; color: var(--gray-700); }
+
+    /* ============ BUTTONS ============ */
+    .btn { display: inline-block; padding: 15px 32px; border-radius: 50px; font-family: 'Manrope', sans-serif; font-weight: 700; font-size: .95rem; cursor: pointer; transition: all .25s ease; border: none; text-align: center; white-space: nowrap; }
+    .btn-primary      { background: var(--teal-light); color: var(--white); }
+    .btn-primary:hover { background: var(--teal); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(26,138,126,.38); }
+    .btn-gold         { background: var(--gold); color: var(--navy); }
+    .btn-gold:hover   { background: #d4941f; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(232,167,48,.42); }
+    .btn-outline-light { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,.38); }
+    .btn-outline-light:hover { border-color: var(--white); background: rgba(255,255,255,.1); }
+    .btn-outline-dark { background: transparent; color: var(--navy); border: 2px solid var(--gray-300); }
+    .btn-outline-dark:hover { border-color: var(--navy); background: var(--navy); color: var(--white); }
+    .btn-lg { padding: 18px 44px; font-size: 1.05rem; }
+
+    /* ============ NAVBAR ============ */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      padding: 18px 0; transition: all .35s ease;
+    }
+    .navbar.scrolled {
+      background: rgba(8,15,26,.96); backdrop-filter: blur(16px);
+      padding: 13px 0; box-shadow: 0 2px 24px rgba(0,0,0,.35);
+    }
+    .navbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .navbar-brand { color: var(--white); font-weight: 800; font-size: 1.2rem; letter-spacing: -.03em; flex-shrink: 0; }
+    .navbar-brand span { color: var(--teal-mid); }
+    .navbar-nav   { display: flex; align-items: center; gap: 2px; }
+    .navbar-nav a {
+      color: rgba(255,255,255,.7); font-size: .84rem; font-weight: 600;
+      padding: 7px 13px; border-radius: 8px; transition: all .2s; white-space: nowrap;
+    }
+    .navbar-nav a:hover  { color: var(--white); background: rgba(255,255,255,.08); }
+    .navbar-nav a.active { color: var(--teal-mid); }
+    .navbar-right { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+    .navbar-right .btn  { padding: 9px 22px; font-size: .84rem; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
+    .hamburger span { width: 22px; height: 2px; background: var(--white); border-radius: 2px; display: block; transition: all .3s; }
+
+    /* ============ MOBILE MENU ============ */
+    .mobile-menu {
+      position: fixed; inset: 0; z-index: 199; background: var(--navy-deep);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 8px; opacity: 0; visibility: hidden; transition: all .3s;
+    }
+    .mobile-menu.open { opacity: 1; visibility: visible; }
+    .mobile-menu a { color: var(--white); font-size: 1.3rem; font-weight: 700; padding: 14px 32px; border-radius: 12px; transition: all .2s; }
+    .mobile-menu a:hover { background: rgba(255,255,255,.08); color: var(--teal-mid); }
+    .mobile-close { position: absolute; top: 22px; right: 24px; background: none; border: none; color: var(--white); font-size: 1.5rem; cursor: pointer; line-height: 1; }
+    .mobile-divider { width: 40px; height: 1px; background: rgba(255,255,255,.12); margin: 8px 0; }
+
+    /* ============ HERO ============ */
+    .hero {
+      background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 55%, #0F2833 100%);
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 130px 0 90px; position: relative; overflow: hidden; color: var(--white);
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse at 75% 30%, rgba(26,138,126,.22) 0%, transparent 55%),
+        radial-gradient(ellipse at 15% 85%, rgba(96,196,184,.12) 0%, transparent 45%),
+        radial-gradient(ellipse at 50% 110%, rgba(232,167,48,.06) 0%, transparent 40%);
+    }
+    .hero-grid   { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; position: relative; z-index: 1; }
+    .hero-eyebrow { display: inline-block; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.13); color: rgba(255,255,255,.65); padding: 7px 18px; border-radius: 50px; font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 26px; }
+    .hero h1     { color: var(--white); margin-bottom: 22px; }
+    .hero h1 em  { font-style: normal; color: var(--teal-mid); }
+    .hero-desc   { font-size: 1.08rem; color: rgba(255,255,255,.65); line-height: 1.78; margin-bottom: 38px; max-width: 500px; }
+    .hero-ctas   { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    /* Formula */
+    .formula         { display: flex; align-items: stretch; gap: 12px; }
+    .formula-box     {
+      flex: 1; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1);
+      border-radius: 14px; padding: 28px 16px; text-align: center;
+      transition: all .3s ease; display: flex; flex-direction: column; justify-content: center;
+    }
+    .formula-box:hover { background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.2); transform: translateY(-5px); }
+    .formula-box.result {
+      background: linear-gradient(145deg, rgba(26,138,126,.3), rgba(36,181,165,.15));
+      border-color: rgba(96,196,184,.45);
+    }
+    .formula-box.result:hover { border-color: var(--teal-mid); }
+    .f-num  { font-size: 2.2rem; font-weight: 800; color: var(--white); line-height: 1; margin-bottom: 6px; }
+    .f-lbl  { font-size: .68rem; color: rgba(255,255,255,.45); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 8px; }
+    .f-desc { font-size: .78rem; color: rgba(255,255,255,.6); line-height: 1.5; }
+    .f-brand { font-size: 1rem; font-weight: 800; color: var(--teal-light); margin-bottom: 4px; letter-spacing: -.02em; }
+    .formula-op { font-size: 1.6rem; font-weight: 800; color: var(--teal-mid); flex-shrink: 0; display: flex; align-items: center; }
+
+    /* ============ WHAT IS hrdonline ============ */
+    .section-concept { background: var(--teal); padding: 56px 0; }
+    .concept-row     { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; }
+    .concept-item    { padding: 32px 36px; border-right: 1px solid rgba(255,255,255,.15); }
+    .concept-item:last-child { border-right: none; }
+    .concept-n    { font-size: 3rem; font-weight: 800; color: rgba(255,255,255,.12); line-height: 1; margin-bottom: 6px; }
+    .concept-item h3 { color: var(--white); font-size: 1.05rem; margin-bottom: 10px; }
+    .concept-item p  { color: rgba(255,255,255,.72); font-size: .88rem; line-height: 1.65; }
+
+    /* ============ TWO PATHS ============ */
+    .section-paths  { background: var(--off-white); }
+    .paths-intro    { text-align: center; margin-bottom: 52px; }
+    .paths-grid     { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .path-card      {
+      border-radius: var(--radius); padding: 52px 44px; display: flex;
+      flex-direction: column; gap: 30px; position: relative; overflow: hidden;
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .path-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+    .path-card.biz  { background: var(--navy); }
+    .path-card.hr   { background: linear-gradient(140deg, var(--teal) 0%, #0B6058 100%); }
+    .path-card::after {
+      content: ''; position: absolute; top: -80px; right: -80px;
+      width: 260px; height: 260px; border-radius: 50%; opacity: .05;
+    }
+    .path-card.biz::after { background: var(--gold); }
+    .path-card.hr::after  { background: var(--white); }
+    .path-tag { font-size: .7rem; text-transform: uppercase; letter-spacing: .13em; font-weight: 700; color: rgba(255,255,255,.45); }
+    .path-card h2    { color: var(--white); font-size: clamp(1.5rem, 3vw, 2.1rem); }
+    .path-card.biz h2 em { font-style: normal; color: var(--gold); }
+    .path-card.hr  h2 em { font-style: normal; color: rgba(255,255,255,.65); }
+    .path-desc  { color: rgba(255,255,255,.65); font-size: .93rem; line-height: 1.7; }
+    .path-list  { list-style: none; display: flex; flex-direction: column; gap: 11px; flex: 1; }
+    .path-list li { display: flex; align-items: flex-start; gap: 10px; color: rgba(255,255,255,.78); font-size: .875rem; line-height: 1.5; }
+    .path-bullet { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
+    .path-card.biz .path-bullet { background: var(--gold); }
+    .path-card.hr  .path-bullet { background: rgba(255,255,255,.55); }
+    .path-btn { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: .92rem; padding: 14px 28px; border-radius: 50px; transition: all .25s; align-self: flex-start; }
+    .path-card.biz .path-btn { background: var(--gold); color: var(--navy); }
+    .path-card.biz .path-btn:hover { background: #d4941f; }
+    .path-card.hr  .path-btn { background: rgba(255,255,255,.14); color: var(--white); border: 1px solid rgba(255,255,255,.28); }
+    .path-card.hr  .path-btn:hover { background: rgba(255,255,255,.24); }
+
+    /* ============ STATS ============ */
+    .section-stats { background: var(--navy-deep); padding: 64px 0; }
+    .stats-row     { display: grid; grid-template-columns: repeat(5,1fr); }
+    .stat          { text-align: center; padding: 24px 12px; border-right: 1px solid rgba(255,255,255,.07); }
+    .stat:last-child { border-right: none; }
+    .stat-n  { font-size: 3rem; font-weight: 800; color: var(--teal-light); line-height: 1; margin-bottom: 10px; }
+    .stat-l  { font-size: .75rem; color: rgba(255,255,255,.42); text-transform: uppercase; letter-spacing: .08em; line-height: 1.55; }
+
+    /* ============ PRODUCTS ============ */
+    .products-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 52px; }
+    .prod        {
+      background: var(--white); border: 1px solid var(--gray-300); border-radius: var(--radius);
+      display: flex; flex-direction: column; overflow: hidden; transition: all .25s;
+    }
+    .prod:hover  { border-color: var(--teal-light); box-shadow: var(--shadow); transform: translateY(-4px); }
+    .prod-body   { padding: 28px 28px 0; flex: 1; }
+    .prod-foot   { padding: 20px 28px 28px; }
+    .prod-badge  { display: inline-block; font-size: .68rem; text-transform: uppercase; letter-spacing: .1em; font-weight: 700; padding: 4px 12px; border-radius: 50px; margin-bottom: 14px; }
+    .badge-course { background: var(--teal-pale); color: var(--teal); }
+    .badge-book   { background: var(--gold-light); color: #7A5200; }
+    .badge-digest { background: var(--gray-100); color: var(--gray-700); }
+    .badge-soon   { background: var(--gray-100); color: var(--gray-500); }
+    .prod h3 { color: var(--navy); margin-bottom: 10px; font-size: 1.1rem; }
+    .prod p  { font-size: .865rem; color: var(--gray-500); line-height: 1.65; }
+    .prod-link { color: var(--teal); font-weight: 700; font-size: .865rem; }
+    .prod-link:hover { text-decoration: underline; }
+
+    /* ============ ABOUT BRIEF ============ */
+    .section-author { background: var(--navy); color: var(--white); }
+    .author-grid    { display: grid; grid-template-columns: 380px 1fr; gap: 88px; align-items: center; }
+    .author-photo   { width: 100%; border-radius: var(--radius); aspect-ratio: 3/4; object-fit: cover; }
+    .author-ph      { width: 100%; aspect-ratio: 3/4; background: linear-gradient(145deg, var(--teal), #0B5E56); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.35); font-size: .85rem; text-align: center; padding: 24px; }
+    .author-content .section-label { margin-bottom: 14px; }
+    .author-content h2 { color: var(--white); margin-bottom: 6px; }
+    .author-role       { color: var(--teal-mid); font-size: .95rem; font-weight: 600; margin-bottom: 24px; }
+    .author-content p  { color: rgba(255,255,255,.68); margin-bottom: 14px; line-height: 1.75; }
+    .author-quote { border-left: 3px solid var(--teal-mid); padding-left: 20px; margin: 26px 0; font-style: italic; color: rgba(255,255,255,.82); font-size: 1rem; line-height: 1.78; }
+    .author-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 30px; }
+    .author-chip  { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); color: rgba(255,255,255,.65); padding: 6px 14px; border-radius: 50px; font-size: .8rem; }
+
+    /* ============ CTA SECTION ============ */
+    .section-cta { background: linear-gradient(135deg, var(--teal) 0%, #0B6058 100%); color: var(--white); text-align: center; padding: 88px 0; }
+    .section-cta h2 { color: var(--white); margin-bottom: 18px; }
+    .section-cta p  { color: rgba(255,255,255,.72); font-size: 1.05rem; max-width: 540px; margin: 0 auto 40px; line-height: 1.75; }
+    .cta-buttons { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+
+    /* ============ FOOTER ============ */
+    .footer         { background: var(--navy-deep); color: rgba(255,255,255,.45); padding: 72px 0 32px; }
+    .footer-top     { display: grid; grid-template-columns: 2.2fr 1fr 1fr 1fr; gap: 56px; margin-bottom: 56px; }
+    .f-logo         { font-size: 1.35rem; font-weight: 800; color: var(--white); margin-bottom: 14px; letter-spacing: -.03em; }
+    .f-logo span    { color: var(--teal-mid); }
+    .f-about        { font-size: .875rem; line-height: 1.68; margin-bottom: 22px; }
+    .f-socials      { display: flex; gap: 10px; }
+    .f-social-btn   { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border: 1px solid rgba(255,255,255,.12); border-radius: 50%; color: rgba(255,255,255,.55); font-size: .8rem; font-weight: 700; transition: all .2s; }
+    .f-social-btn:hover { border-color: var(--teal); background: var(--teal); color: var(--white); }
+    .f-col h5    { color: var(--white); font-size: .75rem; text-transform: uppercase; letter-spacing: .12em; margin-bottom: 18px; }
+    .f-col a     { display: block; color: rgba(255,255,255,.45); font-size: .85rem; margin-bottom: 10px; transition: color .2s; }
+    .f-col a:hover { color: var(--teal-mid); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.07); padding-top: 28px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; font-size: .8rem; }
+    .footer-bottom a { color: var(--teal-mid); }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 1024px) {
+      .hero-grid   { grid-template-columns: 1fr; gap: 56px; }
+      .stats-row   { grid-template-columns: repeat(3,1fr); }
+      .stat:nth-child(3) { border-right: none; }
+      .author-grid { grid-template-columns: 1fr 1.4fr; gap: 52px; }
+      .footer-top  { grid-template-columns: 1fr 1fr; gap: 36px; }
+    }
+    @media (max-width: 768px) {
+      h1 { font-size: 2.3rem; }
+      h2 { font-size: 1.8rem; }
+      .section { padding: 60px 0; }
+      .hero { padding: 108px 0 64px; min-height: auto; }
+      .navbar-nav  { display: none; }
+      .navbar-right .btn:not(.hamburger) { display: none; }
+      .hamburger   { display: flex; }
+      .formula     { flex-direction: column; gap: 8px; }
+      .formula-op  { align-self: center; transform: rotate(90deg); font-size: 1.3rem; }
+      .formula-box { padding: 20px; }
+      .concept-row { grid-template-columns: 1fr; }
+      .concept-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,.15); }
+      .concept-item:last-child { border-bottom: none; }
+      .paths-grid  { grid-template-columns: 1fr; }
+      .path-card   { padding: 36px 28px; }
+      .stats-row   { grid-template-columns: 1fr 1fr; }
+      .stat        { border-right: none; border-bottom: 1px solid rgba(255,255,255,.07); }
+      .stat:last-child { border-bottom: none; }
+      .products-row { grid-template-columns: 1fr; }
+      .author-grid  { grid-template-columns: 1fr; }
+      .author-photo, .author-ph { aspect-ratio: 1/1; max-height: 300px; }
+      .cta-buttons  { flex-direction: column; align-items: center; }
+      .hero-ctas    { flex-direction: column; }
+      .footer-top   { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+
+    /* ============ ANIMATIONS ============ */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-up { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .hero-content > * { animation: fadeUp .65s ease backwards; }
+    .hero-content > *:nth-child(1) { animation-delay: .1s; }
+    .hero-content > *:nth-child(2) { animation-delay: .22s; }
+    .hero-content > *:nth-child(3) { animation-delay: .34s; }
+    .hero-content > *:nth-child(4) { animation-delay: .46s; }
+    .hero-formula  { animation: fadeUp .65s ease .3s backwards; }
+  </style>
+</head>
+<body>
+
+<!-- ======= NAVBAR ======= -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <div class="navbar-inner">
+      <a href="index.html" class="navbar-brand">hrdonline<span>.</span></a>
+      <div class="navbar-nav">
+        <a href="business.html">Бизнесу</a>
+        <a href="hr.html">HR-специалистам</a>
+        <a href="books.html">Книги</a>
+        <a href="course.html">Курс</a>
+        <a href="about.html">Об авторе</a>
+        <a href="contacts.html">Контакты</a>
+      </div>
+      <div class="navbar-right">
+        <a href="contacts.html" class="btn btn-outline-light">Связаться</a>
+        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ======= MOBILE MENU ======= -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="toggleMenu()">&#10005;</button>
+  <a href="index.html"    onclick="toggleMenu()">Главная</a>
+  <a href="business.html" onclick="toggleMenu()">Бизнесу</a>
+  <a href="hr.html"       onclick="toggleMenu()">HR-специалистам</a>
+  <div class="mobile-divider"></div>
+  <a href="books.html"    onclick="toggleMenu()">Книги</a>
+  <a href="course.html"   onclick="toggleMenu()">Курс</a>
+  <a href="about.html"    onclick="toggleMenu()">Об авторе</a>
+  <a href="contacts.html" onclick="toggleMenu()">Контакты</a>
+</div>
+
+<!-- ======= HERO ======= -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+
+      <div class="hero-content">
+        <div class="hero-eyebrow">hrdonline.ru</div>
+        <h1>Вирту&shy;альный<br /><em>HRD</em></h1>
+        <p class="hero-desc">
+          Зинаида Чумакова — независимый HRD с 20-летним опытом в федеральных и международных компаниях. Сегодня работаю иначе: вместе с AI-агентами закрываю задачи целого HR-отдела — быстро, системно, без раздутого штата.
+        </p>
+        <div class="hero-ctas">
+          <a href="business.html" class="btn btn-gold btn-lg">Я руководитель</a>
+          <a href="hr.html"       class="btn btn-outline-light btn-lg">Я HR-специалист</a>
+        </div>
+      </div>
+
+      <div class="hero-formula">
+        <div class="formula">
+          <div class="formula-box">
+            <div class="f-num">20</div>
+            <div class="f-lbl">лет опыта</div>
+            <div class="f-desc">HR в компаниях федерального и международного уровня</div>
+          </div>
+          <div class="formula-op">&times;</div>
+          <div class="formula-box">
+            <div class="f-num">AI</div>
+            <div class="f-lbl">агенты</div>
+            <div class="f-desc">Инструменты нового поколения в каждом процессе</div>
+          </div>
+          <div class="formula-op">=</div>
+          <div class="formula-box result">
+            <div class="f-brand">hrdonline</div>
+            <div class="f-lbl">виртуальный HRD</div>
+            <div class="f-desc">Возможности целой HR-команды в одном решении</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ======= CONCEPT STRIP ======= -->
+<div class="section-concept">
+  <div class="container">
+    <div class="concept-row">
+      <div class="concept-item">
+        <div class="concept-n">01</div>
+        <h3>Реальный опыт</h3>
+        <p>Не теория — 20 лет решений в HR крупных компаний. Подбор, адаптация, стратегия, C-level. Всё знаю изнутри.</p>
+      </div>
+      <div class="concept-item">
+        <div class="concept-n">02</div>
+        <h3>AI-усиление</h3>
+        <p>AI-агенты берут на себя аналитику, документы, скрининг — я занимаюсь стратегией, людьми и результатом.</p>
+      </div>
+      <div class="concept-item">
+        <div class="concept-n">03</div>
+        <h3>Без найма в штат</h3>
+        <p>Вы получаете HRD уровня крупной компании без найма, онбординга и постоянных затрат на содержание отдела.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======= TWO PATHS ======= -->
+<section class="section section-paths">
+  <div class="container">
+    <div class="paths-intro fade-up">
+      <div class="section-label">Два направления</div>
+      <h2>Выберите свой путь</h2>
+      <p style="color:var(--gray-500);max-width:500px;margin:12px auto 0;">Для бизнеса — HR без компромиссов. Для HR-специалистов — рост с ИИ.</p>
+    </div>
+    <div class="paths-grid">
+
+      <div class="path-card biz fade-up">
+        <div>
+          <div class="path-tag">Собственникам &middot; CEO &middot; C-level</div>
+          <h2>Бизнесу —<br /><em>HR без компромиссов</em></h2>
+          <p class="path-desc">Виртуальный HRD для вашей компании. Работаю как ваш HR-директор с AI-командой — от аудита до полного HR под ключ.</p>
+        </div>
+        <ul class="path-list">
+          <li><span class="path-bullet"></span>Фракционный HRD — ваш HRD без найма в штат</li>
+          <li><span class="path-bullet"></span>Аудит HR-функции и бизнес-процессов</li>
+          <li><span class="path-bullet"></span>Внедрение ИИ в работу компании</li>
+          <li><span class="path-bullet"></span>Личное обучение ИИ для руководителя</li>
+          <li><span class="path-bullet"></span>Поиск C-level специалистов</li>
+          <li><span class="path-bullet"></span>HR под ключ для нового бизнеса</li>
+          <li><span class="path-bullet"></span>Дайджест «Верхний этаж» для руководителей</li>
+        </ul>
+        <a href="business.html" class="path-btn">Смотреть услуги &rarr;</a>
+      </div>
+
+      <div class="path-card hr fade-up">
+        <div>
+          <div class="path-tag">Рекрутёрам &middot; HR-менеджерам &middot; HRD</div>
+          <h2>HR-специалистам —<br /><em>рост с ИИ</em></h2>
+          <p class="path-desc">Обучение, книги, дайджест и личная работа. Становитесь HR-специалистом нового поколения — с реальными инструментами.</p>
+        </div>
+        <ul class="path-list">
+          <li><span class="path-bullet"></span>Курс «ИИ в HR. Практика» — старт 14 апреля</li>
+          <li><span class="path-bullet"></span>Книга «ИИ в HR» — эксклюзив первого потока</li>
+          <li><span class="path-bullet"></span>Дайджест ИИ для HR</li>
+          <li><span class="path-bullet"></span>Индивидуальное консультирование</li>
+          <li><span class="path-bullet"></span>Личное обучение HRD</li>
+          <li><span class="path-bullet"></span>Карьерное консультирование</li>
+        </ul>
+        <a href="hr.html" class="path-btn">Смотреть продукты &rarr;</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ======= STATS ======= -->
+<div class="section-stats">
+  <div class="container">
+    <div class="stats-row">
+      <div class="stat fade-up">
+        <div class="stat-n">20+</div>
+        <div class="stat-l">лет в HR</div>
+      </div>
+      <div class="stat fade-up">
+        <div class="stat-n">50+</div>
+        <div class="stat-l">компаний&nbsp;— федеральный и международный уровень</div>
+      </div>
+      <div class="stat fade-up">
+        <div class="stat-n">3</div>
+        <div class="stat-l">книги — для HR, CEO и финансов</div>
+      </div>
+      <div class="stat fade-up">
+        <div class="stat-n">2</div>
+        <div class="stat-l">дайджеста — для бизнеса и HR</div>
+      </div>
+      <div class="stat fade-up">
+        <div class="stat-n">AI</div>
+        <div class="stat-l">агенты в работе каждый день</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======= PRODUCTS ======= -->
+<section class="section">
+  <div class="container">
+    <div class="text-center fade-up">
+      <div class="section-label">Продукты</div>
+      <h2>Книги, курс и дайджесты</h2>
+      <p style="color:var(--gray-500);max-width:480px;margin:12px auto 0;">Всё что создано для HR-сообщества и бизнеса — в одном месте</p>
+    </div>
+    <div class="products-row">
+
+      <div class="prod fade-up">
+        <div class="prod-body">
+          <div class="prod-badge badge-course">Курс &middot; Старт 14 апреля</div>
+          <h3>ИИ в HR. Практика</h3>
+          <p>8-недельный практический курс. 7 модулей, весь путь сотрудника, AI-инструменты — для HR любого уровня.</p>
+        </div>
+        <div class="prod-foot">
+          <a href="course.html" class="prod-link">Подробнее о курсе &rarr;</a>
+        </div>
+      </div>
+
+      <div class="prod fade-up">
+        <div class="prod-body">
+          <div class="prod-badge badge-book">Книга &middot; Готова</div>
+          <h3>ИИ в HR</h3>
+          <p>Руководство по работе с интеллектом: своим и искусственным. Участники первого потока получают до выхода в издательстве.</p>
+        </div>
+        <div class="prod-foot">
+          <a href="books.html" class="prod-link">О книге &rarr;</a>
+        </div>
+      </div>
+
+      <div class="prod fade-up">
+        <div class="prod-body">
+          <div class="prod-badge badge-soon">Книга &middot; В работе</div>
+          <h3>ИИ для CEO</h3>
+          <p>Для собственников и топ-менеджеров. Как ИИ меняет управление компанией, командой и стратегическое мышление.</p>
+        </div>
+        <div class="prod-foot">
+          <a href="books.html" class="prod-link">Следить за выходом &rarr;</a>
+        </div>
+      </div>
+
+      <div class="prod fade-up">
+        <div class="prod-body">
+          <div class="prod-badge badge-soon">Книга &middot; В работе</div>
+          <h3>ИИ для финансов</h3>
+          <p>Как финансовые команды работают с ИИ: от автоматизации рутины до стратегического планирования.</p>
+        </div>
+        <div class="prod-foot">
+          <a href="books.html" class="prod-link">Следить за выходом &rarr;</a>
+        </div>
+      </div>
+
+      <div class="prod fade-up">
+        <div class="prod-body">
+          <div class="prod-badge badge-digest">Дайджест</div>
+          <h3>ИИ для HR</h3>
+          <p>Регулярный дайджест об инструментах, кейсах и трендах ИИ в HR-функции. Для практиков.</p>
+        </div>
+        <div class="prod-foot">
+          <a href="hr.html#digest" class="prod-link">Подписаться &rarr;</a>
+        </div>
+      </div>
+
+      <div class="prod fade-up">
+        <div class="prod-body">
+          <div class="prod-badge badge-digest">Дайджест</div>
+          <h3>Верхний этаж</h3>
+          <p>Для руководителей: ИИ в управлении, стратегии и работе с командой. Коротко, без воды, по делу.</p>
+        </div>
+        <div class="prod-foot">
+          <a href="business.html#digest" class="prod-link">Подписаться &rarr;</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ======= ABOUT BRIEF ======= -->
+<section class="section section-author">
+  <div class="container">
+    <div class="author-grid">
+      <div>
+        <img src="Photo-author.jpg" alt="Зинаида Чумакова" class="author-photo"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="author-ph" style="display:none;">Фото Зинаиды Чумаковой</div>
+      </div>
+      <div class="author-content fade-up">
+        <div class="section-label light">Об авторе</div>
+        <h2 style="color:var(--white);">Зинаида Чумакова</h2>
+        <div class="author-role">Независимый HRD &middot; Спикер &middot; Писатель</div>
+        <p>Я начала работать в HR, когда не было ни LinkedIn, ни автоматизации. Прошла путь от рекрутёра до HRD в компаниях федерального и международного масштаба — и знаю все процессы изнутри.</p>
+        <p>Сегодня я строю другую модель работы. hrdonline — это не агентство и не консультация раз в квартал. Это постоянный HR-партнёр, который работает с глубиной реального опыта и мощью AI-агентов.</p>
+        <blockquote class="author-quote">«Хороший HRD сегодня — это тот, кто понимает людей глубже, чем любой алгоритм. И при этом умеет использовать алгоритм там, где это даёт результат.»</blockquote>
+        <div class="author-chips">
+          <span class="author-chip">HR-стратегия</span>
+          <span class="author-chip">C-level поиск</span>
+          <span class="author-chip">ИИ в HR</span>
+          <span class="author-chip">Оргдизайн</span>
+          <span class="author-chip">Обучение и развитие</span>
+          <span class="author-chip">People Analytics</span>
+        </div>
+        <a href="about.html" class="btn btn-outline-light">Подробнее об авторе</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= CTA ======= -->
+<section class="section-cta">
+  <div class="container fade-up">
+    <div class="section-label light">Сделайте первый шаг</div>
+    <h2>Не знаете с чего начать?</h2>
+    <p>Напишите — расскажите о своей задаче. Вместе разберёмся, какой формат подойдёт именно вам.</p>
+    <div class="cta-buttons">
+      <a href="https://t.me/ZinaidaChu" target="_blank" class="btn btn-gold btn-lg">Написать Зинаиде</a>
+      <a href="business.html" class="btn btn-outline-light btn-lg">Услуги для бизнеса</a>
+      <a href="hr.html"       class="btn btn-outline-light btn-lg">Для HR-специалистов</a>
+    </div>
+  </div>
+</section>
+
+<!-- ======= FOOTER ======= -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="f-logo">hrdonline<span>.</span></div>
+        <p class="f-about">Виртуальный HRD &mdash; Зинаида Чумакова. 20 лет опыта в HR. Работаю с AI-агентами для бизнеса и HR-сообщества.</p>
+        <div class="f-socials">
+          <a href="https://t.me/chumakova_HRD" target="_blank" class="f-social-btn" title="Telegram-канал">TG</a>
+          <a href="https://t.me/ZinaidaChu"    target="_blank" class="f-social-btn" title="Написать напрямую">DM</a>
+        </div>
+      </div>
+      <div class="f-col">
+        <h5>Бизнесу</h5>
+        <a href="business.html#fractional">Фракционный HRD</a>
+        <a href="business.html#audit">Аудит HR</a>
+        <a href="business.html#ai">Внедрение ИИ</a>
+        <a href="business.html#training">Обучение ИИ</a>
+        <a href="business.html#search">Поиск C-level</a>
+        <a href="business.html#digest">Дайджест</a>
+      </div>
+      <div class="f-col">
+        <h5>HR-специалистам</h5>
+        <a href="course.html">Курс ИИ в HR</a>
+        <a href="books.html">Книга ИИ в HR</a>
+        <a href="hr.html#digest">Дайджест HR</a>
+        <a href="hr.html#consulting">Консультации</a>
+        <a href="hr.html#career">Карьера HRD</a>
+      </div>
+      <div class="f-col">
+        <h5>О сайте</h5>
+        <a href="about.html">Об авторе</a>
+        <a href="books.html">Книги</a>
+        <a href="contacts.html">Контакты</a>
+        <a href="https://t.me/chumakova_HRD" target="_blank">Telegram-канал</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 hrdonline.ru &mdash; Зинаида Чумакова</span>
+      <span>Написать: <a href="https://t.me/ZinaidaChu">@ZinaidaChu</a> &nbsp;&middot;&nbsp; <a href="https://t.me/Averkieva_Helen">@Averkieva_Helen</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* Navbar */
+  var navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', function() {
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  /* Mobile menu */
+  function toggleMenu() {
+    var menu = document.getElementById('mobileMenu');
+    var isOpen = menu.classList.toggle('open');
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  }
+
+  /* Scroll animations */
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-up').forEach(function(el) {
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
