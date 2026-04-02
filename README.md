@@ -1,16 +1,37 @@
-## Hi there 👋
+# hrdonline.ru
 
-<!--
-**hrdonline/Hrdonline** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+Сайт виртуального HRD — Зинаида Чумакова.
 
-Here are some ideas to get you started:
+## Концепция
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+hrdonline = 20 лет опыта в HR × AI-агенты = виртуальный HRD
+
+Два направления:
+- **Бизнесу** — услуги для собственников, CEO и C-level
+- **HR-специалистам** — обучение, книги, дайджест
+
+## Структура сайта
+
+| Файл | Страница |
+|------|----------|
+| `index.html` | Главная |
+| `business.html` | Бизнесу |
+| `hr.html` | HR-специалистам |
+| `books.html` | Книги |
+| `course.html` | Курс ИИ в HR |
+| `about.html` | Об авторе |
+| `contacts.html` | Контакты |
+
+## Статус страниц
+
+- [x] index.html — готова
+- [ ] business.html — в работе
+- [ ] hr.html — в работе
+- [ ] books.html — в работе
+- [ ] course.html — готова
+- [ ] about.html — в работе
+- [ ] contacts.html — в работе
+
+## Контакты
+
+Telegram: [@ZinaidaChu](https://t.me/ZinaidaChu)
