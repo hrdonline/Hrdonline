@@ -177,29 +177,35 @@
     .acc-content { display: grid; grid-template-columns: 1fr 320px; gap: 48px; align-items: start; }
     .acc-content.single { grid-template-columns: 1fr; }
 
-    /* Project Tabs */
+/* Project Tabs */
 .proj-tabs {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 20px;
+  margin: 0 0 20px;
 }
 
 .proj-tab {
   background: transparent;
-  border: 1px solid rgba(255,255,255,0.2);
-  color: rgba(255,255,255,0.5);
+  border: 1px solid var(--gray-300);
+  color: var(--gray-500);
   padding: 8px 16px;
   border-radius: 20px;
   cursor: pointer;
   font-size: 13px;
+  font-family: 'Manrope', sans-serif;
   transition: all 0.2s;
 }
 
+.proj-tab:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+}
+
 .proj-tab.active {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #fff;
+  background: var(--teal);
+  border-color: var(--teal);
+  color: var(--white);
 }
 
 .proj-tab-content { display: none; }
@@ -207,20 +213,21 @@
 
 .service-item-compact {
   padding: 14px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid var(--gray-100);
 }
 .service-item-compact:last-child { border-bottom: none; }
 
 .service-item-compact h4 {
   margin: 0 0 4px;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 700;
+  color: var(--navy);
 }
 
 .service-item-compact p {
   margin: 0;
   font-size: 13px;
-  color: rgba(255,255,255,0.55);
+  color: var(--gray-500);
   line-height: 1.5;
 }
     /* Left: description */
