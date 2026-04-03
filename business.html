@@ -234,7 +234,52 @@
   margin: 0;
   line-height: 1.65;
 }
-    
+    /* Project Tabs */
+.proj-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.proj-tab {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.5);
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s;
+}
+
+.proj-tab.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.proj-tab-content { display: none; }
+.proj-tab-content.active { display: block; }
+
+.service-item-compact {
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.service-item-compact:last-child { border-bottom: none; }
+
+.service-item-compact h4 {
+  margin: 0 0 4px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.service-item-compact p {
+  margin: 0;
+  font-size: 13px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.5;
+}
     /* Left: description */
     .acc-desc { color: var(--gray-700); font-size: .97rem; line-height: 1.78; margin-bottom: 24px; }
 
@@ -556,7 +601,7 @@
         </div>
       </div>
 
-      <!-- ===== 02: PROJECTS ===== -->
+<!-- ===== 02: PROJECTS ===== -->
 <div class="acc-item fade" id="acc-2">
   <button class="acc-trigger" onclick="toggleAcc('acc-2')">
     <div class="acc-trigger-left">
@@ -568,98 +613,85 @@
     </div>
     <div class="acc-icon">+</div>
   </button>
+
   <div class="acc-body">
     <div class="acc-divider"></div>
     <div class="acc-content">
+
       <div>
-        <p class="acc-desc">Проекты с конкретным результатом. Вы получаете готовую управленческую модель и материалы, которые можно внедрять внутри компании без моей постоянной вовлечённости.</p>
+        <p class="acc-desc">Готовая модель и материалы — внедряете сами, без моей постоянной вовлечённости.</p>
 
-        <!-- Группа 1 -->
-        <div class="service-group">
-          <div class="service-group-header">
-            <div class="service-group-title">Хочу разобраться что происходит</div>
-            <div class="service-group-sub">Прежде чем что-то менять — нужно понять</div>
+        <!-- Табы -->
+        <div class="proj-tabs">
+          <button class="proj-tab active" onclick="switchTab(event, 'tab-diagnose')">Понять что происходит</button>
+          <button class="proj-tab" onclick="switchTab(event, 'tab-function')">Функция не даёт результата</button>
+          <button class="proj-tab" onclick="switchTab(event, 'tab-people')">Проблемы с людьми</button>
+          <button class="proj-tab" onclick="switchTab(event, 'tab-structure')">Компания выросла</button>
+        </div>
+
+        <!-- Таб 1 -->
+        <div class="proj-tab-content active" id="tab-diagnose">
+          <div class="service-item-compact">
+            <h4>HR-аудит</h4>
+            <p>Где узкие места, что тормозит рост и что менять в первую очередь.</p>
           </div>
-          <div class="service-list">
-            <div class="service-item">
-              <h4>HR-аудит</h4>
-              <p>Диагностика людей, процессов и HR-функции изнутри. Где узкие места, как настроены процессы, что тормозит рост и что менять в первую очередь.</p>
-            </div>
-            <div class="service-item">
-              <h4>Оценка руководителей функции</h4>
-              <p>Тот ли человек на месте? Структурированная оценка: компетенции, 360° от команды и смежников, чёткая рекомендация — развивать, двигать или менять. Без сомнений, на основе данных.</p>
-            </div>
+          <div class="service-item-compact">
+            <h4>Оценка руководителей функции</h4>
+            <p>Тот ли человек на месте — чёткая рекомендация на основе данных, без сомнений.</p>
           </div>
         </div>
 
-        <!-- Группа 2 -->
-        <div class="service-group">
-          <div class="service-group-header">
-            <div class="service-group-title">Функция не даёт результата</div>
-            <div class="service-group-sub">Отдел работает — но не так как должен</div>
+        <!-- Таб 2 -->
+        <div class="proj-tab-content" id="tab-function">
+          <div class="service-item-compact">
+            <h4>Система результативности</h4>
+            <p>OKR, KPI, грейды — кадровые решения на цифрах, а не ощущениях.</p>
           </div>
-          <div class="service-list">
-            <div class="service-item">
-              <h4>Система результативности</h4>
-              <p>Выстраиваем систему оценки под специфику бизнеса: OKR, KPI, грейды, перформанс ревью. Руководители начинают принимать кадровые решения на цифрах.</p>
-            </div>
-            <div class="service-item">
-              <h4>Разворот функции</h4>
-              <p>Когда отдел стабильно не даёт результата — захожу внутрь, диагностирую что именно сломано: люди, процессы, руководитель или цели. Чёткий план и сопровождение изменений.</p>
-            </div>
+          <div class="service-item-compact">
+            <h4>Разворот функции</h4>
+            <p>Захожу внутрь, нахожу что сломано — люди, процессы или цели. Чёткий план изменений.</p>
           </div>
         </div>
 
-        <!-- Группа 3 -->
-        <div class="service-group">
-          <div class="service-group-header">
-            <div class="service-group-title">Проблемы с людьми</div>
-            <div class="service-group-sub">Найти, выстроить, удержать</div>
+        <!-- Таб 3 -->
+        <div class="proj-tab-content" id="tab-people">
+          <div class="service-item-compact">
+            <h4>Найм топ-менеджеров под ключ</h4>
+            <p>Закрываем позиции, которые сложно закрыть. Большая база, оценка уровня, сопровождение.</p>
           </div>
-          <div class="service-list">
-            <div class="service-item">
-              <h4>Найм топ-менеджеров под ключ</h4>
-              <p>Большая база топ-менеджеров — поиск, замена, оценка уровня, обучение и консультирование. Закрываем позиции, которые сложно закрыть.</p>
-            </div>
-            <div class="service-item">
-              <h4>HR-функция с нуля</h4>
-              <p>Компания выросла, а HR всё ещё нет или не работает. Строим базовые процессы, подбираем первого HR в штат и передаём функцию внутрь.</p>
-            </div>
-            <div class="service-item">
-              <h4>Фракционный HRD</h4>
-              <p>Подключаюсь на конкретный проект или период — выстраиваю HR под результат бизнеса.</p>
-            </div>
+          <div class="service-item-compact">
+            <h4>HR-функция с нуля</h4>
+            <p>Строим базовые процессы, подбираем первого HR и передаём функцию внутрь.</p>
+          </div>
+          <div class="service-item-compact">
+            <h4>Фракционный HRD</h4>
+            <p>Подключаюсь на проект или период — выстраиваю HR под результат бизнеса.</p>
           </div>
         </div>
 
-        <!-- Группа 4 -->
-        <div class="service-group">
-          <div class="service-group-header">
-            <div class="service-group-title">Компания выросла — структура не успела</div>
-            <div class="service-group-sub">Хаос в ролях, решения зависают, команда буксует</div>
+        <!-- Таб 4 -->
+        <div class="proj-tab-content" id="tab-structure">
+          <div class="service-item-compact">
+            <h4>Организационная архитектура</h4>
+            <p>Роли, зоны ответственности, уровни управления — структура под масштабирование.</p>
           </div>
-          <div class="service-list">
-            <div class="service-item">
-              <h4>Организационная архитектура</h4>
-              <p>Выстраиваем структуру компании под стратегию: роли, зоны ответственности, уровни управления. Работаем под масштабирование или оптимизацию.</p>
-            </div>
-            <div class="service-item">
-              <h4>Стратегические сессии для топ-команды</h4>
-              <p>Фасилитация сессий: синхронизация команды, выработка решений, приоритеты на период.</p>
-            </div>
+          <div class="service-item-compact">
+            <h4>Стратегические сессии для топ-команды</h4>
+            <p>Синхронизация, выработка решений и приоритеты на период.</p>
+          </div>
+          <div class="service-special" style="margin-top: 16px;">
+            <div class="service-special-label">Особый формат</div>
+            <h4 class="service-special-title">Business Performance Review</h4>
+            <p class="service-special-desc">Взгляд на бизнес целиком — подключаю независимого CEO и CFO, разбираем цели, риски и метрики. Полная картина и конкретные решения.</p>
           </div>
         </div>
 
-        <!-- Особый формат -->
-        <div class="service-special">
-          <div class="service-special-label">Особый формат</div>
-          <h4 class="service-special-title">Business Performance Review</h4>
-          <p class="service-special-desc">Когда нужен взгляд на бизнес целиком — не только на людей. Подключаю независимого CEO и финансового директора: вместе разбираем цели, риски и метрики. Результат — полная картина и конкретные решения.</p>
-        </div>
-
-        <a href="#form" class="btn btn-primary">Запросить стоимость под задачу</a>
+        <a href="#form" class="btn btn-primary" style="margin-top: 24px; display: inline-block;">
+          Запросить стоимость под задачу
+        </a>
       </div>
 
+      <!-- Цена -->
       <div class="price-card">
         <div class="price-card-label">Стоимость</div>
         <div class="price-main">зависит от проекта</div>
@@ -674,10 +706,11 @@
         <div class="price-divider"></div>
         <a href="#form" class="btn btn-primary" style="display:block; text-align:center;">Обсудить проект</a>
       </div>
+
     </div>
   </div>
 </div>
-
+      
       <!-- ===== 03: RETAINER ===== -->
       <div class="acc-item fade" id="acc-3">
         <button class="acc-trigger" onclick="toggleAcc('acc-3')">
@@ -933,7 +966,18 @@
       item.classList.add('open');
     }
   }
-
+    /* Project Tabs */
+    function switchTab(e, tabId) {
+      var parent = e.target.closest('.acc-item');
+      parent.querySelectorAll('.proj-tab').forEach(function(t) {
+        t.classList.remove('active');
+      });
+      parent.querySelectorAll('.proj-tab-content').forEach(function(c) {
+        c.classList.remove('active');
+      });
+      e.target.classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+    }
   /* Scroll animations */
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
