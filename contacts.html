@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Контакты · Зинаида Чумакова · hrdonline </title>
+  <title>Контакты · Зинаида Чумакова · hrdonline</title>
   <meta name="description" content="Свяжитесь с Зинаидой Чумаковой. Telegram, email, организационные вопросы." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -47,7 +47,6 @@
     h1 { font-size: clamp(2.4rem, 5vw, 3.6rem); font-weight: 800; line-height: 1.08; letter-spacing: -.025em; }
     h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 800; line-height: 1.12; letter-spacing: -.015em; }
     h3 { font-size: clamp(1.1rem, 2vw, 1.35rem); font-weight: 700; line-height: 1.3; }
-    h4 { font-size: 1rem; font-weight: 700; }
     p  { font-size: 1rem; line-height: 1.78; color: var(--gray-700); }
 
     .btn { display: inline-block; padding: 15px 32px; border-radius: 50px; font-family: 'Manrope', sans-serif; font-weight: 700; font-size: .92rem; cursor: pointer; transition: all .25s; border: none; text-align: center; }
@@ -55,9 +54,6 @@
     .btn-gold:hover    { background: #d4941f; transform: translateY(-2px); box-shadow: 0 10px 30px rgba(232,167,48,.4); }
     .btn-primary       { background: var(--teal-light); color: var(--white); }
     .btn-primary:hover { background: var(--teal); transform: translateY(-2px); }
-    .btn-ghost-light       { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,.32); }
-    .btn-ghost-light:hover { border-color: var(--white); background: rgba(255,255,255,.1); }
-    .btn-lg { padding: 18px 44px; font-size: 1rem; }
 
     /* NAVBAR */
     .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 200; padding: 20px 0; transition: all .3s; }
@@ -101,7 +97,7 @@
     .hero-contacts .eyebrow { color: var(--teal-mid); margin-bottom: 24px; }
     .hero-contacts h1 { color: var(--white); margin-bottom: 24px; }
     .hero-contacts h1 em { font-style: normal; color: var(--teal-mid); }
-    .hero-contacts .hero-phrase {
+    .hero-phrase {
       font-size: 1.1rem;
       color: rgba(255,255,255,.62);
       line-height: 1.78;
@@ -124,53 +120,96 @@
     /* CONTACTS CARDS */
     .section-contacts { background: var(--off-white); }
     .contacts-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+
     .contact-card {
       background: var(--white);
       border: 1px solid var(--gray-300);
       border-radius: var(--radius);
-      padding: 32px 28px;
+      padding: 36px 32px;
       transition: all .25s;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 20px;
     }
     .contact-card:hover { border-color: var(--teal-light); box-shadow: var(--shadow); transform: translateY(-4px); }
     .contact-card.accent { border-color: var(--teal-light); background: var(--teal-pale); }
-    .contact-card-top { display: flex; align-items: center; gap: 16px; }
+
+    .contact-card-top { display: flex; align-items: center; gap: 20px; }
+
+    /* AVATAR — фото в кружке */
     .contact-avatar {
-      width: 52px; height: 52px;
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem; font-weight: 800; color: var(--white);
       flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(15,32,51,.18);
     }
-    .contact-avatar.gold-av { background: linear-gradient(135deg, #7a5000 0%, var(--gold) 100%); }
-    .contact-name { font-size: 1rem; font-weight: 800; color: var(--navy); margin-bottom: 3px; }
-    .contact-role { font-size: .8rem; color: var(--gray-500); font-weight: 500; }
+    .contact-avatar.gold-av {
+      background: linear-gradient(135deg, #7a5000 0%, var(--gold) 100%);
+    }
+    .avatar-initials {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--white);
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+    }
+    .avatar-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      z-index: 2;
+      border-radius: 50%;
+    }
+
+    /* Рамка для Зинаиды — teal */
+    .contact-card.accent .contact-avatar {
+      box-shadow: 0 0 0 3px var(--teal-light), 0 4px 16px rgba(26,138,126,.3);
+    }
+    /* Рамка для Елены — gold */
+    .contact-avatar.gold-av {
+      box-shadow: 0 0 0 3px var(--gold), 0 4px 16px rgba(232,167,48,.25);
+    }
+
+    .contact-name { font-size: 1.05rem; font-weight: 800; color: var(--navy); margin-bottom: 4px; }
+    .contact-role { font-size: .82rem; color: var(--gray-500); font-weight: 500; line-height: 1.4; }
+
     .contact-tag {
       display: inline-block;
       font-size: .68rem; font-weight: 700;
       text-transform: uppercase; letter-spacing: .12em;
-      padding: 4px 12px; border-radius: 50px;
-      background: var(--teal-pale); color: var(--teal);
+      padding: 5px 14px; border-radius: 50px;
+      background: rgba(26,138,126,.12); color: var(--teal);
       width: fit-content;
     }
     .contact-tag.gold-tag { background: var(--gold-pale); color: #7a5000; }
+
     .contact-links { display: flex; flex-direction: column; gap: 8px; }
     .contact-link {
       display: flex; align-items: center; gap: 10px;
       font-size: .9rem; color: var(--gray-700);
-      padding: 10px 14px;
+      padding: 11px 16px;
       border-radius: var(--radius-sm);
-      background: var(--off-white);
+      background: rgba(255,255,255,.7);
       transition: all .2s;
       font-weight: 500;
     }
-    .contact-link:hover { background: var(--teal-pale); color: var(--teal); }
-    .contact-card.accent .contact-link { background: rgba(255,255,255,.7); }
-    .contact-card.accent .contact-link:hover { background: var(--white); color: var(--teal); }
-    .contact-link-icon { font-size: 1rem; width: 20px; text-align: center; flex-shrink: 0; }
+    .contact-card:not(.accent) .contact-link { background: var(--off-white); }
+    .contact-link:hover { background: var(--white); color: var(--teal); transform: translateX(2px); }
+    .contact-link-icon { font-size: 1rem; width: 22px; text-align: center; flex-shrink: 0; }
 
     /* DIRECTIONS */
     .section-directions { background: var(--white); }
@@ -178,12 +217,7 @@
     .directions-intro h2 { color: var(--navy); margin-bottom: 12px; }
     .directions-intro p { color: var(--gray-500); max-width: 440px; margin: 0 auto; }
     .directions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-    .direction-card {
-      border-radius: var(--radius);
-      overflow: hidden;
-      border: 1px solid var(--gray-300);
-      transition: all .25s;
-    }
+    .direction-card { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--gray-300); transition: all .25s; }
     .direction-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
     .direction-head { padding: 36px 36px 32px; }
     .direction-head.navy-head { background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy-mid) 100%); }
@@ -269,6 +303,7 @@
       .footer-top { grid-template-columns: 1fr; gap: 28px; }
       .footer-bottom { flex-direction: column; text-align: center; }
       .hero-contacts { padding: 130px 0 72px; }
+      .contact-avatar { width: 68px; height: 68px; }
     }
   </style>
 </head>
@@ -314,12 +349,13 @@
 <section class="hero-contacts">
   <div class="container">
     <div class="hero-contacts-inner">
-      <h1>Просто<br /><em>напишите нам</em></h1>
+      <div class="eyebrow">Контакты</div>
+      <h1>Просто<br /><em>напишите</em></h1>
       <p class="hero-phrase">
         Все большие дела начинаются с <br />разговора между людьми
       </p>
       <div class="hero-badges">
-        <div class="hero-badge"><span></span>Москва · работаем онлайн и с выездами </div>
+        <div class="hero-badge"><span></span>Москва · работаем онлайн и с выездами</div>
         <div class="hero-badge"><span></span>Отвечаем в течение 24 часов</div>
       </div>
     </div>
@@ -334,7 +370,15 @@
       <!-- Зинаида -->
       <div class="contact-card accent fade">
         <div class="contact-card-top">
-          <div class="contact-avatar">ЗЧ</div>
+          <div class="contact-avatar">
+            <span class="avatar-initials">ЗЧ</span>
+            <img
+              src="zinaida.jpg"
+              alt="Зинаида Чумакова"
+              class="avatar-img"
+              onerror="this.style.display='none'"
+            />
+          </div>
           <div>
             <div class="contact-name">Зинаида Чумакова</div>
             <div class="contact-role">Независимый HRD · основатель hrdonline</div>
@@ -360,7 +404,15 @@
       <!-- Елена -->
       <div class="contact-card fade">
         <div class="contact-card-top">
-          <div class="contact-avatar gold-av">ЕА</div>
+          <div class="contact-avatar gold-av">
+            <span class="avatar-initials">ЕА</span>
+            <img
+              src="elena.JPG"
+              alt="Елена Аверкиева"
+              class="avatar-img"
+              onerror="this.style.display='none'"
+            />
+          </div>
           <div>
             <div class="contact-name">Елена Аверкиева</div>
             <div class="contact-role">Руководитель проектов · организационные вопросы</div>
@@ -397,17 +449,17 @@
         <div class="direction-head navy-head">
           <div class="direction-eyebrow">Для собственников и CEO</div>
           <h3>Бизнесу</h3>
-          <p>Индивидуальная работа, проекты, ретейнер. Выстраиваем HR так, чтобы вы занимались бизнесом.</p>
+          <p>Advisory, проекты, ретейнер. Выстраиваем HR так, чтобы вы занимались бизнесом.</p>
         </div>
         <div class="direction-body">
-          <p>Рабочая сессия, проект или постоянное сопровождение </p>
+          <p>Рабочая сессия, проект или постоянное сопровождение</p>
           <a href="business.html" class="btn btn-gold">Подробнее</a>
         </div>
       </div>
 
       <div class="direction-card fade">
         <div class="direction-head teal-head">
-          <div class="direction-eyebrow">Для HR</div>
+          <div class="direction-eyebrow">Для HR-специалистов</div>
           <h3>Для HR</h3>
           <p>Менторинг, сессии, проекты, обучение. Растём в профессии вместе.</p>
         </div>
@@ -450,7 +502,7 @@
             <input type="text" name="name" class="form-input" placeholder="Ваше имя" required />
           </div>
           <div class="form-group">
-            <label class="form-label">Telegram или телефон</label>
+            <label class="form-label">Телефон</label>
             <input type="text" name="contact" class="form-input" placeholder="@username или +7 900..." required />
           </div>
         </div>
@@ -465,10 +517,6 @@
         <button type="submit" class="form-submit">Отправить</button>
       </form>
       <p class="form-contact">
-        Или напишите напрямую:
-        <a href="https://t.me/ZinaidaChu">@ZinaidaChu</a>
-      </p>
-    </div>
   </div>
 </section>
 
