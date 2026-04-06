@@ -3,17 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ИИ в HR. Практика — курс Зинаиды Чумаковой</title>
+  <title>Курс: ИИ в HR. Практика · hrdonline</title>
   <meta name="description" content="8-недельный практический курс по ИИ в HR от HRD с 20-летним опытом. Старт 14 апреля. Онлайн." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <style>
-    /* ============ VARIABLES ============ */
+    /* === VARIABLES === */
     :root {
       --navy:       #0F2033;
       --navy-mid:   #1A3347;
+      --navy-deep:  #080F1A;
       --teal:       #1A8A7E;
       --teal-light: #24B5A5;
       --teal-mid:   #60C4B8;
@@ -34,71 +35,84 @@
       --shadow-lg:  0 12px 48px rgba(15,32,51,.18);
     }
 
-    /* ============ RESET ============ */
+    /* === RESET === */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Manrope', sans-serif; color: var(--gray-900); background: var(--white); line-height: 1.6; }
-    img { max-width: 100%; display: block; }
-    a { color: inherit; text-decoration: none; }
+    body { font-family: 'Manrope', sans-serif; color: var(--gray-900); background: var(--white); line-height: 1.6; overflow-x: hidden; }
+    img  { max-width: 100%; display: block; }
+    a    { color: inherit; text-decoration: none; }
 
-    /* ============ UTILITY ============ */
-    .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
-    .section    { padding: 80px 0; }
+    /* === UTILITY === */
+    .container   { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+    .section     { padding: 80px 0; }
     .text-center { text-align: center; }
     .section-label { font-size:.78rem; font-weight:700; text-transform:uppercase; letter-spacing:.14em; color:var(--teal); margin-bottom:12px; }
     .section-label.light { color: var(--teal-mid); }
 
-    /* ============ TYPOGRAPHY ============ */
+    /* === TYPOGRAPHY === */
     h1 { font-size: clamp(2rem,5vw,3.5rem); font-weight:800; line-height:1.15; }
     h2 { font-size: clamp(1.6rem,3.5vw,2.6rem); font-weight:800; line-height:1.2; }
-    h3 { font-size: clamp(1.2rem,2.5vw,1.6rem); font-weight:700; line-height:1.3; }
-    h4 { font-size:1.1rem; font-weight:700; }
+    h3 { font-size: clamp(1.1rem,2.5vw,1.5rem); font-weight:700; line-height:1.3; }
+    h4 { font-size:1.05rem; font-weight:700; }
     p  { font-size:1rem; line-height:1.7; color:var(--gray-700); }
 
-    /* ============ BUTTONS ============ */
-    .btn { display:inline-block; padding:16px 36px; border-radius:50px; font-family:'Manrope',sans-serif; font-weight:700; font-size:1rem; cursor:pointer; transition:all .25s ease; border:none; text-align:center; }
-    .btn-primary  { background:var(--teal-light); color:var(--white); }
+    /* === BUTTONS === */
+    .btn { display:inline-block; padding:15px 32px; border-radius:50px; font-family:'Manrope',sans-serif; font-weight:700; font-size:.95rem; cursor:pointer; transition:all .25s; border:none; text-align:center; }
+    .btn-primary       { background:var(--teal-light); color:var(--white); }
     .btn-primary:hover { background:var(--teal); transform:translateY(-2px); box-shadow:0 8px 24px rgba(26,138,126,.35); }
-    .btn-outline  { background:transparent; color:var(--white); border:2px solid rgba(255,255,255,.5); }
+    .btn-outline       { background:transparent; color:var(--white); border:2px solid rgba(255,255,255,.5); }
     .btn-outline:hover { border-color:var(--white); background:rgba(255,255,255,.1); }
-    .btn-gold     { background:var(--gold); color:var(--navy); }
-    .btn-gold:hover { background:#d4941f; transform:translateY(-2px); box-shadow:0 8px 24px rgba(232,167,48,.4); }
-    .btn-lg { padding:20px 48px; font-size:1.1rem; }
+    .btn-gold          { background:var(--gold); color:var(--navy); }
+    .btn-gold:hover    { background:#d4941f; transform:translateY(-2px); box-shadow:0 8px 24px rgba(232,167,48,.4); }
+    .btn-lg { padding:18px 44px; font-size:1.05rem; }
 
-    /* ============ NAVBAR ============ */
-    .navbar { position:fixed; top:0; left:0; right:0; z-index:100; padding:16px 0; transition:all .3s ease; }
-    .navbar.scrolled { background:rgba(15,32,51,.97); backdrop-filter:blur(12px); padding:12px 0; box-shadow:0 2px 20px rgba(0,0,0,.3); }
-    .navbar-inner { display:flex; align-items:center; justify-content:space-between; }
-    .navbar-brand { color:var(--white); font-weight:700; font-size:1.05rem; }
+    /* === NAVBAR === */
+    .navbar { position:fixed; top:0; left:0; right:0; z-index:200; padding:20px 0; transition:all .3s; }
+    .navbar.scrolled { background:rgba(8,15,26,.96); backdrop-filter:blur(16px); padding:13px 0; box-shadow:0 2px 24px rgba(0,0,0,.3); }
+    .navbar-inner { display:flex; align-items:center; justify-content:space-between; gap:16px; }
+    .navbar-brand { color:var(--white); font-weight:800; font-size:1.2rem; letter-spacing:-.03em; }
     .navbar-brand span { color:var(--teal-mid); }
-    .navbar-cta .btn { padding:10px 24px; font-size:.9rem; }
+    .navbar-nav { display:flex; align-items:center; gap:2px; }
+    .navbar-nav a { color:rgba(255,255,255,.68); font-size:.84rem; font-weight:600; padding:7px 13px; border-radius:8px; transition:all .2s; white-space:nowrap; }
+    .navbar-nav a:hover, .navbar-nav a.active { color:var(--white); background:rgba(255,255,255,.08); }
+    .navbar-right { display:flex; align-items:center; gap:12px; }
+    .navbar-right .btn-cta { padding:9px 22px; font-size:.84rem; background:var(--teal-light); color:var(--white); border:none; border-radius:50px; font-family:'Manrope',sans-serif; font-weight:700; cursor:pointer; transition:all .2s; }
+    .navbar-right .btn-cta:hover { background:var(--teal); }
+    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:8px; }
+    .hamburger span { width:22px; height:2px; background:var(--white); border-radius:2px; display:block; }
 
-    /* ============ HERO ============ */
+    /* === MOBILE MENU === */
+    .mobile-menu { position:fixed; inset:0; z-index:199; background:var(--navy-deep); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; opacity:0; visibility:hidden; transition:all .3s; }
+    .mobile-menu.open { opacity:1; visibility:visible; }
+    .mobile-menu a { color:var(--white); font-size:1.25rem; font-weight:700; padding:13px 32px; border-radius:12px; transition:all .2s; }
+    .mobile-menu a:hover { background:rgba(255,255,255,.07); color:var(--teal-mid); }
+    .mobile-close { position:absolute; top:22px; right:26px; background:none; border:none; color:var(--white); font-size:1.4rem; cursor:pointer; }
+    .m-divider { width:40px; height:1px; background:rgba(255,255,255,.1); margin:8px 0; }
+
+    /* === HERO === */
     .hero {
       background:linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, #1A4A55 100%);
-      color:var(--white); padding:130px 0 80px;
+      color:var(--white); padding:140px 0 90px;
       position:relative; overflow:hidden; min-height:100vh; display:flex; align-items:center;
     }
     .hero::before {
       content:''; position:absolute; inset:0;
-      background:radial-gradient(ellipse at 70% 50%, rgba(26,138,126,.25) 0%, transparent 60%),
-                 radial-gradient(ellipse at 20% 80%, rgba(96,196,184,.15) 0%, transparent 50%);
+      background: radial-gradient(ellipse at 70% 50%, rgba(26,138,126,.25) 0%, transparent 60%),
+                  radial-gradient(ellipse at 20% 80%, rgba(96,196,184,.15) 0%, transparent 50%);
     }
     .hero-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; position:relative; z-index:1; }
     .hero h1 { color:var(--white); margin-bottom:10px; }
     .hero h1 em { font-style:normal; color:var(--teal-mid); }
     .hero-subtitle { font-size:1.15rem; color:rgba(255,255,255,.72); margin-bottom:28px; font-weight:500; }
-    .hero-meta { display:flex; gap:20px; margin-bottom:32px; flex-wrap:wrap; }
-    .hero-meta-item { display:flex; align-items:center; gap:8px; font-size:.88rem; color:rgba(255,255,255,.65); }
+    .hero-meta { display:flex; gap:12px; margin-bottom:32px; flex-wrap:wrap; }
+    .hero-meta-item { display:flex; align-items:center; gap:8px; font-size:.85rem; color:rgba(255,255,255,.7); background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.12); border-radius:50px; padding:7px 16px; }
     .hero-buttons { display:flex; gap:14px; flex-wrap:wrap; margin-bottom:36px; }
-
-    /* Hero image */
     .hero-photo { width:100%; aspect-ratio:4/5; object-fit:cover; border-radius:var(--radius); box-shadow:var(--shadow-lg); }
     .photo-placeholder { width:100%; aspect-ratio:4/5; background:linear-gradient(135deg,var(--teal) 0%,var(--navy-mid) 100%); border-radius:var(--radius); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,.5); font-size:.85rem; text-align:center; padding:20px; }
     .hero-image-wrap { position:relative; }
     .hero-tag-book { position:absolute; bottom:-20px; left:-20px; background:var(--gold); color:var(--navy); padding:14px 18px; border-radius:var(--radius-sm); font-weight:800; font-size:.82rem; line-height:1.5; max-width:190px; box-shadow:var(--shadow); }
 
-    /* ============ DIFFERENT ============ */
+    /* === DIFFERENT === */
     .section-different { background:var(--navy); color:var(--white); }
     .different-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
     .different-label { font-size:.78rem; color:var(--teal-mid); text-transform:uppercase; letter-spacing:.12em; font-weight:700; margin-bottom:14px; }
@@ -110,7 +124,7 @@
     .bw-photo { width:100%; border-radius:var(--radius); aspect-ratio:3/4; object-fit:cover; }
     .bw-ph { width:100%; aspect-ratio:3/4; background:linear-gradient(145deg,#1a3347 0%,var(--teal) 100%); border-radius:var(--radius); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,.35); font-size:.85rem; text-align:center; padding:20px; }
 
-    /* ============ BOOK ============ */
+    /* === BOOK === */
     .section-book { background:linear-gradient(135deg,var(--teal) 0%,#0D5E56 100%); color:var(--white); }
     .book-inner-grid { display:grid; grid-template-columns:260px 1fr; gap:60px; align-items:center; }
     .book-cover-img { width:100%; border-radius:14px; box-shadow:0 28px 72px rgba(0,0,0,.55); }
@@ -121,7 +135,7 @@
     .book-card-h h3 { color:var(--white); margin-bottom:4px; font-size:1rem; }
     .book-card-h p  { color:rgba(255,255,255,.68); font-size:.875rem; }
 
-    /* ============ FOR WHOM ============ */
+    /* === FOR WHOM === */
     .whom-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:44px; }
     .whom-card { background:var(--white); border:1px solid var(--gray-300); border-radius:var(--radius); padding:28px 24px; transition:all .25s ease; }
     .whom-card:hover { border-color:var(--teal-mid); box-shadow:var(--shadow); transform:translateY(-4px); }
@@ -129,7 +143,7 @@
     .whom-card h4 { color:var(--navy); margin-bottom:8px; }
     .whom-card p { font-size:.875rem; color:var(--gray-500); }
 
-    /* ============ WHAT YOU GET ============ */
+    /* === WHAT YOU GET === */
     .section-get { background:var(--off-white); }
     .get-grid { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start; margin-top:44px; }
     .get-list { list-style:none; display:flex; flex-direction:column; gap:18px; }
@@ -142,12 +156,11 @@
     .ai-card h4 { font-size:.88rem; color:var(--navy); margin-bottom:5px; }
     .ai-card p  { font-size:.8rem; color:var(--gray-500); }
 
-    /* ============ AUTHOR ============ */
+    /* === AUTHOR === */
     .section-author { background:var(--navy); color:var(--white); }
     .author-grid { display:grid; grid-template-columns:1fr 2fr; gap:64px; align-items:center; }
     .author-photo { width:100%; border-radius:var(--radius); aspect-ratio:3/4; object-fit:cover; }
-    .author-ph { width:100%; aspect-ratio:3/4; background:linear-gradient(145deg,var(--teal) 0%,#0D5E56 100%); border-radius:var(--radius); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; color:rgba(255,255,255,.4); font-size:.85rem; text-align:center; padding:24px; }
-    .author-ph p { color:rgba(255,255,255,.4); font-size:.82rem; }
+    .author-ph { width:100%; aspect-ratio:3/4; background:linear-gradient(145deg,var(--teal) 0%,#0D5E56 100%); border-radius:var(--radius); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,.4); font-size:.85rem; text-align:center; padding:24px; }
     .a-caption { font-size:.78rem; color:var(--teal-mid); text-transform:uppercase; letter-spacing:.1em; font-weight:700; margin-bottom:14px; }
     .a-content h2 { color:var(--white); margin-bottom:6px; }
     .a-title { color:var(--teal-mid); font-size:.95rem; font-weight:600; margin-bottom:24px; }
@@ -155,7 +168,7 @@
     .a-quote { border-left:3px solid var(--teal-mid); padding-left:18px; margin:24px 0; font-style:italic; color:rgba(255,255,255,.85); font-size:1.05rem; line-height:1.75; }
     .a-btns { display:flex; gap:14px; flex-wrap:wrap; margin-top:8px; }
 
-    /* ============ CURRICULUM ============ */
+    /* === CURRICULUM === */
     .curr-header { text-align:center; margin-bottom:44px; }
     .curr-stats { display:flex; justify-content:center; gap:40px; margin-top:20px; flex-wrap:wrap; }
     .curr-stat-num { font-size:2.2rem; font-weight:800; color:var(--teal-light); }
@@ -178,22 +191,22 @@
     .sess:first-child { border-top:none; padding-top:0; }
     .sess-date { font-size:.76rem; color:var(--teal); font-weight:700; text-transform:uppercase; letter-spacing:.08em; margin-bottom:5px; }
     .sess h5 { font-size:.93rem; color:var(--navy); margin-bottom:6px; font-weight:700; }
-    .sess p { font-size:.86rem; color:var(--gray-500); line-height:1.65; }
+    .sess p   { font-size:.86rem; color:var(--gray-500); line-height:1.65; }
     .final-blk { background:linear-gradient(135deg,var(--navy-mid),#1a5055); border-radius:var(--radius); padding:36px; color:var(--white); margin-top:20px; }
     .final-blk h4 { color:var(--gold); margin-bottom:18px; font-size:1.05rem; }
     .final-sess { border-top:1px solid rgba(255,255,255,.12); padding-top:18px; margin-top:18px; }
     .final-sess:first-of-type { border-top:none; padding-top:0; margin-top:0; }
     .final-sess-date { color:var(--teal-mid); font-size:.76rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; margin-bottom:5px; }
     .final-sess h5 { color:rgba(255,255,255,.88); font-size:.93rem; margin-bottom:6px; }
-    .final-sess p { color:rgba(255,255,255,.58); font-size:.86rem; line-height:1.65; }
+    .final-sess p  { color:rgba(255,255,255,.58); font-size:.86rem; line-height:1.65; }
 
-    /* ============ PRICING ============ */
+    /* === PRICING === */
     .section-pricing { background:var(--off-white); }
     .pricing-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:44px; align-items:stretch; }
     .p-card { background:var(--white); border:2px solid var(--gray-300); border-radius:var(--radius); padding:28px 20px; display:flex; flex-direction:column; position:relative; transition:all .25s ease; }
     .p-card:hover { border-color:var(--teal-light); box-shadow:var(--shadow); }
     .p-card.featured { border-color:var(--teal); background:linear-gradient(145deg,#EEF9F8,var(--white)); }
-    .p-card.vip { border-color:var(--gold); background:linear-gradient(145deg,#FFF9EE,var(--white)); }
+    .p-card.vip      { border-color:var(--gold); background:linear-gradient(145deg,#FFF9EE,var(--white)); }
     .p-badge { position:absolute; top:-13px; left:50%; transform:translateX(-50%); background:var(--teal); color:var(--white); padding:4px 16px; border-radius:50px; font-size:.72rem; font-weight:700; white-space:nowrap; }
     .p-card.vip .p-badge { background:var(--gold); color:var(--navy); }
     .p-name { font-size:.76rem; text-transform:uppercase; letter-spacing:.12em; font-weight:700; color:var(--gray-500); margin-bottom:10px; }
@@ -205,17 +218,17 @@
     .p-features .ck { color:var(--teal); flex-shrink:0; }
     .p-features .ds { color:var(--gray-300); flex-shrink:0; }
     .p-cta { width:100%; text-align:center; padding:13px; border-radius:50px; font-weight:700; font-size:.88rem; cursor:pointer; transition:all .2s; display:block; font-family:'Manrope',sans-serif; border:none; }
-    .p-cta.outline { border:2px solid var(--navy); color:var(--navy); background:transparent; }
+    .p-cta.outline       { border:2px solid var(--navy); color:var(--navy); background:transparent; }
     .p-cta.outline:hover { background:var(--navy); color:var(--white); }
-    .p-cta.main   { background:var(--teal); color:var(--white); border:2px solid var(--teal); }
-    .p-cta.main:hover { background:var(--teal-light); border-color:var(--teal-light); }
-    .p-cta.vip-c  { background:var(--gold); color:var(--navy); border:2px solid var(--gold); }
-    .p-cta.vip-c:hover { background:#d4941f; border-color:#d4941f; }
+    .p-cta.main          { background:var(--teal); color:var(--white); border:2px solid var(--teal); }
+    .p-cta.main:hover    { background:var(--teal-light); border-color:var(--teal-light); }
+    .p-cta.vip-c         { background:var(--gold); color:var(--navy); border:2px solid var(--gold); }
+    .p-cta.vip-c:hover   { background:#d4941f; border-color:#d4941f; }
     .pricing-note { margin-top:28px; padding:22px 24px; background:var(--white); border-radius:var(--radius-sm); border:1px solid var(--gray-300); text-align:center; }
     .pricing-note p { font-size:.88rem; color:var(--gray-500); }
     .pricing-note a { color:var(--teal); font-weight:600; }
 
-    /* ============ REFERRAL ============ */
+    /* === REFERRAL === */
     .section-referral { background:var(--white); }
     .ref-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:44px; }
     .ref-card { background:var(--off-white); border:2px solid var(--gray-300); border-radius:var(--radius); padding:32px 20px; text-align:center; transition:all .25s ease; }
@@ -225,7 +238,7 @@
     .ref-step { width:48px; height:48px; background:var(--teal-pale); color:var(--teal); border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.1rem; margin:0 auto 14px; }
     .ref-card.ref-hot  .ref-step { background:var(--teal); color:var(--white); }
     .ref-card.ref-star .ref-step { background:var(--gold); color:var(--navy); }
-    .ref-count { font-size:.75rem; text-transform:uppercase; letter-spacing:.1em; font-weight:700; color:var(--gray-500); margin-bottom:12px; }
+    .ref-count  { font-size:.75rem; text-transform:uppercase; letter-spacing:.1em; font-weight:700; color:var(--gray-500); margin-bottom:12px; }
     .ref-card.ref-hot  .ref-count { color:var(--teal); }
     .ref-card.ref-star .ref-count { color:var(--gold); }
     .ref-reward { font-size:1rem; font-weight:800; color:var(--navy); margin-bottom:10px; line-height:1.3; }
@@ -233,7 +246,7 @@
     .ref-how { margin-top:32px; background:var(--off-white); border:1px solid var(--gray-300); border-radius:var(--radius-sm); padding:24px 28px; display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; }
     .ref-how p { color:var(--gray-700); font-size:.95rem; margin:0; }
 
-    /* ============ FAQ ============ */
+    /* === FAQ === */
     .faq-list { display:flex; flex-direction:column; gap:8px; margin-top:36px; }
     .faq-item { border:1px solid var(--gray-300); border-radius:var(--radius-sm); overflow:hidden; }
     .faq-item.open { border-color:var(--teal-light); }
@@ -243,7 +256,7 @@
     .faq-a { display:none; padding:0 22px 18px; color:var(--gray-500); font-size:.88rem; line-height:1.75; }
     .faq-item.open .faq-a { display:block; }
 
-    /* ============ CONTACT ============ */
+    /* === CONTACT SECTION === */
     .section-contact { background:linear-gradient(135deg,var(--navy) 0%,#1A3347 100%); color:var(--white); }
     .contact-grid { display:grid; grid-template-columns:2fr 1fr; gap:60px; align-items:center; }
     .c-label { font-size:.78rem; color:var(--teal-mid); text-transform:uppercase; letter-spacing:.12em; font-weight:700; margin-bottom:12px; }
@@ -255,57 +268,30 @@
     .c-d-ico { width:38px; height:38px; background:rgba(255,255,255,.1); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:1rem; }
     .c-sidebar { background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.14); border-radius:var(--radius); padding:28px; }
     .c-sidebar h4 { color:var(--gold); margin-bottom:14px; }
-    .c-sidebar p { color:rgba(255,255,255,.68); font-size:.88rem; line-height:1.75; }
+    .c-sidebar p  { color:rgba(255,255,255,.68); font-size:.88rem; line-height:1.75; }
 
-    /* ============ FOOTER ============ */
-    .footer { background:#090F17; color:rgba(255,255,255,.35); padding:22px 0; text-align:center; font-size:.82rem; }
+    /* === FOOTER === */
+    .footer { background:var(--navy-deep); color:rgba(255,255,255,.42); padding:72px 0 32px; }
+    .footer-top { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:56px; margin-bottom:56px; }
+    .f-logo { font-size:1.3rem; font-weight:800; color:var(--white); margin-bottom:14px; letter-spacing:-.03em; }
+    .f-logo span { color:var(--teal-mid); }
+    .f-desc { font-size:.87rem; color:rgba(255,255,255,.42); line-height:1.7; margin-bottom:22px; }
+    .f-socials { display:flex; gap:10px; }
+    .f-soc { display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; border:1px solid rgba(255,255,255,.12); border-radius:50%; color:rgba(255,255,255,.5); font-size:.78rem; font-weight:700; transition:all .2s; }
+    .f-soc:hover { border-color:var(--teal); background:var(--teal); color:var(--white); }
+    .f-col h5 { color:var(--white); font-size:.72rem; text-transform:uppercase; letter-spacing:.14em; margin-bottom:18px; }
+    .f-col a  { display:block; color:rgba(255,255,255,.42); font-size:.85rem; margin-bottom:10px; transition:color .2s; }
+    .f-col a:hover { color:var(--teal-mid); }
+    .footer-bottom { border-top:1px solid rgba(255,255,255,.07); padding-top:28px; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; font-size:.8rem; }
+    .footer-bottom a { color:var(--teal-mid); }
 
-    /* ============ STICKY BAR ============ */
+    /* === STICKY BAR === */
     .sticky-cta { position:fixed; bottom:0; left:0; right:0; background:var(--navy); border-top:2px solid var(--teal); padding:14px 20px; z-index:99; display:flex; align-items:center; justify-content:center; gap:24px; transform:translateY(100%); transition:transform .4s ease; }
     .sticky-cta.visible { transform:translateY(0); }
     .sticky-cta-text { color:var(--white); font-size:.875rem; }
     .sticky-cta-text strong { color:var(--gold); }
 
-    /* ============ RESPONSIVE ============ */
-    @media (max-width:1024px) {
-      .pricing-grid { grid-template-columns:repeat(2,1fr); }
-      .author-grid  { grid-template-columns:1fr 1.5fr; gap:40px; }
-    }
-    @media (max-width:768px) {
-      h1 { font-size:2rem; } h2 { font-size:1.6rem; }
-      .section { padding:56px 0; }
-      .hero { padding:100px 0 56px; min-height:auto; }
-      .hero-grid { grid-template-columns:1fr; gap:36px; }
-      .hero-image-wrap { order:-1; }
-      .hero-photo,.photo-placeholder { aspect-ratio:1/1; max-height:320px; }
-      .different-grid { grid-template-columns:1fr; gap:36px; }
-      .bw-photo,.bw-ph { aspect-ratio:1/1; max-height:280px; max-width:280px; margin:0 auto; }
-      .whom-grid  { grid-template-columns:1fr; }
-      .get-grid   { grid-template-columns:1fr; }
-      .ai-grid    { grid-template-columns:1fr; }
-      .pricing-grid { grid-template-columns:1fr; }
-      .author-grid  { grid-template-columns:1fr; }
-      .author-photo,.author-ph { aspect-ratio:1/1; max-height:280px; }
-      .contact-grid { grid-template-columns:1fr; }
-      .c-sidebar { display:none; }
-      .hero-buttons,.c-buttons,.a-btns { flex-direction:column; }
-      .module-body { padding-left:16px; }
-      .sticky-cta { flex-direction:column; gap:10px; }
-      .ref-grid { grid-template-columns:1fr 1fr; }
-      .book-inner-grid { grid-template-columns:1fr; }
-      .book-cover-img { max-width:200px; margin:0 auto; }
-    }
-
-    /* ============ ANIMATIONS ============ */
-    @keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
-    .hero-content > * { animation:fadeUp .6s ease backwards; }
-    .hero-content > *:nth-child(1) { animation-delay:.1s; }
-    .hero-content > *:nth-child(2) { animation-delay:.2s; }
-    .hero-content > *:nth-child(3) { animation-delay:.3s; }
-    .hero-content > *:nth-child(4) { animation-delay:.4s; }
-    .hero-content > *:nth-child(5) { animation-delay:.5s; }
-
-    /* ============ MODAL ОПЛАТЫ ============ */
+    /* === MODAL === */
     .modal-overlay { position:fixed; inset:0; z-index:9000; background:rgba(0,0,0,.65); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:center; padding:1rem; opacity:0; visibility:hidden; transition:opacity .3s,visibility .3s; }
     .modal-overlay.active { opacity:1; visibility:visible; }
     .modal-box { background:var(--white); border-radius:var(--radius); padding:2.5rem; width:100%; max-width:460px; position:relative; transform:translateY(30px) scale(.97); transition:transform .3s; box-shadow:var(--shadow-lg); }
@@ -324,6 +310,52 @@
     .m-submit:hover:not(:disabled) { background:var(--teal); transform:translateY(-1px); box-shadow:0 8px 24px rgba(26,138,126,.35); }
     .m-submit:disabled { opacity:.65; cursor:not-allowed; transform:none; }
     .m-secure { text-align:center; font-size:.75rem; color:var(--gray-500); margin-top:.8rem; }
+
+    /* === ANIMATIONS === */
+    .fade { opacity:0; transform:translateY(24px); transition:opacity .65s ease, transform .65s ease; }
+    .fade.in { opacity:1; transform:translateY(0); }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+    .hero-content > * { animation:fadeUp .6s ease backwards; }
+    .hero-content > *:nth-child(1) { animation-delay:.15s; }
+    .hero-content > *:nth-child(2) { animation-delay:.25s; }
+    .hero-content > *:nth-child(3) { animation-delay:.35s; }
+    .hero-content > *:nth-child(4) { animation-delay:.45s; }
+    .hero-content > *:nth-child(5) { animation-delay:.55s; }
+
+    /* === RESPONSIVE === */
+    @media (max-width:1024px) {
+      .pricing-grid  { grid-template-columns:repeat(2,1fr); }
+      .author-grid   { grid-template-columns:1fr 1.5fr; gap:40px; }
+      .footer-top    { grid-template-columns:1fr 1fr; gap:36px; }
+    }
+    @media (max-width:768px) {
+      h1 { font-size:2rem; } h2 { font-size:1.6rem; }
+      .section { padding:56px 0; }
+      .hero { padding:110px 0 56px; min-height:auto; }
+      .hero-grid { grid-template-columns:1fr; gap:36px; }
+      .hero-image-wrap { order:-1; }
+      .hero-photo,.photo-placeholder { aspect-ratio:1/1; max-height:320px; }
+      .different-grid { grid-template-columns:1fr; gap:36px; }
+      .bw-photo,.bw-ph { aspect-ratio:1/1; max-height:280px; max-width:280px; margin:0 auto; }
+      .whom-grid     { grid-template-columns:1fr; }
+      .get-grid      { grid-template-columns:1fr; }
+      .ai-grid       { grid-template-columns:1fr; }
+      .pricing-grid  { grid-template-columns:1fr; }
+      .author-grid   { grid-template-columns:1fr; }
+      .author-photo,.author-ph { aspect-ratio:1/1; max-height:280px; }
+      .contact-grid  { grid-template-columns:1fr; }
+      .c-sidebar     { display:none; }
+      .hero-buttons,.c-buttons,.a-btns { flex-direction:column; }
+      .module-body   { padding-left:16px; }
+      .sticky-cta    { flex-direction:column; gap:10px; }
+      .ref-grid      { grid-template-columns:1fr 1fr; }
+      .book-inner-grid { grid-template-columns:1fr; }
+      .book-cover-img  { max-width:200px; margin:0 auto; }
+      .navbar-nav      { display:none; }
+      .hamburger       { display:flex; }
+      .footer-top      { grid-template-columns:1fr; gap:28px; }
+      .footer-bottom   { flex-direction:column; text-align:center; }
+    }
   </style>
 </head>
 <body>
@@ -332,13 +364,37 @@
 <nav class="navbar" id="navbar">
   <div class="container">
     <div class="navbar-inner">
-      <span class="navbar-brand">ИИ в HR<span>.</span> Практика</span>
-      <div class="navbar-cta">
-        <a href="#pricing" class="btn btn-primary">Записаться на курс</a>
+      <a href="index.html" class="navbar-brand">hrdonline<span>.</span></a>
+      <div class="navbar-nav">
+        <a href="business.html">Бизнесу</a>
+        <a href="hr.html">Для HR</a>
+        <a href="books.html">Книги</a>
+        <a href="course.html" class="active">Курс</a>
+        <a href="about.html">Обо мне</a>
+        <a href="contacts.html">Контакты</a>
+      </div>
+      <div class="navbar-right">
+        <a href="#pricing" class="btn-cta">Записаться</a>
+        <div class="hamburger" onclick="toggleMenu()">
+          <span></span><span></span><span></span>
+        </div>
       </div>
     </div>
   </div>
 </nav>
+
+<!-- ======= MOBILE MENU ======= -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="toggleMenu()">&#10005;</button>
+  <a href="index.html"    onclick="toggleMenu()">Главная</a>
+  <a href="business.html" onclick="toggleMenu()">Бизнесу</a>
+  <a href="hr.html"       onclick="toggleMenu()">Для HR</a>
+  <div class="m-divider"></div>
+  <a href="books.html"    onclick="toggleMenu()">Книги</a>
+  <a href="course.html"   onclick="toggleMenu()">Курс</a>
+  <a href="about.html"    onclick="toggleMenu()">Обо мне</a>
+  <a href="contacts.html" onclick="toggleMenu()">Контакты</a>
+</div>
 
 <!-- ======= HERO ======= -->
 <section class="hero" id="top">
@@ -360,7 +416,7 @@
       <div class="hero-image-wrap">
         <img src="IMG_0886.PNG" alt="Зинаида Чумакова" class="hero-photo"
              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-        <div class="photo-placeholder" style="display:none;">Добавьте фото<br/><strong>IMG_0886.PNG</strong></div>
+        <div class="photo-placeholder" style="display:none;">Добавьте фото<br/><strong>zinaida.jpg</strong></div>
         <div class="hero-tag-book">Участники получают книгу до выхода в издательстве</div>
       </div>
     </div>
@@ -376,7 +432,7 @@
         <h2 class="different-title">Промтам сейчас<br />учат многие.<br /><em>Я ДРУГАЯ.</em></h2>
         <p class="different-desc">
           Я HRD с 20-летним опытом. Знаю HR изнутри — и показываю, как ИИ усиливает каждый процесс.<br /><br />
-          Вы учитесь не у человека, который изучил ИИ и решил рассказать про HR. Вы учитесь у HRD, который знает HR изнутри — и знает как улучшить результаты с ИИ.
+          Вы учитесь не у человека, который изучил ИИ и решил рассказать про HR. Вы учитесь у HRD, который знает HR изнутри — и знает, как улучшить результаты с ИИ.
         </p>
         <div class="diff-tags">
           <span class="diff-tag">Подбор</span>
@@ -389,7 +445,7 @@
       <div>
         <img src="123.PNG" alt="Зинаида Чумакова" class="bw-photo"
              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-        <div class="bw-ph" style="display:none;">Добавьте фото<br/><strong>123.PNG</strong></div>
+        <div class="bw-ph" style="display:none;">Добавьте фото<br/><strong>foto-author.jpg</strong></div>
       </div>
     </div>
   </div>
@@ -412,15 +468,15 @@
         </p>
         <div class="book-cards-v">
           <div class="book-card-h">
-            <div class="book-icon">📖</div>
+            <div class="book-icon"></div>
             <div><h3>Книга до релиза</h3><p>Участники первого потока получают книгу до выхода в издательстве. Второго такого шанса не будет.</p></div>
           </div>
           <div class="book-card-h">
-            <div class="book-icon">📋</div>
+            <div class="book-icon"></div>
             <div><h3>По одной главе</h3><p>Главы выдаются после каждого модуля — последовательно, чтобы материал усваивался глубже.</p></div>
           </div>
           <div class="book-card-h">
-            <div class="book-icon">✅</div>
+            <div class="book-icon"></div>
             <div><h3>Входит в тариф</h3><p>Базовый, Стандарт и VIP — все главы. «Один модуль» — одна глава по теме модуля.</p></div>
           </div>
         </div>
@@ -442,8 +498,8 @@
       <div class="whom-card"><div class="whom-icon"></div><h4>HR-менеджеры</h4><p>Освободите время от рутины — для людей, для стратегии, для себя.</p></div>
       <div class="whom-card"><div class="whom-icon"></div><h4>HR-бизнес-партнёры</h4><p>Пройдите весь путь сотрудника и найдите, где ИИ облегчит именно вашу работу.</p></div>
       <div class="whom-card"><div class="whom-icon"></div><h4>Специалисты по C&amp;B</h4><p>Разберитесь в предиктивной аналитике и моделировании компенсационного бюджета.</p></div>
-      <div class="whom-card"><div class="whom-icon"></div><h4>HR-директора</h4><p>Посмотрите как ИИ меняет всю функцию целиком и принимайте стратегические решения.</p></div>
-      <div class="whom-card"><div class="whom-icon"></div><h4>Все в HR</h4><p>Чувствуете что ИИ важен — но пока не понимаете, как получить от него реальный результат.</p></div>
+      <div class="whom-card"><div class="whom-icon"></div><h4>HR-директора</h4><p>Посмотрите, как ИИ меняет всю функцию целиком, и принимайте стратегические решения.</p></div>
+      <div class="whom-card"><div class="whom-icon"></div><h4>Все в HR</h4><p>Чувствуете, что ИИ важен — но пока не понимаете, как получить от него реальный результат.</p></div>
     </div>
   </div>
 </section>
@@ -483,18 +539,18 @@
       <div>
         <img src="Photo-author.jpg" alt="Зинаида Чумакова" class="author-photo"
              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-        <div class="author-ph" style="display:none;"><p>Добавьте фото<br/><strong>Photo-author.jpg</strong></p></div>
+        <div class="author-ph" style="display:none;">Добавьте фото<br/><strong>Photo-author.jpg</strong></div>
       </div>
       <div class="a-content">
         <div class="a-caption">Автор и спикер курса</div>
         <h2>Зинаида Чумакова</h2>
         <div class="a-title">Независимый HRD · 20 лет в HR · Спикер · Писатель · Федеральные и международные компании</div>
-        <p>Вы учитесь не у человека, который изучил ИИ и решил рассказать про HR. Вы учитесь у HRD, который знает HR изнутри — и знает как улучшить результаты с ИИ.</p>
+        <p>Вы учитесь не у человека, который изучил ИИ и решил рассказать про HR. Вы учитесь у HRD, который знает HR изнутри — и знает, как улучшить результаты с ИИ.</p>
         <p>Всё, что разбирается на курсе — верифицировано реальной практикой, а не теорией. На курсе вы получаете двойную ценность: понимание сильных HR-процессов и знание о том, где ИИ вас усилит.</p>
         <blockquote class="a-quote">«Восемь недель — это немного. Но если проходить их осознанно, с реальными задачами из вашей практики, это меняет то, как вы думаете о своей функции и роли в ней.»</blockquote>
         <div class="a-btns">
           <a href="https://t.me/chumakova_HRD" target="_blank" class="btn btn-outline" style="padding:12px 24px;font-size:.9rem;">Telegram-канал</a>
-          <a href="https://t.me/ZinaidaChu" target="_blank" class="btn btn-primary" style="padding:12px 24px;font-size:.9rem;">Написать напрямую</a>
+          <a href="https://t.me/ZinaidaChu"    target="_blank" class="btn btn-primary" style="padding:12px 24px;font-size:.9rem;">Написать напрямую</a>
         </div>
       </div>
     </div>
@@ -741,19 +797,19 @@
       <div class="ref-card">
         <div class="ref-step">1</div>
         <div class="ref-count">1 человек</div>
-        <div class="ref-reward"> Благодарность</div>
+        <div class="ref-reward">Благодарность</div>
         <p>Личная благодарность от Зинаиды</p>
       </div>
       <div class="ref-card">
         <div class="ref-step">2</div>
         <div class="ref-count">2 человека</div>
-        <div class="ref-reward"> Возврат 10%</div>
+        <div class="ref-reward">Возврат 10%</div>
         <p>10% от стоимости вашего тарифа — возвращаем на карту</p>
       </div>
       <div class="ref-card ref-hot">
         <div class="ref-step">3</div>
         <div class="ref-count">3 человека</div>
-        <div class="ref-reward"> Базовый — бесплатно</div>
+        <div class="ref-reward">Базовый — бесплатно</div>
         <p>Тариф «Базовый» в подарок: вся программа и книга</p>
       </div>
       <div class="ref-card ref-star">
@@ -765,7 +821,7 @@
     </div>
     <div class="ref-how">
       <p>Участвуете в программе или хотите узнать детали?<br/>
-      Напишите Елене — она зафиксирует ваши рекомендации.</p>
+         Напишите Елене — она зафиксирует ваши рекомендации.</p>
       <a href="https://t.me/Averkieva_Helen" target="_blank" class="btn btn-primary">Написать Елене →</a>
     </div>
   </div>
@@ -782,47 +838,38 @@
         <div class="faq-q" onclick="toggleFaq(this)">Для кого этот курс?<span class="faq-ico">+</span></div>
         <div class="faq-a">Для любого уровня HR и любой специализации — рекрутёра, HR-менеджера, специалиста по C&amp;B, HRBP. Для HR-директоров курс даёт взгляд на то, как ИИ меняет всю функцию целиком. Даже если вы узкий специалист — понимание смежных процессов сделает вас более сильным экспертом.</div>
       </div>
-
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">В чём уникальность курса?<span class="faq-ico">+</span></div>
         <div class="faq-a">В авторе. Вы учитесь не у человека, который хорошо знает ИИ и немного разбирается в HR. Вы учитесь у HRD с 20-летним опытом в федеральных и международных компаниях. Всё верифицировано реальной практикой, а не теорией.</div>
       </div>
-
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">Нужны ли технические знания?<span class="faq-ico">+</span></div>
         <div class="faq-a">Нет. Достаточно уверенно пользоваться компьютером. Все инструменты разбираем с нуля на примерах из HR. Курс не про ChatGPT — он про ИИ в широком смысле применительно к HR-задачам.</div>
       </div>
-
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">Сколько времени нужно в неделю?<span class="faq-ico">+</span></div>
         <div class="faq-a">Две сессии по два часа — четыре часа в неделю в прямом эфире. Плюс время на записи, если что-то пропустили. Для тарифов Стандарт и VIP — время на подготовку проекта и консультации.</div>
       </div>
-
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">Как проходят занятия?<span class="faq-ico">+</span></div>
         <div class="faq-a">Онлайн, в прямом эфире. Вторник и четверг, 19:00–21:00 МСК. Теория чередуется с практическими разборами и вопросами участников. Подключиться можно с любого устройства — главное стабильный интернет.</div>
       </div>
-
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">Что если пропущу сессию?<span class="faq-ico">+</span></div>
         <div class="faq-a">Запись будет доступна в течение нескольких часов после окончания. Записи доступны до конца августа 2026. Живой эфир желателен, но запись сохраняет всё содержание.</div>
       </div>
-
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">Как получить сертификат?<span class="faq-ico">+</span></div>
         <div class="faq-a">Сертификат входит в тарифы Стандарт и VIP. Нужно защитить проект 11 июня: 10 минут — презентация, 10 минут — обратная связь. Формат рабочий, без экзаменационного давления.</div>
       </div>
-
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">Можно ли купить один модуль, а потом доплатить?<span class="faq-ico">+</span></div>
         <div class="faq-a">Да. Доплата возможна в любой момент. Итоговая стоимость будет как при прямой покупке полного тарифа — без переплат.</div>
       </div>
-
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">Подходит ли курс для компаний за пределами России?<span class="faq-ico">+</span></div>
         <div class="faq-a">Да. Инструменты и подходы универсальны. Специфика трудового законодательства разбирается применительно к России, но большая часть курса не привязана к юрисдикции. Книга планируется и на английском языке.</div>
       </div>
-
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">Можно ли пройти курс в корпоративном формате?<span class="faq-ico">+</span></div>
         <div class="faq-a">Да. Корпоративный формат — двухдневная программа для команды. Даты согласовываем под ваш график. Стоимость зависит от количества участников. Напишите — расскажем подробнее.</div>
@@ -841,13 +888,13 @@
         <h2 class="c-title">Мы на связи</h2>
         <p class="c-desc">Если что-то осталось непонятным — пишите в любое время. Отвечаем в течение рабочего дня.</p>
         <div class="c-buttons">
-          <a href="https://t.me/ZinaidaChu" target="_blank" class="btn btn-primary btn-lg">Написать Зинаиде</a>
+          <a href="https://t.me/ZinaidaChu"     target="_blank" class="btn btn-primary btn-lg">Написать Зинаиде</a>
           <a href="https://t.me/Averkieva_Helen" target="_blank" class="btn btn-outline btn-lg">Написать Елене</a>
         </div>
         <div class="c-details">
           <div class="c-detail"><div class="c-d-ico">✈️</div><div><a href="https://t.me/ZinaidaChu" style="color:rgba(255,255,255,.85);font-weight:700;">@ZinaidaChu</a> — Зинаида Чумакова</div></div>
           <div class="c-detail"><div class="c-d-ico">✈️</div><div><a href="https://t.me/Averkieva_Helen" style="color:rgba(255,255,255,.85);font-weight:700;">@Averkieva_Helen</a> — Елена Аверкиева</div></div>
-          <div class="c-detail"><div class="c-d-ico">📞</div><div><a href="tel:+79253867994" style="color:rgba(255,255,255,.85);font-weight:700;">+7 925 386 7994</a> — Елена Аверкиева</div></div>
+          <div class="c-detail"><div class="c-d-ico">📞</div><div><a href="tel:+79253867994" style="color:rgba(255,255,255,.85);font-weight:700;">+7 925 386 79 94</a> — Елена Аверкиева</div></div>
           <div class="c-detail"><div class="c-d-ico">✈️</div><div><a href="https://t.me/chumakova_HRD" target="_blank" style="color:rgba(255,255,255,.85);font-weight:700;">t.me/chumakova_HRD</a> — Telegram-канал</div></div>
         </div>
       </div>
@@ -863,9 +910,37 @@
 <!-- ======= FOOTER ======= -->
 <footer class="footer">
   <div class="container">
-    <p>© 2026 Зинаида Чумакова · Курс «ИИ в HR. Практика» ·
-      <a href="https://t.me/ZinaidaChu" style="color:inherit;">Написать нам</a>
-    </p>
+    <div class="footer-top">
+      <div>
+        <div class="f-logo">hrdonline<span>.</span></div>
+        <p class="f-desc">Зинаида Чумакова — независимый HRD. 20 лет опыта. Работаю напрямую с бизнесом и HR.</p>
+        <div class="f-socials">
+          <a href="https://t.me/chumakova_HRD" target="_blank" class="f-soc">TG</a>
+          <a href="https://t.me/ZinaidaChu"    target="_blank" class="f-soc">DM</a>
+        </div>
+      </div>
+      <div class="f-col">
+        <h5>Бизнесу</h5>
+        <a href="business.html">Форматы работы</a>
+        <a href="business.html#form">Записаться</a>
+      </div>
+      <div class="f-col">
+        <h5>Для HR</h5>
+        <a href="hr.html">Сессии и проекты</a>
+        <a href="course.html">Курс ИИ в HR</a>
+        <a href="books.html">Книга ИИ в HR</a>
+      </div>
+      <div class="f-col">
+        <h5>О сайте</h5>
+        <a href="about.html">Обо мне</a>
+        <a href="contacts.html">Контакты</a>
+        <a href="https://t.me/chumakova_HRD" target="_blank">Telegram-канал</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 hrdonline.ru — Зинаида Чумакова</span>
+      <span><a href="https://t.me/ZinaidaChu">@ZinaidaChu</a></span>
+    </div>
   </div>
 </footer>
 
@@ -875,7 +950,7 @@
   <a href="#pricing" class="btn btn-gold" style="padding:10px 28px;font-size:.9rem;">Выбрать тариф</a>
 </div>
 
-<!-- ======= MODAL ОПЛАТЫ ======= -->
+<!-- ======= MODAL ======= -->
 <div class="modal-overlay" id="payModal" onclick="handleOverlay(event)">
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal()">✕</button>
@@ -903,43 +978,63 @@
 
 <!-- ======= SCRIPTS ======= -->
 <script>
-  const navbar    = document.getElementById('navbar');
-  const stickyCta = document.getElementById('stickyCta');
-  window.addEventListener('scroll', () => {
+  /* --- Navbar & Sticky --- */
+  var navbar    = document.getElementById('navbar');
+  var stickyCta = document.getElementById('stickyCta');
+  window.addEventListener('scroll', function () {
     navbar.classList.toggle('scrolled', window.scrollY > 60);
     stickyCta.classList.toggle('visible', window.scrollY > 500);
   });
 
+  /* --- Mobile menu --- */
+  function toggleMenu() {
+    var m    = document.getElementById('mobileMenu');
+    var open = m.classList.toggle('open');
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+
+  /* --- Accordion modules --- */
   function toggleModule(header) {
-    const item    = header.parentElement;
-    const wasOpen = item.classList.contains('open');
-    document.querySelectorAll('.module-item').forEach(m => m.classList.remove('open'));
+    var item    = header.parentElement;
+    var wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.module-item').forEach(function(m){ m.classList.remove('open'); });
     if (!wasOpen) item.classList.add('open');
   }
 
+  /* --- FAQ --- */
   function toggleFaq(question) {
     question.parentElement.classList.toggle('open');
   }
 
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const target = document.querySelector(a.getAttribute('href'));
+  /* --- Smooth scroll --- */
+  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      var target = document.querySelector(a.getAttribute('href'));
       if (target) { e.preventDefault(); target.scrollIntoView({ behavior:'smooth', block:'start' }); }
     });
   });
 
-  let plan = {};
+  /* --- Scroll fade --- */
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade').forEach(function(el){ io.observe(el); });
+
+  /* --- Modal --- */
+  var plan = {};
 
   function openPayment(tariff, amount, desc) {
-    plan = { tariff, amount, desc };
+    plan = { tariff: tariff, amount: amount, desc: desc };
     document.getElementById('m-tariff').textContent = tariff;
     document.getElementById('m-price').textContent  = amount.toLocaleString('ru-RU');
     document.getElementById('m-err').style.display  = 'none';
     document.getElementById('m-btn').disabled       = false;
     document.getElementById('m-btn').textContent    = 'Перейти к оплате';
-    document.getElementById('m-name').value         = '';
-    document.getElementById('m-email').value        = '';
-    document.getElementById('m-phone').value        = '';
+    document.getElementById('m-name').value  = '';
+    document.getElementById('m-email').value = '';
+    document.getElementById('m-phone').value = '';
     document.getElementById('payModal').classList.add('active');
     document.body.style.overflow = 'hidden';
   }
@@ -953,47 +1048,47 @@
     if (e.target.id === 'payModal') closeModal();
   }
 
-  document.addEventListener('keydown', e => {
+  document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') closeModal();
   });
 
   async function submitPay(e) {
     e.preventDefault();
-    const name  = document.getElementById('m-name').value.trim();
-    const email = document.getElementById('m-email').value.trim();
-    const phone = document.getElementById('m-phone').value.trim();
+    var name  = document.getElementById('m-name').value.trim();
+    var email = document.getElementById('m-email').value.trim();
+    var phone = document.getElementById('m-phone').value.trim();
 
-    if (!name || !email || !phone)                        { showErr('Заполните все поля'); return; }
+    if (!name || !email || !phone)                         { showErr('Заполните все поля'); return; }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))        { showErr('Введите корректный email'); return; }
-    if (phone.replace(/\D/g, '').length < 10)             { showErr('Введите корректный телефон'); return; }
+    if (phone.replace(/\D/g,'').length < 10)               { showErr('Введите корректный телефон'); return; }
 
     document.getElementById('m-err').style.display = 'none';
-    const btn = document.getElementById('m-btn');
+    var btn = document.getElementById('m-btn');
     btn.disabled    = true;
     btn.textContent = '⏳ Перенаправление на оплату...';
 
     try {
-      const res  = await fetch('/api/create-payment', {
+      var res  = await fetch('/api/create-payment', {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ name, email, phone, tariff: plan.tariff, amount: plan.amount, description: plan.desc })
+        body:    JSON.stringify({ name: name, email: email, phone: phone, tariff: plan.tariff, amount: plan.amount, description: plan.desc })
       });
-      const data = await res.json();
+      var data = await res.json();
       if (data.redirect_url) {
         window.location.href = data.redirect_url;
       } else {
         throw new Error(data.error || 'Ошибка при создании платежа');
       }
-    } catch (err) {
+    } catch(err) {
       btn.disabled    = false;
-      btn.textContent = '💳 Перейти к оплате';
+      btn.textContent = 'Перейти к оплате';
       showErr(err.message);
     }
   }
 
   function showErr(msg) {
-    const el       = document.getElementById('m-err');
-    el.textContent = '⚠️ ' + msg;
+    var el = document.getElementById('m-err');
+    el.textContent   = '⚠️ ' + msg;
     el.style.display = 'block';
   }
 </script>
