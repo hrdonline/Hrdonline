@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Контакты · Зинаида Чумакова · hrdonline</title>
+  <meta name="description" content="Свяжитесь с Зинаидой Чумаковой. Telegram, email, организационные вопросы." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --navy:       #0F2033;
+      --navy-mid:   #1A3347;
+      --navy-deep:  #080F1A;
+      --teal:       #1A8A7E;
+      --teal-light: #24B5A5;
+      --teal-mid:   #60C4B8;
+      --teal-pale:  #E0F5F3;
+      --gold:       #E8A730;
+      --gold-pale:  #FFF5DC;
+      --white:      #FFFFFF;
+      --off-white:  #F8FAFB;
+      --gray-100:   #F3F4F6;
+      --gray-300:   #D1D5DB;
+      --gray-500:   #6B7280;
+      --gray-700:   #374151;
+      --gray-900:   #111827;
+      --radius:     16px;
+      --radius-sm:  10px;
+      --shadow:     0 4px 24px rgba(15,32,51,.1);
+      --shadow-lg:  0 16px 56px rgba(15,32,51,.18);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Manrope', sans-serif; color: var(--gray-900); background: var(--white); line-height: 1.6; overflow-x: hidden; }
+    img  { max-width: 100%; display: block; }
+    a    { color: inherit; text-decoration: none; }
+
+    .section   { padding: 96px 0; }
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 32px; }
+    .eyebrow   { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .16em; color: var(--teal); margin-bottom: 16px; }
+    .eyebrow.gold { color: var(--gold); }
+
+    h1 { font-size: clamp(2.4rem, 5vw, 3.6rem); font-weight: 800; line-height: 1.08; letter-spacing: -.025em; }
+    h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 800; line-height: 1.12; letter-spacing: -.015em; }
+    h3 { font-size: clamp(1.1rem, 2vw, 1.35rem); font-weight: 700; line-height: 1.3; }
+    h4 { font-size: 1rem; font-weight: 700; }
+    p  { font-size: 1rem; line-height: 1.78; color: var(--gray-700); }
+
+    .btn { display: inline-block; padding: 15px 32px; border-radius: 50px; font-family: 'Manrope', sans-serif; font-weight: 700; font-size: .92rem; cursor: pointer; transition: all .25s; border: none; text-align: center; }
+    .btn-gold          { background: var(--gold); color: var(--navy); }
+    .btn-gold:hover    { background: #d4941f; transform: translateY(-2px); box-shadow: 0 10px 30px rgba(232,167,48,.4); }
+    .btn-primary       { background: var(--teal-light); color: var(--white); }
+    .btn-primary:hover { background: var(--teal); transform: translateY(-2px); }
+    .btn-ghost-light       { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,.32); }
+    .btn-ghost-light:hover { border-color: var(--white); background: rgba(255,255,255,.1); }
+    .btn-lg { padding: 18px 44px; font-size: 1rem; }
+
+    /* NAVBAR */
+    .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 200; padding: 20px 0; transition: all .3s; }
+    .navbar.scrolled { background: rgba(8,15,26,.96); backdrop-filter: blur(16px); padding: 13px 0; box-shadow: 0 2px 24px rgba(0,0,0,.3); }
+    .navbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .navbar-brand { color: var(--white); font-weight: 800; font-size: 1.2rem; letter-spacing: -.03em; }
+    .navbar-brand span { color: var(--teal-mid); }
+    .navbar-nav { display: flex; align-items: center; gap: 2px; }
+    .navbar-nav a { color: rgba(255,255,255,.68); font-size: .84rem; font-weight: 600; padding: 7px 13px; border-radius: 8px; transition: all .2s; white-space: nowrap; }
+    .navbar-nav a:hover, .navbar-nav a.active { color: var(--white); background: rgba(255,255,255,.08); }
+    .navbar-right { display: flex; align-items: center; gap: 12px; }
+    .navbar-right .btn { padding: 9px 22px; font-size: .84rem; background: var(--teal-light); color: var(--white); border: none; }
+    .navbar-right .btn:hover { background: var(--teal); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
+    .hamburger span { width: 22px; height: 2px; background: var(--white); border-radius: 2px; display: block; }
+
+    /* MOBILE MENU */
+    .mobile-menu { position: fixed; inset: 0; z-index: 199; background: var(--navy-deep); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; opacity: 0; visibility: hidden; transition: all .3s; }
+    .mobile-menu.open { opacity: 1; visibility: visible; }
+    .mobile-menu a { color: var(--white); font-size: 1.25rem; font-weight: 700; padding: 13px 32px; border-radius: 12px; transition: all .2s; }
+    .mobile-menu a:hover { background: rgba(255,255,255,.07); color: var(--teal-mid); }
+    .mobile-close { position: absolute; top: 22px; right: 26px; background: none; border: none; color: var(--white); font-size: 1.4rem; cursor: pointer; }
+    .m-divider { width: 40px; height: 1px; background: rgba(255,255,255,.1); margin: 8px 0; }
+
+    /* HERO */
+    .hero-contacts {
+      background: linear-gradient(160deg, var(--navy-deep) 0%, var(--navy) 100%);
+      padding: 160px 0 100px;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    .hero-contacts::before {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse at 20% 80%, rgba(26,138,126,.18) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(232,167,48,.08) 0%, transparent 45%);
+    }
+    .hero-contacts-inner { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
+    .hero-contacts .eyebrow { color: var(--teal-mid); margin-bottom: 24px; }
+    .hero-contacts h1 { color: var(--white); margin-bottom: 24px; }
+    .hero-contacts h1 em { font-style: normal; color: var(--teal-mid); }
+    .hero-contacts .hero-phrase {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,.62);
+      line-height: 1.78;
+      max-width: 520px;
+      margin: 0 auto 40px;
+      font-style: italic;
+    }
+    .hero-badges { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+    .hero-badge {
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 50px;
+      padding: 8px 18px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: rgba(255,255,255,.7);
+    }
+    .hero-badge span { color: var(--teal-mid); margin-right: 6px; }
+
+    /* CONTACTS CARDS */
+    .section-contacts { background: var(--off-white); }
+    .contacts-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .contact-card {
+      background: var(--white);
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      transition: all .25s;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .contact-card:hover { border-color: var(--teal-light); box-shadow: var(--shadow); transform: translateY(-4px); }
+    .contact-card.accent { border-color: var(--teal-light); background: var(--teal-pale); }
+    .contact-card-top { display: flex; align-items: center; gap: 16px; }
+    .contact-avatar {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; font-weight: 800; color: var(--white);
+      flex-shrink: 0;
+    }
+    .contact-avatar.gold-av { background: linear-gradient(135deg, #7a5000 0%, var(--gold) 100%); }
+    .contact-name { font-size: 1rem; font-weight: 800; color: var(--navy); margin-bottom: 3px; }
+    .contact-role { font-size: .8rem; color: var(--gray-500); font-weight: 500; }
+    .contact-tag {
+      display: inline-block;
+      font-size: .68rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .12em;
+      padding: 4px 12px; border-radius: 50px;
+      background: var(--teal-pale); color: var(--teal);
+      width: fit-content;
+    }
+    .contact-tag.gold-tag { background: var(--gold-pale); color: #7a5000; }
+    .contact-links { display: flex; flex-direction: column; gap: 8px; }
+    .contact-link {
+      display: flex; align-items: center; gap: 10px;
+      font-size: .9rem; color: var(--gray-700);
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      background: var(--off-white);
+      transition: all .2s;
+      font-weight: 500;
+    }
+    .contact-link:hover { background: var(--teal-pale); color: var(--teal); }
+    .contact-card.accent .contact-link { background: rgba(255,255,255,.7); }
+    .contact-card.accent .contact-link:hover { background: var(--white); color: var(--teal); }
+    .contact-link-icon { font-size: 1rem; width: 20px; text-align: center; flex-shrink: 0; }
+
+    /* DIRECTIONS */
+    .section-directions { background: var(--white); }
+    .directions-intro { text-align: center; margin-bottom: 48px; }
+    .directions-intro h2 { color: var(--navy); margin-bottom: 12px; }
+    .directions-intro p { color: var(--gray-500); max-width: 440px; margin: 0 auto; }
+    .directions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .direction-card {
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--gray-300);
+      transition: all .25s;
+    }
+    .direction-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+    .direction-head { padding: 36px 36px 32px; }
+    .direction-head.navy-head { background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy-mid) 100%); }
+    .direction-head.teal-head { background: linear-gradient(135deg, var(--teal) 0%, var(--teal-light) 100%); }
+    .direction-eyebrow { font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; color: rgba(255,255,255,.5); margin-bottom: 12px; }
+    .direction-head h3 { color: var(--white); font-size: 1.4rem; margin-bottom: 10px; }
+    .direction-head p { color: rgba(255,255,255,.62); font-size: .9rem; line-height: 1.68; margin: 0; }
+    .direction-body { padding: 24px 36px; background: var(--white); display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .direction-body p { font-size: .86rem; color: var(--gray-500); margin: 0; }
+    .direction-body .btn { white-space: nowrap; flex-shrink: 0; }
+
+    /* QUOTE */
+    .section-quote { background: var(--navy); padding: 80px 0; }
+    .quote-inner { text-align: center; max-width: 640px; margin: 0 auto; }
+    .quote-mark { font-size: 5rem; line-height: .8; color: var(--teal-light); opacity: .3; font-family: Georgia, serif; margin-bottom: -10px; }
+    .quote-text { font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-weight: 700; color: var(--white); line-height: 1.5; margin-bottom: 24px; }
+    .quote-text em { font-style: normal; color: var(--teal-mid); }
+    .quote-author { font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; color: rgba(255,255,255,.35); }
+
+    /* FORM */
+    .section-form { background: var(--navy-deep); padding: 96px 0; }
+    .form-inner { max-width: 640px; margin: 0 auto; text-align: center; }
+    .form-inner .eyebrow { color: var(--teal-mid); margin-bottom: 16px; }
+    .form-inner h2 { color: var(--white); margin-bottom: 14px; }
+    .form-inner > p { color: rgba(255,255,255,.62); font-size: 1rem; line-height: 1.75; margin-bottom: 44px; }
+    .contact-form { display: flex; flex-direction: column; gap: 14px; text-align: left; margin-bottom: 24px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-label { color: rgba(255,255,255,.5); font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+    .form-input, .form-textarea {
+      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius-sm); padding: 13px 18px; color: var(--white);
+      font-family: 'Manrope', sans-serif; font-size: .97rem; outline: none;
+      transition: border .2s; width: 100%;
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color: rgba(255,255,255,.28); }
+    .form-input:focus, .form-textarea:focus { border-color: var(--teal-mid); background: rgba(255,255,255,.1); }
+    .form-textarea { min-height: 110px; resize: vertical; }
+    .form-submit { background: var(--gold); color: var(--navy); font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 1rem; padding: 16px; border: none; border-radius: 50px; cursor: pointer; transition: all .25s; width: 100%; margin-top: 6px; }
+    .form-submit:hover { background: #d4941f; transform: translateY(-2px); box-shadow: 0 10px 30px rgba(232,167,48,.4); }
+    .form-contact { color: rgba(255,255,255,.45); font-size: .88rem; }
+    .form-contact a { color: var(--teal-mid); font-weight: 700; }
+
+    /* FOOTER */
+    .footer { background: var(--navy-deep); color: rgba(255,255,255,.42); padding: 72px 0 32px; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 56px; margin-bottom: 56px; }
+    .f-logo { font-size: 1.3rem; font-weight: 800; color: var(--white); margin-bottom: 14px; letter-spacing: -.03em; }
+    .f-logo span { color: var(--teal-mid); }
+    .f-desc { font-size: .87rem; color: rgba(255,255,255,.42); line-height: 1.7; margin-bottom: 22px; }
+    .f-socials { display: flex; gap: 10px; }
+    .f-soc { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border: 1px solid rgba(255,255,255,.12); border-radius: 50%; color: rgba(255,255,255,.5); font-size: .78rem; font-weight: 700; transition: all .2s; }
+    .f-soc:hover { border-color: var(--teal); background: var(--teal); color: var(--white); }
+    .f-col h5 { color: var(--white); font-size: .72rem; text-transform: uppercase; letter-spacing: .14em; margin-bottom: 18px; }
+    .f-col a  { display: block; color: rgba(255,255,255,.42); font-size: .85rem; margin-bottom: 10px; transition: color .2s; }
+    .f-col a:hover { color: var(--teal-mid); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.07); padding-top: 28px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; font-size: .8rem; }
+    .footer-bottom a { color: var(--teal-mid); }
+
+    /* ANIMATIONS */
+    .fade { opacity: 0; transform: translateY(24px); transition: opacity .65s ease, transform .65s ease; }
+    .fade.in { opacity: 1; transform: translateY(0); }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(26px); } to { opacity:1; transform:translateY(0); } }
+    .hero-contacts-inner > * { animation: fadeUp .65s ease backwards; }
+    .hero-contacts-inner > *:nth-child(1) { animation-delay: .05s; }
+    .hero-contacts-inner > *:nth-child(2) { animation-delay: .18s; }
+    .hero-contacts-inner > *:nth-child(3) { animation-delay: .3s; }
+    .hero-contacts-inner > *:nth-child(4) { animation-delay: .42s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 36px; }
+    }
+    @media (max-width: 768px) {
+      h1 { font-size: 2.2rem; }
+      h2 { font-size: 1.8rem; }
+      .section { padding: 64px 0; }
+      .navbar-nav { display: none; }
+      .navbar-right .btn:not(:last-child) { display: none; }
+      .hamburger { display: flex; }
+      .contacts-grid { grid-template-columns: 1fr; }
+      .directions-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .hero-contacts { padding: 130px 0 72px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <div class="navbar-inner">
+      <a href="index.html" class="navbar-brand">hrdonline<span>.</span></a>
+      <div class="navbar-nav">
+        <a href="business.html">Бизнесу</a>
+        <a href="hr.html">Для HR</a>
+        <a href="books.html">Книги</a>
+        <a href="course.html">Курс</a>
+        <a href="about.html">Обо мне</a>
+        <a href="contacts.html" class="active">Контакты</a>
+      </div>
+      <div class="navbar-right">
+        <a href="#form" class="btn">Написать</a>
+        <div class="hamburger" onclick="toggleMenu()">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="toggleMenu()">&#10005;</button>
+  <a href="index.html"    onclick="toggleMenu()">Главная</a>
+  <a href="business.html" onclick="toggleMenu()">Бизнесу</a>
+  <a href="hr.html"       onclick="toggleMenu()">Для HR</a>
+  <div class="m-divider"></div>
+  <a href="books.html"    onclick="toggleMenu()">Книги</a>
+  <a href="course.html"   onclick="toggleMenu()">Курс</a>
+  <a href="about.html"    onclick="toggleMenu()">Обо мне</a>
+  <a href="contacts.html" onclick="toggleMenu()">Контакты</a>
+</div>
+
+<!-- HERO -->
+<section class="hero-contacts">
+  <div class="container">
+    <div class="hero-contacts-inner">
+      <div class="eyebrow">Контакты</div>
+      <h1>Давайте<br /><em>познакомимся</em></h1>
+      <p class="hero-phrase">
+        Все большие дела начинаются с простого<br />разговора между людьми.
+      </p>
+      <div class="hero-badges">
+        <div class="hero-badge"><span>📍</span>Москва · работаем онлайн</div>
+        <div class="hero-badge"><span>⏱</span>Отвечаю в течение 24 часов</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTS -->
+<section class="section section-contacts">
+  <div class="container">
+    <div class="contacts-grid">
+
+      <!-- Зинаида -->
+      <div class="contact-card accent fade">
+        <div class="contact-card-top">
+          <div class="contact-avatar">ЗЧ</div>
+          <div>
+            <div class="contact-name">Зинаида Чумакова</div>
+            <div class="contact-role">Независимый HRD · основатель hrdonline</div>
+          </div>
+        </div>
+        <span class="contact-tag">Рабочие вопросы</span>
+        <div class="contact-links">
+          <a href="https://t.me/ZinaidaChu" target="_blank" class="contact-link">
+            <span class="contact-link-icon">✈️</span>
+            Telegram · @ZinaidaChu
+          </a>
+          <a href="mailto:ceo@hrdonline.ru" class="contact-link">
+            <span class="contact-link-icon">✉️</span>
+            ceo@hrdonline.ru
+          </a>
+          <a href="https://t.me/chumakova_HRD" target="_blank" class="contact-link">
+            <span class="contact-link-icon">📢</span>
+            Telegram-канал · @chumakova_HRD
+          </a>
+        </div>
+      </div>
+
+      <!-- Елена -->
+      <div class="contact-card fade">
+        <div class="contact-card-top">
+          <div class="contact-avatar gold-av">ЕА</div>
+          <div>
+            <div class="contact-name">Елена Аверкиева</div>
+            <div class="contact-role">Помощник · организационные вопросы</div>
+          </div>
+        </div>
+        <span class="contact-tag gold-tag">Организационные вопросы</span>
+        <div class="contact-links">
+          <a href="tel:+79253867994" class="contact-link">
+            <span class="contact-link-icon">📞</span>
+            +7 925 386 79 94
+          </a>
+          <a href="mailto:info@hrdonline.ru" class="contact-link">
+            <span class="contact-link-icon">✉️</span>
+            info@hrdonline.ru
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- DIRECTIONS -->
+<section class="section section-directions">
+  <div class="container">
+    <div class="directions-intro fade">
+      <div class="eyebrow">Куда писать</div>
+      <h2>Выберите своё направление</h2>
+      <p>У каждой аудитории своя страница — и свой разговор</p>
+    </div>
+    <div class="directions-grid">
+
+      <div class="direction-card fade">
+        <div class="direction-head navy-head">
+          <div class="direction-eyebrow">Для собственников и CEO</div>
+          <h3>Бизнесу</h3>
+          <p>Advisory, проекты, ретейнер. Выстраиваем HR так, чтобы вы занимались бизнесом.</p>
+        </div>
+        <div class="direction-body">
+          <p>Рабочая сессия, проект или постоянное сопровождение</p>
+          <a href="business.html" class="btn btn-gold">Подробнее</a>
+        </div>
+      </div>
+
+      <div class="direction-card fade">
+        <div class="direction-head teal-head">
+          <div class="direction-eyebrow">Для HR-специалистов</div>
+          <h3>Для HR</h3>
+          <p>Менторинг, сессии, проекты, обучение. Растём в профессии вместе.</p>
+        </div>
+        <div class="direction-body">
+          <p>Личная сессия, групповые форматы, курс и книга</p>
+          <a href="hr.html" class="btn btn-primary">Подробнее</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="section-quote">
+  <div class="container">
+    <div class="quote-inner fade">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">
+        Люди — это не ресурс.<br />
+        <em>Это и есть сам бизнес.</em>
+      </div>
+      <div class="quote-author">Зинаида Чумакова</div>
+    </div>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="section-form" id="form">
+  <div class="container">
+    <div class="form-inner">
+      <div class="eyebrow">Напишите</div>
+      <h2 style="color:var(--white); margin-bottom:14px;">Расскажите о своём вопросе</h2>
+      <p>Отвечаю в течение 24 часов. Если срочно — пишите напрямую в Telegram.</p>
+      <form class="contact-form" action="https://formspree.io/f/xkopvegv" method="POST">
+        <input type="hidden" name="_subject" value="Заявка с contacts.html — hrdonline.ru" />
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Имя</label>
+            <input type="text" name="name" class="form-input" placeholder="Ваше имя" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Telegram или телефон</label>
+            <input type="text" name="contact" class="form-input" placeholder="@username или +7 900..." required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" name="email" class="form-input" placeholder="you@example.com" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Вопрос или запрос</label>
+          <textarea name="request" class="form-textarea" placeholder="Расскажите — в двух словах достаточно" required></textarea>
+        </div>
+        <button type="submit" class="form-submit">Отправить</button>
+      </form>
+      <p class="form-contact">
+        Или напишите напрямую:
+        <a href="https://t.me/ZinaidaChu">@ZinaidaChu</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="f-logo">hrdonline<span>.</span></div>
+        <p class="f-desc">Зинаида Чумакова — независимый HRD. 20 лет опыта. Работаю напрямую с бизнесом и HR.</p>
+        <div class="f-socials">
+          <a href="https://t.me/chumakova_HRD" target="_blank" class="f-soc">TG</a>
+          <a href="https://t.me/ZinaidaChu"    target="_blank" class="f-soc">DM</a>
+        </div>
+      </div>
+      <div class="f-col">
+        <h5>Бизнесу</h5>
+        <a href="business.html">Форматы работы</a>
+        <a href="business.html#form">Записаться</a>
+      </div>
+      <div class="f-col">
+        <h5>Для HR</h5>
+        <a href="hr.html">Сессии и проекты</a>
+        <a href="course.html">Курс ИИ в HR</a>
+        <a href="books.html">Книга ИИ в HR</a>
+      </div>
+      <div class="f-col">
+        <h5>О сайте</h5>
+        <a href="about.html">Обо мне</a>
+        <a href="contacts.html">Контакты</a>
+        <a href="https://t.me/chumakova_HRD" target="_blank">Telegram-канал</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 hrdonline.ru — Зинаида Чумакова</span>
+      <span><a href="https://t.me/ZinaidaChu">@ZinaidaChu</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  window.addEventListener('scroll', function () {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  function toggleMenu() {
+    var m = document.getElementById('mobileMenu');
+    var open = m.classList.toggle('open');
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade').forEach(function (el) { io.observe(el); });
+</script>
+
+</body>
+</html>
