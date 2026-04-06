@@ -1,0 +1,780 @@
+```html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HR · Зинаида Чумакова · hrdonline</title>
+  <meta name="description" content="Для HR — менторинг, сессии, проекты, обучение. 20 лет в профессии." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --navy:       #0F2033;
+      --navy-mid:   #1A3347;
+      --navy-deep:  #080F1A;
+      --teal:       #1A8A7E;
+      --teal-light: #24B5A5;
+      --teal-mid:   #60C4B8;
+      --teal-pale:  #E0F5F3;
+      --gold:       #E8A730;
+      --gold-pale:  #FFF5DC;
+      --white:      #FFFFFF;
+      --off-white:  #F8FAFB;
+      --gray-100:   #F3F4F6;
+      --gray-300:   #D1D5DB;
+      --gray-500:   #6B7280;
+      --gray-700:   #374151;
+      --gray-900:   #111827;
+      --radius:     16px;
+      --radius-sm:  10px;
+      --shadow:     0 4px 24px rgba(15,32,51,.1);
+      --shadow-lg:  0 16px 56px rgba(15,32,51,.18);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Manrope', sans-serif; color: var(--gray-900); background: var(--white); line-height: 1.6; overflow-x: hidden; }
+    img  { max-width: 100%; display: block; }
+    a    { color: inherit; text-decoration: none; }
+
+    .section   { padding: 96px 0; }
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 32px; }
+    .eyebrow   { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .16em; color: var(--teal); margin-bottom: 16px; }
+    .eyebrow.gold { color: var(--gold); }
+
+    h1 { font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 800; line-height: 1.08; letter-spacing: -.025em; }
+    h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 800; line-height: 1.12; letter-spacing: -.015em; }
+    h3 { font-size: clamp(1.1rem, 2vw, 1.35rem); font-weight: 700; line-height: 1.3; }
+    h4 { font-size: 1rem; font-weight: 700; }
+    p  { font-size: 1rem; line-height: 1.78; color: var(--gray-700); }
+
+    .btn { display: inline-block; padding: 15px 32px; border-radius: 50px; font-family: 'Manrope', sans-serif; font-weight: 700; font-size: .92rem; cursor: pointer; transition: all .25s; border: none; text-align: center; }
+    .btn-gold          { background: var(--gold); color: var(--navy); }
+    .btn-gold:hover    { background: #d4941f; transform: translateY(-2px); box-shadow: 0 10px 30px rgba(232,167,48,.4); }
+    .btn-primary       { background: var(--teal-light); color: var(--white); }
+    .btn-primary:hover { background: var(--teal); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(26,138,126,.38); }
+    .btn-ghost-light       { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,.32); }
+    .btn-ghost-light:hover { border-color: var(--white); background: rgba(255,255,255,.1); }
+    .btn-teal-outline       { background: transparent; color: var(--teal-light); border: 2px solid var(--teal-light); }
+    .btn-teal-outline:hover { background: var(--teal-light); color: var(--white); transform: translateY(-2px); }
+    .btn-lg { padding: 18px 44px; font-size: 1rem; }
+
+    /* NAVBAR */
+    .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 200; padding: 20px 0; transition: all .3s; }
+    .navbar.scrolled { background: rgba(8,15,26,.96); backdrop-filter: blur(16px); padding: 13px 0; box-shadow: 0 2px 24px rgba(0,0,0,.3); }
+    .navbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .navbar-brand { color: var(--white); font-weight: 800; font-size: 1.2rem; letter-spacing: -.03em; }
+    .navbar-brand span { color: var(--teal-mid); }
+    .navbar-nav { display: flex; align-items: center; gap: 2px; }
+    .navbar-nav a { color: rgba(255,255,255,.68); font-size: .84rem; font-weight: 600; padding: 7px 13px; border-radius: 8px; transition: all .2s; white-space: nowrap; }
+    .navbar-nav a:hover, .navbar-nav a.active { color: var(--white); background: rgba(255,255,255,.08); }
+    .navbar-right { display: flex; align-items: center; gap: 12px; }
+    .navbar-right .btn { padding: 9px 22px; font-size: .84rem; background: var(--teal-light); color: var(--white); border: none; }
+    .navbar-right .btn:hover { background: var(--teal); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
+    .hamburger span { width: 22px; height: 2px; background: var(--white); border-radius: 2px; display: block; transition: all .3s; }
+
+    /* MOBILE MENU */
+    .mobile-menu { position: fixed; inset: 0; z-index: 199; background: var(--navy-deep); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; opacity: 0; visibility: hidden; transition: all .3s; }
+    .mobile-menu.open { opacity: 1; visibility: visible; }
+    .mobile-menu a { color: var(--white); font-size: 1.25rem; font-weight: 700; padding: 13px 32px; border-radius: 12px; transition: all .2s; }
+    .mobile-menu a:hover { background: rgba(255,255,255,.07); color: var(--teal-mid); }
+    .mobile-close { position: absolute; top: 22px; right: 26px; background: none; border: none; color: var(--white); font-size: 1.4rem; cursor: pointer; }
+    .m-divider { width: 40px; height: 1px; background: rgba(255,255,255,.1); margin: 8px 0; }
+
+    /* HERO */
+    .hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; }
+    .hero-left {
+      background: linear-gradient(160deg, var(--navy-deep) 0%, var(--navy) 100%);
+      display: flex; align-items: center;
+      padding: 140px 64px 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero-left::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse at 10% 80%, rgba(26,138,126,.18) 0%, transparent 50%),
+        radial-gradient(ellipse at 90% 10%, rgba(232,167,48,.08) 0%, transparent 45%);
+    }
+    .hero-text { position: relative; z-index: 1; max-width: 540px; }
+    .hero-eyebrow { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .16em; color: var(--teal-mid); margin-bottom: 22px; }
+    .hero h1 { color: var(--white); margin-bottom: 26px; }
+    .hero h1 em { font-style: normal; color: var(--teal-mid); }
+    .hero-sub { font-size: 1.06rem; color: rgba(255,255,255,.62); line-height: 1.78; margin-bottom: 40px; max-width: 460px; }
+    .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-right { position: relative; overflow: hidden; }
+    .hero-right img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+    .hero-photo-ph { width: 100%; height: 100%; min-height: 480px; background: linear-gradient(160deg, #1A3347 0%, var(--teal) 100%); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.3); font-size: .9rem; }
+
+    /* PAIN */
+    .section-pain { background: var(--off-white); }
+    .pain-intro { text-align: center; margin-bottom: 52px; }
+    .pain-intro h2 { color: var(--navy); margin-bottom: 14px; }
+    .pain-intro p { color: var(--gray-500); max-width: 480px; margin: 0 auto; font-size: 1.02rem; }
+    .pain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .pain-card { background: var(--white); border: 1px solid var(--gray-300); border-radius: var(--radius); padding: 32px 28px; transition: all .25s; }
+    .pain-card:hover { border-color: var(--teal-light); box-shadow: var(--shadow); transform: translateY(-4px); }
+    .pain-card .tag { display: inline-block; font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--teal); background: var(--teal-pale); padding: 5px 12px; border-radius: 50px; margin-bottom: 16px; }
+    .pain-card h3 { color: var(--navy); margin-bottom: 10px; font-size: 1.05rem; }
+    .pain-card p { font-size: .9rem; color: var(--gray-500); line-height: 1.68; }
+
+    /* WHO I AM */
+    .section-who { background: var(--white); }
+    .who-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .who-left .eyebrow { margin-bottom: 16px; }
+    .who-left h2 { color: var(--navy); margin-bottom: 24px; }
+    .who-left h2 em { font-style: normal; color: var(--teal); }
+    .who-left p { color: var(--gray-700); margin-bottom: 16px; }
+    .who-stats { display: flex; gap: 40px; flex-wrap: wrap; margin-top: 32px; }
+    .who-stat-num { font-size: 2.2rem; font-weight: 800; color: var(--navy); line-height: 1; margin-bottom: 6px; }
+    .who-stat-num span { color: var(--teal); }
+    .who-stat-label { font-size: .82rem; color: var(--gray-500); font-weight: 500; }
+    .who-quote { background: var(--navy); border-radius: var(--radius); padding: 40px 36px; position: relative; overflow: hidden; }
+    .who-quote::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 80% 20%, rgba(26,138,126,.2) 0%, transparent 60%); pointer-events: none; }
+    .who-quote-mark { font-size: 4rem; line-height: 1; color: var(--teal-light); opacity: .4; font-family: Georgia, serif; margin-bottom: -16px; position: relative; z-index: 1; }
+    .who-quote p { color: rgba(255,255,255,.85); font-size: 1rem; line-height: 1.85; position: relative; z-index: 1; margin: 0; }
+    .who-quote p em { font-style: italic; color: var(--teal-mid); }
+    .who-quote-author { margin-top: 20px; font-size: .8rem; color: rgba(255,255,255,.4); font-weight: 600; text-transform: uppercase; letter-spacing: .1em; position: relative; z-index: 1; }
+
+    /* FORMATS */
+    .section-formats { background: var(--off-white); }
+    .formats-intro { text-align: center; margin-bottom: 52px; }
+    .formats-intro h2 { color: var(--navy); margin-bottom: 14px; }
+    .formats-intro p { color: var(--gray-500); max-width: 500px; margin: 0 auto; }
+
+    .accordion { display: flex; flex-direction: column; gap: 16px; }
+    .acc-item { border: 1px solid var(--gray-300); border-radius: var(--radius); overflow: hidden; transition: box-shadow .25s; }
+    .acc-item:hover { box-shadow: var(--shadow); }
+    .acc-item.open { border-color: var(--teal-light); box-shadow: var(--shadow); }
+    .acc-trigger { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 28px 32px; background: none; border: none; cursor: pointer; font-family: 'Manrope', sans-serif; text-align: left; gap: 16px; transition: background .2s; }
+    .acc-trigger:hover { background: var(--white); }
+    .acc-item.open .acc-trigger { background: var(--white); }
+    .acc-trigger-left { display: flex; align-items: center; gap: 20px; }
+    .acc-num { font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--teal); background: var(--teal-pale); padding: 5px 12px; border-radius: 50px; white-space: nowrap; }
+    .acc-title { font-size: 1.15rem; font-weight: 800; color: var(--navy); }
+    .acc-sub   { font-size: .86rem; color: var(--gray-500); margin-top: 4px; font-weight: 400; }
+    .acc-icon { width: 32px; height: 32px; border-radius: 50%; border: 1.5px solid var(--gray-300); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all .3s; color: var(--gray-500); font-size: 1.1rem; }
+    .acc-item.open .acc-icon { background: var(--teal-light); border-color: var(--teal-light); color: var(--white); transform: rotate(45deg); }
+    .acc-body { display: none; padding: 0 32px 32px; background: var(--white); }
+    .acc-item.open .acc-body { display: block; }
+    .acc-divider { height: 1px; background: var(--gray-100); margin-bottom: 28px; }
+    .acc-content { display: grid; grid-template-columns: 1fr 300px; gap: 48px; align-items: start; }
+    .acc-desc { color: var(--gray-700); font-size: .97rem; line-height: 1.78; margin-bottom: 24px; }
+    .acc-features { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+    .acc-feature { display: flex; align-items: flex-start; gap: 12px; }
+    .acc-feature-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal-light); flex-shrink: 0; margin-top: 8px; }
+    .acc-feature p { font-size: .9rem; color: var(--gray-700); line-height: 1.6; margin: 0; }
+    .acc-feature p strong { color: var(--navy); font-weight: 700; }
+    .price-card { background: var(--off-white); border: 1px solid #E5E7EB; border-radius: var(--radius); padding: 28px 26px; position: sticky; top: 120px; }
+    .price-card-label { font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; color: var(--teal); margin-bottom: 16px; }
+    .price-main { font-size: 1.5rem; font-weight: 800; color: var(--navy); line-height: 1.2; margin-bottom: 6px; }
+    .price-note { font-size: .82rem; color: var(--gray-500); margin-bottom: 20px; line-height: 1.55; }
+    .price-rows { display: flex; flex-direction: column; gap: 10px; margin-bottom: 22px; }
+    .price-row  { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+    .price-row-label { font-size: .84rem; color: var(--gray-500); }
+    .price-row-val   { font-size: .88rem; font-weight: 700; color: var(--navy); white-space: nowrap; }
+    .price-divider   { height: 1px; background: var(--gray-300); margin: 14px 0; }
+    .price-card .btn { width: 100%; }
+
+    /* PRODUCTS */
+    .section-products { background: var(--white); }
+    .products-intro { text-align: center; margin-bottom: 52px; }
+    .products-intro h2 { color: var(--navy); margin-bottom: 14px; }
+    .products-intro p { color: var(--gray-500); max-width: 480px; margin: 0 auto; }
+    .products-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .product-card { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--gray-300); transition: all .25s; display: flex; flex-direction: column; }
+    .product-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); border-color: var(--teal-light); }
+    .product-card-head { padding: 32px 32px 28px; }
+    .product-card-head.dark-teal { background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy-mid) 100%); }
+    .product-card-head.dark-gold { background: linear-gradient(135deg, #1a0f00 0%, #2e1d02 100%); }
+    .product-tag { display: inline-block; font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; padding: 5px 12px; border-radius: 50px; margin-bottom: 16px; }
+    .product-tag.teal { background: var(--teal-pale); color: var(--teal); }
+    .product-tag.gold { background: var(--gold-pale); color: #7a5000; }
+    .product-card-head h3 { color: var(--white); font-size: 1.3rem; margin-bottom: 10px; }
+    .product-card-head p { color: rgba(255,255,255,.6); font-size: .88rem; line-height: 1.68; margin: 0; }
+    .product-card-body { padding: 28px 32px; background: var(--white); flex: 1; display: flex; flex-direction: column; }
+    .product-features { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; flex: 1; }
+    .product-feature { display: flex; align-items: flex-start; gap: 10px; font-size: .88rem; color: var(--gray-700); line-height: 1.6; }
+    .product-feature::before { content: '→'; color: var(--teal); font-weight: 700; flex-shrink: 0; }
+    .product-card-body .btn { align-self: flex-start; }
+
+    /* HRD ONLINE */
+    .section-hrdonline { background: var(--navy); }
+    .hrdonline-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .hrdonline-left .eyebrow { color: var(--teal-mid); margin-bottom: 16px; }
+    .hrdonline-left h2 { color: var(--white); margin-bottom: 20px; }
+    .hrdonline-left h2 em { font-style: normal; color: var(--teal-mid); }
+    .hrdonline-left p { color: rgba(255,255,255,.62); line-height: 1.78; margin-bottom: 16px; }
+    .hrdonline-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
+    .hrdonline-right { display: flex; flex-direction: column; gap: 14px; }
+    .hrdonline-card { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); border-radius: var(--radius-sm); padding: 20px 22px; transition: all .2s; }
+    .hrdonline-card:hover { background: rgba(255,255,255,.09); border-color: rgba(96,196,184,.3); }
+    .hrdonline-card-icon { font-size: 1.2rem; margin-bottom: 10px; }
+    .hrdonline-card h4 { color: var(--white); margin-bottom: 6px; font-size: .95rem; }
+    .hrdonline-card p { color: rgba(255,255,255,.5); font-size: .84rem; line-height: 1.62; margin: 0; }
+
+    /* FORM */
+    .section-form { background: var(--navy-deep); padding: 96px 0; }
+    .form-inner { max-width: 640px; margin: 0 auto; text-align: center; }
+    .form-inner .eyebrow { color: var(--teal-mid); margin-bottom: 16px; }
+    .form-inner h2 { color: var(--white); margin-bottom: 14px; }
+    .form-inner > p { color: rgba(255,255,255,.62); font-size: 1rem; line-height: 1.75; margin-bottom: 44px; }
+    .contact-form { display: flex; flex-direction: column; gap: 14px; text-align: left; margin-bottom: 24px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-label { color: rgba(255,255,255,.5); font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+    .form-input, .form-textarea { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); border-radius: var(--radius-sm); padding: 13px 18px; color: var(--white); font-family: 'Manrope', sans-serif; font-size: .97rem; outline: none; transition: border .2s; width: 100%; }
+    .form-input::placeholder, .form-textarea::placeholder { color: rgba(255,255,255,.28); }
+    .form-input:focus, .form-textarea:focus { border-color: var(--teal-mid); background: rgba(255,255,255,.1); }
+    .form-textarea { min-height: 110px; resize: vertical; }
+    .form-submit { background: var(--gold); color: var(--navy); font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 1rem; padding: 16px; border: none; border-radius: 50px; cursor: pointer; transition: all .25s; width: 100%; margin-top: 6px; }
+    .form-submit:hover { background: #d4941f; transform: translateY(-2px); box-shadow: 0 10px 30px rgba(232,167,48,.4); }
+    .form-contact { color: rgba(255,255,255,.45); font-size: .88rem; }
+    .form-contact a { color: var(--teal-mid); font-weight: 700; }
+
+    /* FOOTER */
+    .footer { background: var(--navy-deep); color: rgba(255,255,255,.42); padding: 72px 0 32px; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 56px; margin-bottom: 56px; }
+    .f-logo { font-size: 1.3rem; font-weight: 800; color: var(--white); margin-bottom: 14px; letter-spacing: -.03em; }
+    .f-logo span { color: var(--teal-mid); }
+    .f-desc { font-size: .87rem; color: rgba(255,255,255,.42); line-height: 1.7; margin-bottom: 22px; }
+    .f-socials { display: flex; gap: 10px; }
+    .f-soc { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border: 1px solid rgba(255,255,255,.12); border-radius: 50%; color: rgba(255,255,255,.5); font-size: .78rem; font-weight: 700; transition: all .2s; }
+    .f-soc:hover { border-color: var(--teal); background: var(--teal); color: var(--white); }
+    .f-col h5 { color: var(--white); font-size: .72rem; text-transform: uppercase; letter-spacing: .14em; margin-bottom: 18px; }
+    .f-col a  { display: block; color: rgba(255,255,255,.42); font-size: .85rem; margin-bottom: 10px; transition: color .2s; }
+    .f-col a:hover { color: var(--teal-mid); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.07); padding-top: 28px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; font-size: .8rem; }
+    .footer-bottom a { color: var(--teal-mid); }
+
+    /* ANIMATIONS */
+    .fade { opacity: 0; transform: translateY(24px); transition: opacity .65s ease, transform .65s ease; }
+    .fade.in { opacity: 1; transform: translateY(0); }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(26px); } to { opacity:1; transform:translateY(0); } }
+    .hero-text > * { animation: fadeUp .65s ease backwards; }
+    .hero-text > *:nth-child(1) { animation-delay: .05s; }
+    .hero-text > *:nth-child(2) { animation-delay: .18s; }
+    .hero-text > *:nth-child(3) { animation-delay: .3s; }
+    .hero-text > *:nth-child(4) { animation-delay: .42s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 120px 40px 72px; }
+      .hero-right { height: 55vw; max-height: 480px; }
+      .acc-content { grid-template-columns: 1fr; }
+      .price-card { position: static; }
+      .who-inner { grid-template-columns: 1fr; gap: 40px; }
+      .products-grid { grid-template-columns: 1fr; }
+      .hrdonline-inner { grid-template-columns: 1fr; gap: 40px; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 36px; }
+    }
+    @media (max-width: 768px) {
+      h1 { font-size: 2.2rem; }
+      h2 { font-size: 1.8rem; }
+      .section { padding: 64px 0; }
+      .navbar-nav { display: none; }
+      .navbar-right .btn:not(:last-child) { display: none; }
+      .hamburger { display: flex; }
+      .hero-left { padding: 108px 24px 60px; }
+      .pain-grid { grid-template-columns: 1fr; }
+      .acc-trigger { padding: 22px 20px; }
+      .acc-body { padding: 0 20px 24px; }
+      .acc-title { font-size: 1rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <div class="navbar-inner">
+      <a href="index.html" class="navbar-brand">hrdonline<span>.</span></a>
+      <div class="navbar-nav">
+        <a href="business.html">Бизнесу</a>
+        <a href="hr.html" class="active">HR</a>
+        <a href="books.html">Книги</a>
+        <a href="course.html">Курс</a>
+        <a href="about.html">Обо мне</a>
+        <a href="contacts.html">Контакты</a>
+      </div>
+      <div class="navbar-right">
+        <a href="#form" class="btn">Поговорить</a>
+        <div class="hamburger" onclick="toggleMenu()">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="toggleMenu()">&#10005;</button>
+  <a href="index.html"    onclick="toggleMenu()">Главная</a>
+  <a href="business.html" onclick="toggleMenu()">Бизнесу</a>
+  <a href="hr.html"       onclick="toggleMenu()">HR</a>
+  <div class="m-divider"></div>
+  <a href="books.html"    onclick="toggleMenu()">Книги</a>
+  <a href="course.html"   onclick="toggleMenu()">Курс</a>
+  <a href="about.html"    onclick="toggleMenu()">Обо мне</a>
+  <a href="contacts.html" onclick="toggleMenu()">Контакты</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-text">
+      <div class="hero-eyebrow">Для HR · 20 лет в профессии</div>
+      <h1>HR — это не<br />должность.<br /><em>Это выбор.</em></h1>
+      <p class="hero-sub">Я в этой профессии 20 лет.<br />Работаю с теми, кто его сделал.</p>
+      <div class="hero-cta">
+        <a href="#form" class="btn btn-gold btn-lg">Поговорить</a>
+        <a href="#formats" class="btn btn-ghost-light btn-lg">Форматы работы</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="zinaida.jpg" alt="Зинаида Чумакова"
+         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+    <div class="hero-photo-ph" style="display:none;">Фото Зинаиды Чумаковой</div>
+  </div>
+</div>
+
+<!-- PAIN -->
+<section class="section section-pain">
+  <div class="container">
+    <div class="pain-intro fade">
+      <h2>Мы умеем всё.</h2>
+      <p>Только себе — не достаётся.</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card fade">
+        <span class="tag">Наша суперсила</span>
+        <h3>Нанять. Удержать. Развить.</h3>
+        <p>Уволить по-человечески. Выстроить процесс. Зайти в любой кабинет. Мы знаем как — и делаем.</p>
+      </div>
+      <div class="pain-card fade">
+        <span class="tag">Наша реальность</span>
+        <h3>Когда что-то нужно нам —</h3>
+        <p>все уверены: HR справится сам.<br />Потому что всегда справляется.</p>
+      </div>
+      <div class="pain-card fade">
+        <span class="tag">Знакомо?</span>
+        <h3>«Ну ты же HR»</h3>
+        <p>Справляемся. Всегда.<br />Но лучше — когда рядом тот, кто уже прошёл это.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO I AM -->
+<section class="section section-who">
+  <div class="container">
+    <div class="who-inner">
+      <div class="who-left fade">
+        <div class="eyebrow">Кто я</div>
+        <h2>Тёплый HR.<br /><em>Про людей и результат.</em></h2>
+        <p>20 лет в профессии. Все процессы. Разные компании. Живые люди.</p>
+        <p>Люблю опыт — свой и чужой. Тех, кто на своей жизни прошёл многое. Люблю делиться.</p>
+        <p>Если нужен наставник в профессии — я здесь.</p>
+        <div class="who-stats">
+          <div class="who-stat">
+            <div class="who-stat-num">20<span>+</span></div>
+            <div class="who-stat-label">лет в HR</div>
+          </div>
+          <div class="who-stat">
+            <div class="who-stat-num">∞</div>
+            <div class="who-stat-label">живых историй</div>
+          </div>
+        </div>
+      </div>
+      <div class="who-right fade">
+        <div class="who-quote">
+          <div class="who-quote-mark">"</div>
+          <p>
+            За каждым резюме — чья-то надежда.<br />
+            За каждым увольнением — чья-то боль.<br />
+            За каждым «добро пожаловать» —<br />чьё-то новое начало.<br /><br />
+            Вы не управляете персоналом.<br />
+            <em>Вы работаете с людьми.</em>
+          </p>
+          <div class="who-quote-author">Зинаида Чумакова</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMATS -->
+<section class="section section-formats" id="formats">
+  <div class="container">
+    <div class="formats-intro fade">
+      <h2>Форматы работы</h2>
+      <p>Выберите то, что нужно сейчас</p>
+    </div>
+
+    <div class="accordion">
+
+      <!-- 01 -->
+      <div class="acc-item open fade" id="acc-1">
+        <button class="acc-trigger" onclick="toggleAcc('acc-1')">
+          <div class="acc-trigger-left">
+            <span class="acc-num">01</span>
+            <div>
+              <div class="acc-title">Личная сессия</div>
+              <div class="acc-sub">Разбор кейса · менторинг · карьерная консультация</div>
+            </div>
+          </div>
+          <div class="acc-icon">+</div>
+        </button>
+        <div class="acc-body">
+          <div class="acc-divider"></div>
+          <div class="acc-content">
+            <div>
+              <p class="acc-desc">Когда нужно подумать вслух с тем, кто понимает профессию изнутри. Один формат — живой разговор, с которого уходишь с ясностью.</p>
+              <div class="acc-features">
+                <div class="acc-feature">
+                  <div class="acc-feature-dot"></div>
+                  <p><strong>Разбор рабочего кейса</strong> — конкретная ситуация, конкретный выход</p>
+                </div>
+                <div class="acc-feature">
+                  <div class="acc-feature-dot"></div>
+                  <p><strong>Менторинг</strong> — регулярная работа с опытным HR рядом</p>
+                </div>
+                <div class="acc-feature">
+                  <div class="acc-feature-dot"></div>
+                  <p><strong>Карьерная консультация</strong> — ваш следующий шаг в профессии</p>
+                </div>
+              </div>
+              <a href="#form" class="btn btn-primary">Записаться на сессию</a>
+            </div>
+            <div class="price-card">
+              <div class="price-card-label">Стоимость</div>
+              <div class="price-main">по запросу</div>
+              <div class="price-note">60–90 минут · онлайн или очно</div>
+              <div class="price-divider"></div>
+              <a href="#form" class="btn btn-primary" style="display:block;text-align:center;">Обсудить формат</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 02 -->
+      <div class="acc-item fade" id="acc-2">
+        <button class="acc-trigger" onclick="toggleAcc('acc-2')">
+          <div class="acc-trigger-left">
+            <span class="acc-num">02</span>
+            <div>
+              <div class="acc-title">Проектная работа</div>
+              <div class="acc-sub">Когда задача больше, чем один разговор</div>
+            </div>
+          </div>
+          <div class="acc-icon">+</div>
+        </button>
+        <div class="acc-body">
+          <div class="acc-divider"></div>
+          <div class="acc-content">
+            <div>
+              <p class="acc-desc">Захожу в вашу ситуацию — и довожу до результата. Фиксированный объём, сроки, понятный итог.</p>
+              <div class="acc-features">
+                <div class="acc-feature">
+                  <div class="acc-feature-dot"></div>
+                  <p><strong>HR-аудит</strong> — где узкие места и что менять в первую очередь</p>
+                </div>
+                <div class="acc-feature">
+                  <div class="acc-feature-dot"></div>
+                  <p><strong>Выстраивание HR-функции</strong> — процессы, структура, результат</p>
+                </div>
+                <div class="acc-feature">
+                  <div class="acc-feature-dot"></div>
+                  <p><strong>Проектный офис</strong> — веду HR-задачу от постановки до сдачи</p>
+                </div>
+                <div class="acc-feature">
+                  <div class="acc-feature-dot"></div>
+                  <p><strong>Выстраивание результативной команды</strong> — роли, вовлечённость, динамика</p>
+                </div>
+              </div>
+              <a href="#form" class="btn btn-primary">Обсудить проект</a>
+            </div>
+            <div class="price-card">
+              <div class="price-card-label">Стоимость</div>
+              <div class="price-main">зависит от задачи</div>
+              <div class="price-note">После вводной встречи — конкретное предложение.</div>
+              <div class="price-divider"></div>
+              <div class="price-rows">
+                <div class="price-row">
+                  <span class="price-row-label">Срок</span>
+                  <span class="price-row-val">2–12 недель</span>
+                </div>
+              </div>
+              <div class="price-divider"></div>
+              <a href="#form" class="btn btn-primary" style="display:block;text-align:center;">Запросить стоимость</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 03 -->
+      <div class="acc-item fade" id="acc-3">
+        <button class="acc-trigger" onclick="toggleAcc('acc-3')">
+          <div class="acc-trigger-left">
+            <span class="acc-num">03</span>
+            <div>
+              <div class="acc-title">Обучение и группы</div>
+              <div class="acc-sub">Стратсессии · мастермайнды · групповое обучение</div>
+            </div>
+          </div>
+          <div class="acc-icon">+</div>
+        </button>
+        <div class="acc-body">
+          <div class="acc-divider"></div>
+          <div class="acc-content">
+            <div>
+              <p class="acc-desc">Когда хочется расти рядом с такими же. Опыт — мой и участников — становится общим.</p>
+              <div class="acc-features">
+                <div class="acc-feature">
+                  <div class="acc-feature-dot"></div>
+                  <p><strong>Стратсессии для HR</strong> — фокус, синхронизация, приоритеты</p>
+                </div>
+                <div class="acc-feature">
+                  <div class="acc-feature-dot"></div>
+                  <p><strong>Мастермайнды</strong> — разбираем реальные кейсы в группе</p>
+                </div>
+                <div class="acc-feature">
+                  <div class="acc-feature-dot"></div>
+                  <p><strong>Групповое обучение</strong> — под запрос команды или компании</p>
+                </div>
+              </div>
+              <a href="#form" class="btn btn-primary">Узнать о ближайших форматах</a>
+            </div>
+            <div class="price-card">
+              <div class="price-card-label">Стоимость</div>
+              <div class="price-main">по запросу</div>
+              <div class="price-note">Зависит от формата и числа участников.</div>
+              <div class="price-divider"></div>
+              <a href="#form" class="btn btn-primary" style="display:block;text-align:center;">Написать</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- COURSE + BOOK -->
+<section class="section section-products">
+  <div class="container">
+    <div class="products-intro fade">
+      <div class="eyebrow">Для самостоятельного развития</div>
+      <h2>Курс и книга</h2>
+      <p>Если хотите разобраться в своём темпе — эти форматы для вас</p>
+    </div>
+    <div class="products-grid">
+
+      <div class="product-card fade">
+        <div class="product-card-head dark-teal">
+          <span class="product-tag teal">Курс</span>
+          <h3>ИИ в HR</h3>
+          <p>Как использовать искусственный интеллект в реальной HR-работе. Практика, не теория.</p>
+        </div>
+        <div class="product-card-body">
+          <div class="product-features">
+            <div class="product-feature">Настройка ИИ под свои задачи</div>
+            <div class="product-feature">Автоматизация рутинных HR-процессов</div>
+            <div class="product-feature">Реальные кейсы и шаблоны</div>
+            <div class="product-feature">Подходит для любого уровня</div>
+          </div>
+          <a href="course.html" class="btn btn-primary">Узнать о курсе</a>
+        </div>
+      </div>
+
+      <div class="product-card fade">
+        <div class="product-card-head dark-gold">
+          <span class="product-tag gold">Книга</span>
+          <h3>ИИ в HR: практическое руководство</h3>
+          <p>Всё, что нужно знать HR о технологиях — в одной книге. С первой страницы применимо.</p>
+        </div>
+        <div class="product-card-body">
+          <div class="product-features">
+            <div class="product-feature">Инструменты и применение на практике</div>
+            <div class="product-feature">Как объяснить ценность бизнесу</div>
+            <div class="product-feature">Готовые форматы и чек-листы</div>
+            <div class="product-feature">Читается за вечер, применяется годами</div>
+          </div>
+          <a href="books.html" class="btn btn-gold">Узнать о книге</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HRD ONLINE -->
+<section class="section section-hrdonline">
+  <div class="container">
+    <div class="hrdonline-inner">
+      <div class="hrdonline-left fade">
+        <div class="eyebrow">Платформа</div>
+        <h2>hrdonline<em>.</em></h2>
+        <p>Место, где HR находят поддержку, инструменты и живое сообщество — без лишнего шума.</p>
+        <p>Книги, курсы, дайджест, разборы кейсов и прямой контакт со мной.</p>
+        <div class="hrdonline-btns">
+          <a href="index.html" class="btn btn-ghost-light">На главную</a>
+          <a href="https://t.me/chumakova_HRD" target="_blank" class="btn btn-teal-outline">Telegram-канал</a>
+        </div>
+      </div>
+      <div class="hrdonline-right fade">
+        <div class="hrdonline-card">
+          <div class="hrdonline-card-icon">📚</div>
+          <h4>Книги и курс</h4>
+          <p>Практические материалы по ИИ в HR и управлению людьми</p>
+        </div>
+        <div class="hrdonline-card">
+          <div class="hrdonline-card-icon">💬</div>
+          <h4>Дайджест для HR</h4>
+          <p>Регулярно — о профессии, инструментах и реальных ситуациях</p>
+        </div>
+        <div class="hrdonline-card">
+          <div class="hrdonline-card-icon">🤝</div>
+          <h4>Живой контакт</h4>
+          <p>Сессии, мастермайнды, разборы — с живым участием, не в записи</p>
+        </div>
+        <div class="hrdonline-card">
+          <div class="hrdonline-card-icon">🎯</div>
+          <h4>Под HR-задачи</h4>
+          <p>Всё создано теми, кто работал в профессии — не рядом с ней</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="section-form" id="form">
+  <div class="container">
+    <div class="form-inner">
+      <div class="eyebrow">Поговорить</div>
+      <h2 style="color:var(--white); margin-bottom:14px;">Напишите — разберёмся вместе</h2>
+      <p>Расскажите о своей ситуации. Найдём формат, который подходит именно вам.</p>
+      <form class="contact-form" action="https://formspree.io/f/xkopvegv" method="POST">
+        <input type="hidden" name="_subject" value="Заявка с hr.html — hrdonline.ru" />
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Имя</label>
+            <input type="text" name="name" class="form-input" placeholder="Ваше имя" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Telegram или телефон</label>
+            <input type="text" name="contact" class="form-input" placeholder="@username или +7 900..." required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" name="email" class="form-input" placeholder="you@example.com" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Расскажите о ситуации или вопросе</label>
+          <textarea name="request" class="form-textarea" placeholder="Что сейчас происходит, с чем хотите разобраться" required></textarea>
+        </div>
+        <button type="submit" class="form-submit">Отправить</button>
+      </form>
+      <p class="form-contact">Или напишите напрямую: <a href="https://t.me/ZinaidaChu">@ZinaidaChu</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="f-logo">hrdonline<span>.</span></div>
+        <p class="f-desc">Зинаида Чумакова — 20 лет в HR. Работаю с теми, кто выбрал профессию и хочет в ней расти.</p>
+        <div class="f-socials">
+          <a href="https://t.me/chumakova_HRD" target="_blank" class="f-soc">TG</a>
+          <a href="https://t.me/ZinaidaChu"    target="_blank" class="f-soc">DM</a>
+        </div>
+      </div>
+      <div class="f-col">
+        <h5>HR</h5>
+        <a href="#acc-1">Личная сессия</a>
+        <a href="#acc-2">Проектная работа</a>
+        <a href="#acc-3">Обучение и группы</a>
+        <a href="#form">Поговорить</a>
+      </div>
+      <div class="f-col">
+        <h5>Материалы</h5>
+        <a href="course.html">Курс ИИ в HR</a>
+        <a href="books.html">Книга ИИ в HR</a>
+        <a href="business.html">Бизнесу</a>
+      </div>
+      <div class="f-col">
+        <h5>О сайте</h5>
+        <a href="about.html">Обо мне</a>
+        <a href="contacts.html">Контакты</a>
+        <a href="https://t.me/chumakova_HRD" target="_blank">Telegram-канал</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 hrdonline.ru — Зинаида Чумакова</span>
+      <span><a href="https://t.me/ZinaidaChu">@ZinaidaChu</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  window.addEventListener('scroll', function () {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  function toggleMenu() {
+    var m = document.getElementById('mobileMenu');
+    var open = m.classList.toggle('open');
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+
+  function toggleAcc(id) {
+    var item = document.getElementById(id);
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.acc-item').forEach(function (el) {
+      el.classList.remove('open');
+    });
+    if (!isOpen) item.classList.add('open');
+  }
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade').forEach(function (el) { io.observe(el); });
+</script>
+
+</body>
+</html>
+```
+
+---
+
+Структура страницы:
+
+| # | Блок | Фон |
+|---|------|-----|
+| 1 | Hero — split | тёмный |
+| 2 | Боль — 3 карточки | off-white |
+| 3 | Кто я + цитата | белый |
+| 4 | Форматы — аккордеон | off-white |
+| 5 | Курс + Книга | белый |
+| 6 | HRD Online | navy |
+| 7 | Форма | navy-deep |
+
+Смотрите в браузере — скажите что правим визуально.
