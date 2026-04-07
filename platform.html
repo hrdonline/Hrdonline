@@ -473,16 +473,28 @@
       <h2 style="color:var(--white); margin-bottom:16px;">Войдите первым</h2>
       <p>
         Имена из листа ожидания получают доступ раньше всех — и специальные условия
-        первых подписчиков. Напишите нам в Telegram — мы уведомим вас за 7 дней до старта.
+        первых подписчиков. Оставьте контакт — уведомим за 7 дней до старта.
       </p>
-      <div class="waitlist-btns">
-        <a href="https://t.me/ZinaidaChu" target="_blank" class="btn btn-gold btn-lg">
-          Встать в лист ожидания →
-        </a>
-        <a href="https://t.me/chumakova_HRD" target="_blank" class="btn btn-ghost btn-lg">
-          Следить за разработкой
-        </a>
-      </div>
+
+      <form class="waitlist-form" action="https://formspree.io/f/xkopvegv" method="POST">
+        <input type="hidden" name="_subject" value="Лист ожидания — hrdonline Platform" />
+        <div class="wl-row">
+          <div class="wl-group">
+            <label class="wl-label">Имя</label>
+            <input type="text" name="name" class="wl-input" placeholder="Ваше имя" required />
+          </div>
+          <div class="wl-group">
+            <label class="wl-label">Email</label>
+            <input type="email" name="email" class="wl-input" placeholder="you@example.com" required />
+          </div>
+        </div>
+        <div class="wl-group">
+          <label class="wl-label">Telegram или телефон</label>
+          <input type="text" name="contact" class="wl-input" placeholder="@username или +7 900..." />
+        </div>
+        <button type="submit" class="wl-submit">Войти в лист ожидания →</button>
+      </form>
+
       <p class="waitlist-note">Подписка · Запуск 1 июня 2026 · hrdonline.ru</p>
     </div>
   </div>
