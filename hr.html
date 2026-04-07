@@ -291,21 +291,22 @@
 </head>
 <body>
 
-<!-- NAVBAR -->
+<!-- NAVBAR — новый (7 пунктов, без Обо мне) -->
 <nav class="navbar" id="navbar">
   <div class="container">
     <div class="navbar-inner">
       <a href="index.html" class="navbar-brand">hrdonline<span>.</span></a>
       <div class="navbar-nav">
         <a href="business.html">Бизнесу</a>
-        <a href="hr.html" class="active">HR</a>
+        <a href="hr.html">Для HR</a>
         <a href="books.html">Книги</a>
         <a href="course.html">Курс</a>
-        <a href="about.html">Онлайн-сериал</a>
+        <a href="series.html">Сериал</a>
+        <a href="platform.html">Платформа</a>
         <a href="contacts.html">Контакты</a>
       </div>
       <div class="navbar-right">
-        <a href="#form" class="btn">Поговорить</a>
+        <a href="contacts.html" class="navbar-cta">Написать</a>
         <div class="hamburger" onclick="toggleMenu()">
           <span></span><span></span><span></span>
         </div>
@@ -313,6 +314,20 @@
     </div>
   </div>
 </nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="toggleMenu()">&#10005;</button>
+  <a href="index.html"    onclick="toggleMenu()">Главная</a>
+  <a href="business.html" onclick="toggleMenu()">Бизнесу</a>
+  <a href="hr.html"       onclick="toggleMenu()">Для HR</a>
+  <div class="m-divider"></div>
+  <a href="books.html"    onclick="toggleMenu()">Книги</a>
+  <a href="course.html"   onclick="toggleMenu()">Курс</a>
+  <a href="series.html"   onclick="toggleMenu()">Сериал</a>
+  <a href="platform.html" onclick="toggleMenu()">Платформа</a>
+  <div class="m-divider"></div>
+  <a href="contacts.html" onclick="toggleMenu()">Контакты</a>
+</div>
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
