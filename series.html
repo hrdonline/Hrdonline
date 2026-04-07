@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>С 9 до 18 · Онлайн-сериал о работе · hrdonline</title>
+  <meta name="description" content="«С 9 до 18» — онлайн-сериал о работе от директора по персоналу. 2-минутные серии. Первая серия 13 апреля." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy:       #0F2033;
+      --navy-mid:   #1A3347;
+      --navy-deep:  #080F1A;
+      --teal:       #1A8A7E;
+      --teal-light: #24B5A5;
+      --teal-mid:   #60C4B8;
+      --teal-pale:  #E0F5F3;
+      --gold:       #E8A730;
+      --gold-pale:  #FFF5DC;
+      --white:      #FFFFFF;
+      --off-white:  #F8FAFB;
+      --gray-100:   #F3F4F6;
+      --gray-300:   #D1D5DB;
+      --gray-500:   #6B7280;
+      --gray-700:   #374151;
+      --gray-900:   #111827;
+      --black:      #040810;
+      --radius:     16px;
+      --radius-sm:  10px;
+      --shadow:     0 4px 24px rgba(0,0,0,.2);
+      --shadow-lg:  0 20px 60px rgba(0,0,0,.4);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Manrope', sans-serif; color: var(--gray-900); background: var(--white); line-height: 1.6; overflow-x: hidden; }
+    img  { max-width: 100%; display: block; }
+    a    { color: inherit; text-decoration: none; }
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+    .section    { padding: 88px 0; }
+    .eyebrow    { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .16em; color: var(--teal); margin-bottom: 14px; }
+    h1 { font-size: clamp(3rem, 8vw, 7rem); font-weight: 800; line-height: 1; letter-spacing: -.04em; }
+    h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 800; line-height: 1.12; letter-spacing: -.015em; }
+    h3 { font-size: clamp(1.1rem, 2vw, 1.4rem); font-weight: 700; line-height: 1.3; }
+    p  { font-size: 1rem; line-height: 1.75; color: var(--gray-700); }
+
+    .btn { display: inline-block; padding: 14px 30px; border-radius: 50px; font-family: 'Manrope', sans-serif; font-weight: 700; font-size: .92rem; cursor: pointer; transition: all .25s; border: none; text-align: center; }
+    .btn-gold          { background: var(--gold); color: var(--navy); }
+    .btn-gold:hover    { background: #d4941f; transform: translateY(-2px); box-shadow: 0 10px 30px rgba(232,167,48,.4); }
+    .btn-primary       { background: var(--teal-light); color: var(--white); }
+    .btn-primary:hover { background: var(--teal); transform: translateY(-2px); }
+    .btn-ghost         { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,.35); }
+    .btn-ghost:hover   { border-color: var(--white); background: rgba(255,255,255,.1); }
+    .btn-outline-dark  { background: transparent; color: var(--navy); border: 2px solid var(--gray-300); }
+    .btn-outline-dark:hover { border-color: var(--teal); color: var(--teal); }
+
+    /* NAVBAR */
+    .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 200; padding: 20px 0; transition: all .3s; }
+    .navbar.scrolled { background: rgba(4,8,16,.97); backdrop-filter: blur(16px); padding: 13px 0; box-shadow: 0 2px 24px rgba(0,0,0,.5); }
+    .navbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .navbar-brand { color: var(--white); font-weight: 800; font-size: 1.2rem; letter-spacing: -.03em; }
+    .navbar-brand span { color: var(--teal-mid); }
+    .navbar-nav { display: flex; align-items: center; gap: 2px; }
+    .navbar-nav a { color: rgba(255,255,255,.65); font-size: .8rem; font-weight: 600; padding: 6px 11px; border-radius: 8px; transition: all .2s; white-space: nowrap; }
+    .navbar-nav a:hover, .navbar-nav a.active { color: var(--white); background: rgba(255,255,255,.08); }
+    .navbar-right { display: flex; align-items: center; gap: 12px; }
+    .navbar-cta { padding: 9px 20px; font-size: .82rem; background: var(--teal-light); color: var(--white); border: none; border-radius: 50px; font-family: 'Manrope', sans-serif; font-weight: 700; cursor: pointer; transition: all .2s; }
+    .navbar-cta:hover { background: var(--teal); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
+    .hamburger span { width: 22px; height: 2px; background: var(--white); border-radius: 2px; display: block; }
+
+    /* MOBILE MENU */
+    .mobile-menu { position: fixed; inset: 0; z-index: 199; background: var(--navy-deep); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; opacity: 0; visibility: hidden; transition: all .3s; }
+    .mobile-menu.open { opacity: 1; visibility: visible; }
+    .mobile-menu a { color: var(--white); font-size: 1.2rem; font-weight: 700; padding: 12px 32px; border-radius: 12px; transition: all .2s; }
+    .mobile-menu a:hover { background: rgba(255,255,255,.07); color: var(--teal-mid); }
+    .mobile-close { position: absolute; top: 22px; right: 26px; background: none; border: none; color: var(--white); font-size: 1.4rem; cursor: pointer; }
+    .m-divider { width: 40px; height: 1px; background: rgba(255,255,255,.1); margin: 6px 0; }
+
+    /* HERO — CINEMATIC */
+    .hero-series {
+      background: var(--black);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 120px 0 80px;
+    }
+    .hero-series::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 60% 40%, rgba(26,138,126,.12) 0%, transparent 60%),
+                  radial-gradient(ellipse at 10% 80%, rgba(232,167,48,.06) 0%, transparent 50%);
+    }
+    .hero-series-inner { position: relative; z-index: 1; width: 100%; }
+    .series-kicker { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; flex-wrap: wrap; }
+    .series-kicker-tag { font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .16em; color: var(--gold); border: 1px solid rgba(232,167,48,.4); padding: 5px 14px; border-radius: 50px; }
+    .series-kicker-sep { color: rgba(255,255,255,.2); }
+    .series-kicker-info { font-size: .82rem; color: rgba(255,255,255,.5); font-weight: 600; }
+    .hero-series h1 { color: var(--white); margin-bottom: 20px; }
+    .hero-series h1 em { font-style: normal; background: linear-gradient(90deg, var(--teal-mid), var(--gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .series-subtitle { font-size: 1.1rem; color: rgba(255,255,255,.6); margin-bottom: 36px; max-width: 520px; line-height: 1.7; }
+    .series-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 40px; }
+    .series-meta-pill { display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1); border-radius: 50px; padding: 8px 18px; font-size: .82rem; color: rgba(255,255,255,.75); font-weight: 600; }
+    .series-meta-pill.gold-pill { border-color: rgba(232,167,48,.4); color: var(--gold); background: rgba(232,167,48,.08); }
+    .series-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .premiere-badge {
+      position: absolute; top: 0; right: 0;
+      background: var(--gold); color: var(--navy);
+      width: 120px; height: 120px; border-radius: 50%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      font-weight: 800; font-size: .78rem; text-align: center; line-height: 1.4;
+      box-shadow: 0 8px 32px rgba(232,167,48,.4);
+    }
+    .premiere-badge strong { font-size: 1.1rem; display: block; }
+
+    /* POSTERS */
+    .section-posters { background: var(--black); padding: 0 0 88px; }
+    .posters-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .poster-wrap {
+      position: relative; border-radius: var(--radius); overflow: hidden;
+      aspect-ratio: 9/16;
+      box-shadow: var(--shadow-lg);
+      transition: transform .3s;
+    }
+    .poster-wrap:hover { transform: scale(1.02); }
+    .poster-wrap img { width: 100%; height: 100%; object-fit: cover; }
+    .poster-ph {
+      width: 100%; height: 100%;
+      background: linear-gradient(160deg, var(--navy-mid) 0%, #0d3040 100%);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 12px; color: rgba(255,255,255,.4); font-size: .82rem; text-align: center; padding: 32px;
+    }
+    .poster-ph strong { color: rgba(255,255,255,.7); font-size: 1rem; }
+    .poster-num { position: absolute; bottom: 16px; left: 16px; background: rgba(0,0,0,.6); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,.1); color: rgba(255,255,255,.7); font-size: .72rem; font-weight: 700; padding: 5px 12px; border-radius: 50px; }
+
+    /* ABOUT */
+    .section-about-series { background: var(--navy-deep); padding: 88px 0; }
+    .about-series-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .about-series-text .eyebrow { color: var(--teal-mid); }
+    .about-series-text h2 { color: var(--white); margin-bottom: 20px; }
+    .about-series-text p  { color: rgba(255,255,255,.65); margin-bottom: 16px; line-height: 1.8; }
+    .series-facts { display: flex; flex-direction: column; gap: 16px; margin-top: 28px; }
+    .series-fact { display: flex; gap: 14px; align-items: flex-start; }
+    .fact-icon { width: 42px; height: 42px; background: rgba(96,196,184,.12); border: 1px solid rgba(96,196,184,.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.1rem; }
+    .fact-text h4 { color: var(--white); margin-bottom: 3px; font-size: .95rem; }
+    .fact-text p  { color: rgba(255,255,255,.5); font-size: .85rem; margin: 0; }
+    .creator-card { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); border-radius: var(--radius); padding: 32px; }
+    .creator-card-top { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+    .creator-avatar { width: 64px; height: 64px; border-radius: 50%; overflow: hidden; flex-shrink: 0; background: linear-gradient(135deg, var(--teal), var(--navy-mid)); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1rem; color: var(--white); border: 2px solid var(--teal-mid); }
+    .creator-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+    .creator-name { font-size: 1rem; font-weight: 800; color: var(--white); margin-bottom: 4px; }
+    .creator-role { font-size: .8rem; color: var(--teal-mid); font-weight: 600; }
+    .creator-card p { color: rgba(255,255,255,.62); font-size: .88rem; line-height: 1.75; }
+
+    /* PLATFORMS */
+    .section-platforms { background: var(--navy); padding: 88px 0; text-align: center; }
+    .platforms-hdr { margin-bottom: 48px; }
+    .platforms-hdr .eyebrow { color: var(--teal-mid); }
+    .platforms-hdr h2 { color: var(--white); margin-bottom: 12px; }
+    .platforms-hdr p { color: rgba(255,255,255,.55); max-width: 440px; margin: 0 auto; }
+    .platforms-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 720px; margin: 0 auto; }
+    .platform-card { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); border-radius: var(--radius); padding: 28px 20px; transition: all .2s; }
+    .platform-card:hover { border-color: var(--teal-mid); background: rgba(96,196,184,.08); transform: translateY(-4px); }
+    .platform-card a { text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .platform-icon { font-size: 2rem; }
+    .platform-name { font-size: .85rem; font-weight: 700; color: var(--white); }
+    .platform-handle { font-size: .72rem; color: rgba(255,255,255,.4); margin-top: 2px; }
+
+    /* FOOTER */
+    .footer { background: var(--navy-deep); color: rgba(255,255,255,.42); padding: 72px 0 32px; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 56px; margin-bottom: 56px; }
+    .f-logo { font-size: 1.3rem; font-weight: 800; color: var(--white); margin-bottom: 14px; letter-spacing: -.03em; }
+    .f-logo span { color: var(--teal-mid); }
+    .f-desc { font-size: .87rem; color: rgba(255,255,255,.42); line-height: 1.7; margin-bottom: 22px; }
+    .f-socials { display: flex; gap: 10px; }
+    .f-soc { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border: 1px solid rgba(255,255,255,.12); border-radius: 50%; color: rgba(255,255,255,.5); font-size: .78rem; font-weight: 700; transition: all .2s; }
+    .f-soc:hover { border-color: var(--teal); background: var(--teal); color: var(--white); }
+    .f-col h5 { color: var(--white); font-size: .72rem; text-transform: uppercase; letter-spacing: .14em; margin-bottom: 18px; }
+    .f-col a  { display: block; color: rgba(255,255,255,.42); font-size: .85rem; margin-bottom: 10px; transition: color .2s; }
+    .f-col a:hover { color: var(--teal-mid); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.07); padding-top: 28px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; font-size: .8rem; }
+    .footer-bottom a { color: var(--teal-mid); }
+
+    .fade { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
+    .fade.in { opacity: 1; transform: translateY(0); }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(26px)} to{opacity:1;transform:translateY(0)} }
+    .hero-series-inner > * { animation: fadeUp .65s ease backwards; }
+    .hero-series-inner > *:nth-child(1) { animation-delay: .05s; }
+    .hero-series-inner > *:nth-child(2) { animation-delay: .15s; }
+    .hero-series-inner > *:nth-child(3) { animation-delay: .25s; }
+    .hero-series-inner > *:nth-child(4) { animation-delay: .35s; }
+    .hero-series-inner > *:nth-child(5) { animation-delay: .45s; }
+
+    @media (max-width: 920px) { .navbar-nav { display: none; } .hamburger { display: flex; } }
+    @media (max-width: 768px) {
+      h1 { font-size: 3.2rem; }
+      h2 { font-size: 1.8rem; }
+      .section { padding: 60px 0; }
+      .section-posters { padding-bottom: 60px; }
+      .posters-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .poster-wrap { aspect-ratio: 2/3; }
+      .about-series-grid { grid-template-columns: 1fr; gap: 40px; }
+      .platforms-grid { grid-template-columns: repeat(2, 1fr); max-width: 400px; }
+      .premiere-badge { width: 90px; height: 90px; font-size: .68rem; }
+      .premiere-badge strong { font-size: .95rem; }
+      .footer-top { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <div class="navbar-inner">
+      <a href="index.html" class="navbar-brand">hrdonline<span>.</span></a>
+      <div class="navbar-nav">
+        <a href="business.html">Бизнесу</a>
+        <a href="hr.html">Для HR</a>
+        <a href="books.html">Книги</a>
+        <a href="course.html">Курс</a>
+        <a href="series.html" class="active">Сериал</a>
+        <a href="platform.html">Платформа</a>
+        <a href="contacts.html">Контакты</a>
+      </div>
+      <div class="navbar-right">
+        <a href="contacts.html" class="navbar-cta">Написать</a>
+        <div class="hamburger" onclick="toggleMenu()">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="toggleMenu()">&#10005;</button>
+  <a href="index.html"    onclick="toggleMenu()">Главная</a>
+  <a href="business.html" onclick="toggleMenu()">Бизнесу</a>
+  <a href="hr.html"       onclick="toggleMenu()">Для HR</a>
+  <div class="m-divider"></div>
+  <a href="books.html"    onclick="toggleMenu()">Книги</a>
+  <a href="course.html"   onclick="toggleMenu()">Курс</a>
+  <a href="series.html"   onclick="toggleMenu()">Сериал</a>
+  <a href="platform.html" onclick="toggleMenu()">Платформа</a>
+  <div class="m-divider"></div>
+  <a href="contacts.html" onclick="toggleMenu()">Контакты</a>
+</div>
+
+<!-- HERO -->
+<section class="hero-series">
+  <div class="container">
+    <div class="hero-series-inner" style="position:relative;">
+      <div class="series-kicker">
+        <span class="series-kicker-tag">Новый проект</span>
+        <span class="series-kicker-sep">·</span>
+        <span class="series-kicker-info">Онлайн-сериал · 2026</span>
+      </div>
+      <h1><em>С 9</em> до 18</h1>
+      <p class="series-subtitle">Онлайн-сериал о работе<br />от директора по персоналу</p>
+      <div class="series-meta">
+        <div class="series-meta-pill gold-pill"> Первая серия — 13 апреля</div>
+        <div class="series-meta-pill"> 2 минуты · каждая серия</div>
+        <div class="series-meta-pill"> 4 платформы</div>
+      </div>
+      <div class="series-btns">
+        <a href="https://t.me/chumakova_HRD" target="_blank" class="btn btn-gold">Смотреть в Telegram</a>
+        <a href="#platforms" class="btn btn-ghost">Где смотреть →</a>
+      </div>
+      <div class="premiere-badge">
+        <strong>13</strong>апреля<br/>премьера
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POSTERS -->
+<section class="section-posters">
+  <div class="container">
+    <div class="posters-grid">
+      <div class="poster-wrap">
+        <img src="poster1.jpg" alt="С 9 до 18 — постер 1"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="poster-ph" style="display:none;">
+          <strong>Постер 1</strong>
+          poster1.jpg
+        </div>
+        <div class="poster-num">Постер 1</div>
+      </div>
+      <div class="poster-wrap">
+        <img src="poster2.jpg" alt="С 9 до 18 — постер 2"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="poster-ph" style="display:none;">
+          <strong>Постер 2</strong>
+          poster2.jpg
+        </div>
+        <div class="poster-num">Постер 2</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section-about-series">
+  <div class="container">
+    <div class="about-series-grid">
+      <div class="about-series-text">
+        <div class="eyebrow">О сериале</div>
+        <h2>Работа — это не скучно.<br />Это история.</h2>
+        <p>«С 9 до 18» — это взгляд HR-директора на то, что происходит внутри компаний каждый день. Обычная работа, решения, люди, конфликты и смысл — в двух минутах.</p>
+        <p>Каждая серия — отдельная история или сцена из офисной жизни.</p>
+        <div class="series-facts">
+          <div class="series-fact">
+            <div class="fact-icon">🎬</div>
+            <div class="fact-text"><h4>Формат</h4><p>Онлайн-сериал · 2-минутные серии</p></div>
+          </div>
+          <div class="series-fact">
+            <div class="fact-icon"></div>
+            <div class="fact-text"><h4>Премьера первой серии</h4><p>13 апреля 2026</p></div>
+          </div>
+          <div class="series-fact">
+            <div class="fact-icon"></div>
+            <div class="fact-text"><h4>Доступно на</h4><p>Instagram · hrdonline.ru · Telegram · ВКонтакте</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="creator-card fade">
+        <div class="creator-card-top">
+          <div class="creator-avatar">
+            <img src="zinaida.jpg" alt="Зинаида Чумакова"
+                 onerror="this.style.display='none';this.parentElement.innerHTML='ЗЧ';" />
+          </div>
+          <div>
+            <div class="creator-name">Зинаида Чумакова</div>
+            <div class="creator-role">Создатель сериала · HRD · hrdonline</div>
+          </div>
+        </div>
+        <p>
+          Я 20 лет наблюдаю за тем, как устроена работа изнутри. За это время накопился огромный материал —
+          смешной, грустный, настоящий. «С 9 до 18» — способ рассказать об этом коротко и честно.
+        </p>
+        <p style="margin-top:12px;">
+          Если вы когда-нибудь работали в офисе — вы узнаете себя.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORMS -->
+<section class="section-platforms" id="platforms">
+  <div class="container">
+    <div class="platforms-hdr fade">
+      <div class="eyebrow">Где смотреть</div>
+      <h2>Доступно на 4 платформах</h2>
+      <p>Выбирайте удобную — новые серии выходят одновременно везде.</p>
+    </div>
+    <div class="platforms-grid">
+      <div class="platform-card fade">
+        <a href="https://t.me/chumakova_HRD" target="_blank">
+          <div class="platform-icon"></div>
+          <div class="platform-name">Telegram</div>
+          <div class="platform-handle">@chumakova_HRD</div>
+        </a>
+      </div>
+      <div class="platform-card fade">
+        <a href="https://www.instagram.com/" target="_blank">
+          <div class="platform-icon"></div>
+          <div class="platform-name">Instagram</div>
+          <div class="platform-handle">@hrdonline</div>
+        </a>
+      </div>
+      <div class="platform-card fade">
+        <a href="https://vk.com/" target="_blank">
+          <div class="platform-icon"></div>
+          <div class="platform-name">ВКонтакте</div>
+          <div class="platform-handle">hrdonline</div>
+        </a>
+      </div>
+      <div class="platform-card fade">
+        <a href="https://hrdonline.ru" target="_blank">
+          <div class="platform-icon"></div>
+          <div class="platform-name">Сайт</div>
+          <div class="platform-handle">hrdonline.ru</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="f-logo">hrdonline<span>.</span></div>
+        <p class="f-desc">Зинаида Чумакова — независимый HRD. 20 лет опыта. Работаю напрямую с бизнесом и HR.</p>
+        <div class="f-socials">
+          <a href="https://t.me/chumakova_HRD" target="_blank" class="f-soc">TG</a>
+          <a href="https://t.me/ZinaidaChu"    target="_blank" class="f-soc">DM</a>
+        </div>
+      </div>
+      <div class="f-col">
+        <h5>Сериал</h5>
+        <a href="series.html">О сериале</a>
+        <a href="https://t.me/chumakova_HRD" target="_blank">Смотреть в Telegram</a>
+      </div>
+      <div class="f-col">
+        <h5>Проекты</h5>
+        <a href="course.html">Курс ИИ в HR</a>
+        <a href="books.html">Книги</a>
+        <a href="platform.html">Платформа</a>
+      </div>
+      <div class="f-col">
+        <h5>Навигация</h5>
+        <a href="business.html">Бизнесу</a>
+        <a href="hr.html">Для HR</a>
+        <a href="contacts.html">Контакты</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 hrdonline.ru — Зинаида Чумакова</span>
+      <span><a href="https://t.me/ZinaidaChu">@ZinaidaChu</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  window.addEventListener('scroll', function () {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+  });
+  function toggleMenu() {
+    var m = document.getElementById('mobileMenu');
+    var open = m.classList.toggle('open');
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade').forEach(function(el){ io.observe(el); });
+</script>
+</body>
+</html>
