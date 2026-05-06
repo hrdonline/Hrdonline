@@ -1,721 +1,797 @@
 <!DOCTYPE html>
+
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>hrdonline · Зинаида Чумакова</title>
-  <meta name="description" content="Независимый HRD. Зинаида Чумакова — работаю напрямую с CEO и собственниками, и с HR." />
+  <meta name="description" content="Независимый HRD. Зинаида Чумакова — работаю напрямую с CEO и собственниками." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
-
-    /* ============ VARIABLES ============ */
     :root {
-      --navy:       #0F2033;
-      --navy-mid:   #1A3347;
-      --navy-deep:  #080F1A;
-      --teal:       #1A8A7E;
-      --teal-light: #24B5A5;
-      --teal-mid:   #60C4B8;
-      --teal-pale:  #E0F5F3;
-      --gold:       #E8A730;
-      --gold-pale:  #FFF5DC;
-      --white:      #FFFFFF;
-      --off-white:  #F8FAFB;
-      --gray-100:   #F3F4F6;
-      --gray-300:   #D1D5DB;
-      --gray-500:   #6B7280;
-      --gray-700:   #374151;
-      --gray-900:   #111827;
-      --radius:     16px;
-      --radius-sm:  10px;
-      --shadow:     0 4px 24px rgba(15,32,51,.1);
-      --shadow-lg:  0 16px 56px rgba(15,32,51,.18);
+      --navy:      #0F2033;
+      --navy-deep: #080F1A;
+      --teal:      #1A8A7E;
+      --teal-mid:  #60C4B8;
+      --gold:      #E8A730;
+      --white:     #FFFFFF;
+      --off-white: #F8FAFB;
+      --gray-100:  #F3F4F6;
+      --gray-300:  #D1D5DB;
+      --gray-500:  #6B7280;
+      --radius:    16px;
+      --shadow:    0 4px 24px rgba(15,32,51,.1);
     }
 
-    /* ============ RESET ============ */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Manrope', sans-serif; color: var(--gray-900); background: var(--white); line-height: 1.6; overflow-x: hidden; }
-    img  { max-width: 100%; display: block; }
-    a    { color: inherit; text-decoration: none; }
-
-    /* ============ UTILITY ============ */
-    .section     { padding: 96px 0; }
-    .container   { max-width: 1160px; margin: 0 auto; padding: 0 32px; }
-    .text-center { text-align: center; }
-    .eyebrow     { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .16em; color: var(--teal); margin-bottom: 16px; }
-    .eyebrow.light { color: var(--teal-mid); }
-    .eyebrow.gold  { color: var(--gold); }
-
-    /* ============ TYPE ============ */
-    h1 { font-size: clamp(2.6rem, 6vw, 4.8rem); font-weight: 800; line-height: 1.06; letter-spacing: -.025em; }
-    h2 { font-size: clamp(1.9rem, 4vw, 3.2rem); font-weight: 800; line-height: 1.1;  letter-spacing: -.015em; }
-    h3 { font-size: clamp(1.15rem, 2.5vw, 1.5rem); font-weight: 700; line-height: 1.3; }
-    h4 { font-size: 1.05rem; font-weight: 700; }
-    p  { font-size: 1rem; line-height: 1.78; color: var(--gray-700); }
-
-    /* ============ BUTTONS ============ */
-    .btn { display: inline-block; padding: 16px 34px; border-radius: 50px; font-family: 'Manrope',sans-serif; font-weight: 700; font-size: .95rem; cursor: pointer; transition: all .25s; border: none; text-align: center; }
-    .btn-gold         { background: var(--gold);       color: var(--navy); }
-    .btn-gold:hover   { background: #d4941f; transform: translateY(-2px); box-shadow: 0 10px 30px rgba(232,167,48,.4); }
-    .btn-primary      { background: var(--teal-light); color: var(--white); }
-    .btn-primary:hover { background: var(--teal); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(26,138,126,.38); }
-    .btn-ghost-light  { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,.32); }
-    .btn-ghost-light:hover { border-color: var(--white); background: rgba(255,255,255,.1); }
-    .btn-ghost-dark   { background: transparent; color: var(--navy); border: 2px solid var(--gray-300); }
-    .btn-ghost-dark:hover { border-color: var(--navy); background: var(--navy); color: var(--white); }
-    .btn-lg { padding: 19px 46px; font-size: 1.05rem; }
-
-    /* ============ NAVBAR ============ */
-    .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 200; padding: 20px 0; transition: all .3s; }
-    .navbar.scrolled { background: rgba(8,15,26,.96); backdrop-filter: blur(16px); padding: 13px 0; box-shadow: 0 2px 24px rgba(0,0,0,.3); }
-    .navbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-    .navbar-brand { color: var(--white); font-weight: 800; font-size: 1.2rem; letter-spacing: -.03em; }
-    .navbar-brand span { color: var(--teal-mid); }
-    .navbar-nav a { color: rgba(255,255,255,.68); font-size: .84rem; font-weight: 600; padding: 7px 13px; border-radius: 8px; transition: all .2s; white-space: nowrap; }
-    .navbar-nav a:hover { color: var(--white); background: rgba(255,255,255,.08); }
-    .navbar-nav { display: flex; align-items: center; gap: 2px; }
-    .navbar-right .btn-cta,
-.navbar-right .navbar-cta {
-  padding: 9px 22px;
-  font-size: .84rem;
-  background: var(--teal-light);
-  color: var(--white);
-  border: 2px solid var(--teal-light);
-  border-radius: 50px;
+```
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
   font-family: 'Manrope', sans-serif;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all .2s;
+  color: var(--gray-500);
+  background: var(--white);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+
+/* ══ NAVBAR ══ */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 200;
+  padding: 24px 48px;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: all .3s;
+}
+.navbar.scrolled {
+  background: rgba(8,15,26,.95);
+  backdrop-filter: blur(16px);
+  padding: 14px 48px;
+  box-shadow: 0 2px 24px rgba(0,0,0,.3);
+}
+.nav-brand {
+  font-size: .78rem; font-weight: 800;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: rgba(255,255,255,.9);
+}
+.nav-brand em { font-style: normal; color: var(--teal-mid); }
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a {
+  font-size: .76rem; font-weight: 600; letter-spacing: .05em;
+  color: rgba(255,255,255,.55); transition: color .2s;
+}
+.nav-links a:hover { color: #fff; }
+.nav-cta {
+  font-size: .76rem; font-weight: 700;
+  color: var(--teal-mid);
+  border-bottom: 1px solid var(--teal-mid);
+  padding-bottom: 1px; transition: opacity .2s;
+}
+.nav-cta:hover { opacity: .65; }
+.hamburger {
+  display: none; flex-direction: column;
+  gap: 5px; cursor: pointer; padding: 6px; width: 34px;
+}
+.hamburger span { display: block; height: 2px; background: #fff; border-radius: 2px; }
+
+/* ══ MOBILE ══ */
+.mobile-menu {
+  position: fixed; inset: 0; z-index: 199;
+  background: var(--navy-deep);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 8px;
+  opacity: 0; visibility: hidden; transition: all .3s;
+}
+.mobile-menu.open { opacity: 1; visibility: visible; }
+.mobile-menu a {
+  color: #fff; font-size: 1.2rem; font-weight: 700;
+  padding: 12px 32px; border-radius: 10px; transition: all .2s;
+}
+.mobile-menu a:hover { background: rgba(255,255,255,.07); color: var(--teal-mid); }
+.mobile-close {
+  position: absolute; top: 22px; right: 26px;
+  background: none; border: none; color: #fff; font-size: 1.4rem; cursor: pointer;
+}
+.m-div { width: 36px; height: 1px; background: rgba(255,255,255,.1); margin: 4px 0; }
+
+/* ══════════════════════════════
+   01 · HERO — split: текст слева, фото справа
+   как Susan David
+══════════════════════════════ */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%; height: 100vh;
+  min-height: 640px;
+  overflow: hidden;
+}
+
+/* Левая половина — тёмный фон с текстом */
+.hero-left {
+  background: linear-gradient(160deg, var(--navy-deep) 0%, var(--navy) 100%);
+  display: flex; align-items: center;
+  padding: 140px 64px 80px;
+  position: relative; overflow: hidden;
+}
+.hero-left::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse at 0% 80%, rgba(26,138,126,.15) 0%, transparent 55%),
+    radial-gradient(ellipse at 100% 10%, rgba(232,167,48,.05) 0%, transparent 50%);
+}
+
+/* Правая половина — фото */
+.hero-right {
+  position: relative; overflow: hidden;
+}
+.hero-right img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+/* Плейсхолдер */
+.hero-ph {
+  width: 100%; height: 100%;
+  background: linear-gradient(150deg, #1A3347 0%, #0F2033 40%, #1A8A7E 100%);
+}
+/* Лёгкий оверлей на фото */
+.hero-right::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, rgba(8,15,26,.2) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+/* Контент слева */
+.hero-content {
+  position: relative; z-index: 2;
+  text-align: left;
+  max-width: 520px;
+}
+
+.hero-name {
+  font-size: .68rem; font-weight: 700;
+  letter-spacing: .24em; text-transform: uppercase;
+  color: var(--teal-mid);
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeUp .7s .1s ease forwards;
+}
+
+.hero-headline {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(3.6rem, 8vw, 6.5rem);
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -.02em;
+  color: #fff;
+  margin-bottom: 48px;
+  opacity: 0;
+  animation: fadeUp .7s .25s ease forwards;
+}
+.hero-headline .static {
+  display: block;
+  margin-bottom: 0;
+}
+/* Строка с морфингом — фиксированная высота */
+.hero-headline .morph-line {
+  display: block;
+  height: 1.05em;
+  overflow: hidden;
+  position: relative;
+}
+#morphWord {
+  display: block;
+  font-style: italic;
+  color: var(--teal-mid);
+}
+#morphWord.exit  { animation: wExit  .3s ease forwards; }
+#morphWord.enter { animation: wEnter .3s ease forwards; }
+
+@keyframes wExit  {
+  from { opacity:1; transform:translateY(0); }
+  to   { opacity:0; transform:translateY(-24px); }
+}
+@keyframes wEnter {
+  from { opacity:0; transform:translateY(24px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+.hero-action {
+  opacity: 0;
+  animation: fadeUp .7s .4s ease forwards;
+}
+.btn-hero {
   display: inline-block;
+  background: var(--gold); color: var(--navy);
+  padding: 16px 44px; border-radius: 50px;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700; font-size: .95rem;
+  transition: all .25s;
 }
-.navbar-right .btn-cta:hover,
-.navbar-right .navbar-cta:hover {
-  background: transparent;
-  color: var(--white);
-  border-color: var(--white);
+.btn-hero:hover {
+  background: #d4941f; transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(232,167,48,.4);
 }
 
-    /* ============ MOBILE MENU ============ */
-    .mobile-menu { position: fixed; inset: 0; z-index: 199; background: var(--navy-deep); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; opacity: 0; visibility: hidden; transition: all .3s; }
-    .mobile-menu.open { opacity: 1; visibility: visible; }
-    .mobile-menu a { color: var(--white); font-size: 1.25rem; font-weight: 700; padding: 13px 32px; border-radius: 12px; transition: all .2s; }
-    .mobile-menu a:hover { background: rgba(255,255,255,.07); color: var(--teal-mid); }
-    .mobile-close { position: absolute; top: 22px; right: 26px; background: none; border: none; color: var(--white); font-size: 1.4rem; cursor: pointer; }
-    .m-divider { width: 40px; height: 1px; background: rgba(255,255,255,.1); margin: 8px 0; }
+/* Индикатор скролла */
+.scroll-hint {
+  position: absolute; bottom: 32px; left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  opacity: 0; animation: fadeIn 1s 1.2s ease forwards;
+}
+.scroll-dot {
+  width: 1px; height: 40px;
+  background: rgba(255,255,255,.2);
+  position: relative; overflow: hidden;
+}
+.scroll-dot::after {
+  content: '';
+  position: absolute; top: -100%; left: 0;
+  width: 100%; height: 100%;
+  background: var(--teal-mid);
+  animation: scrollLine 2s 1.5s ease infinite;
+}
+@keyframes scrollLine {
+  0%   { top: -100%; }
+  100% { top: 100%; }
+}
 
-    /* ============ HERO — person split ============ */
-    .hero {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: 100vh;
-      padding-top: 0;
-    }
-    .hero-left {
-      background: linear-gradient(160deg, var(--navy-deep) 0%, var(--navy) 100%);
-      display: flex; align-items: center;
-      padding: 140px 64px 80px;
-      position: relative; overflow: hidden;
-    }
-    .hero-left::before {
-      content: ''; position: absolute; inset: 0; pointer-events: none;
-      background:
-        radial-gradient(ellipse at 10% 80%, rgba(26,138,126,.18) 0%, transparent 50%),
-        radial-gradient(ellipse at 90% 10%, rgba(232,167,48,.06) 0%, transparent 45%);
-    }
-    .hero-text { position: relative; z-index: 1; max-width: 540px; }
-    .hero-name  { font-size: .78rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--teal-mid); margin-bottom: 24px; }
-    .hero h1    { color: var(--white); margin-bottom: 28px; }
-    .hero h1 em { font-style: normal; color: var(--teal-mid); display: block; }
-    .hero-sub   { font-size: 1.07rem; color: rgba(255,255,255,.62); line-height: 1.78; margin-bottom: 44px; }
-    .hero-paths { display: flex; flex-direction: column; gap: 14px; max-width: 400px; }
-    .hero-path-btn {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 18px 26px; border-radius: 14px; border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.05); transition: all .3s; color: var(--white);
-    }
-    .hero-path-btn:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.28); transform: translateX(6px); }
-    .hero-path-btn.gold  { background: var(--gold); border-color: var(--gold); color: var(--navy); }
-    .hero-path-btn.gold:hover { background: #d4941f; border-color: #d4941f; }
-    .hp-label { font-weight: 700; font-size: .95rem; }
-    .hp-sub   { font-size: .78rem; opacity: .65; margin-top: 3px; }
-    .hp-arrow { font-size: 1.1rem; flex-shrink: 0; }
-    .hero-right { position: relative; overflow: hidden; }
-    .hero-right img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
-    .hero-photo-ph { width: 100%; height: 100%; background: linear-gradient(160deg, #1A3347 0%, var(--teal) 100%); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.3); font-size: .9rem; text-align: center; padding: 24px; }
+/* ══════════════════════════════
+   02 · ЯКОРНАЯ ФРАЗА
+══════════════════════════════ */
+.section-anchor {
+  background: var(--navy-deep);
+  padding: 96px 10vw;
+}
+.anchor-phrase {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2rem, 3.8vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -.015em;
+  color: #fff;
+  max-width: 700px;
+}
+.anchor-phrase em {
+  font-style: italic;
+  color: var(--teal-mid);
+}
+.anchor-sub {
+  margin-top: 24px;
+  font-size: .97rem;
+  color: rgba(255,255,255,.4);
+  max-width: 460px;
+  line-height: 1.75;
+}
 
-    /* ============ MANIFESTO ============ */
-    .manifesto { background: var(--navy-deep); padding: 72px 0; }
-    .manifesto-inner { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; }
-    .man-item { padding: 36px 44px; border-right: 1px solid rgba(255,255,255,.08); }
-    .man-item:last-child { border-right: none; }
-    .man-item p { color: rgba(255,255,255,.72); font-size: 1.02rem; line-height: 1.72; font-style: italic; }
-    .man-item p strong { color: var(--white); font-style: normal; }
+/* ══════════════════════════════
+   03 · ВЕРХНИЙ ЭТАЖ
+══════════════════════════════ */
+.section-digest { background: var(--off-white); padding: 96px 10vw; }
 
-    /* ============ CEO SECTION ============ */
-    .section-ceo { background: var(--off-white); }
-    .ceo-grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-    .ceo-left  { position: sticky; top: 120px; }
-    .ceo-label { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .16em; color: var(--gold); margin-bottom: 16px; }
-    .ceo-left h2 { color: var(--navy); margin-bottom: 22px; }
-    .ceo-left h2 em { font-style: normal; color: var(--teal); }
-    .ceo-desc { color: var(--gray-700); font-size: 1.02rem; line-height: 1.78; margin-bottom: 32px; }
-    .ceo-left .btn { margin-bottom: 12px; }
-    .ceo-right { display: flex; flex-direction: column; gap: 16px; }
-    .pain-card { background: var(--white); border: 1px solid var(--gray-300); border-radius: var(--radius); padding: 28px 30px; transition: all .25s; }
-    .pain-card:hover { border-color: var(--teal-light); box-shadow: var(--shadow); transform: translateX(8px); }
-    .pain-card h4 { color: var(--navy); margin-bottom: 8px; font-size: 1rem; }
-    .pain-card p  { font-size: .88rem; color: var(--gray-500); line-height: 1.65; }
-    .pain-line { width: 32px; height: 3px; background: var(--gold); border-radius: 2px; margin-bottom: 14px; }
+.digest-header { margin-bottom: 48px; }
+.section-label {
+  font-size: .65rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .2em;
+  color: var(--teal); margin-bottom: 10px;
+  display: block;
+}
+.section-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 800; letter-spacing: -.015em;
+  color: var(--navy); line-height: 1.1;
+  margin-bottom: 14px;
+}
+.section-title em { font-style: italic; color: var(--teal); }
+.section-desc {
+  font-size: .97rem; color: var(--gray-500);
+  max-width: 500px; line-height: 1.72;
+}
 
-    /* ============ HR SECTION ============ */
-    .section-hr { background: var(--navy); }
-    .hr-grid    { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-    .hr-right   { position: sticky; top: 120px; }
-    .hr-label   { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .16em; color: var(--teal-mid); margin-bottom: 16px; }
-    .hr-right h2 { color: var(--white); margin-bottom: 22px; }
-    .hr-right h2 em { font-style: normal; color: var(--teal-mid); }
-    .hr-desc  { color: rgba(255,255,255,.65); font-size: 1.02rem; line-height: 1.78; margin-bottom: 32px; }
-    .hr-cards { display: flex; flex-direction: column; gap: 14px; }
-    .hr-card  { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); border-radius: var(--radius); padding: 26px 28px; transition: all .25s; }
-    .hr-card:hover { background: rgba(255,255,255,.09); border-color: rgba(96,196,184,.4); transform: translateX(-8px); }
-    .hr-card h4 { color: var(--white); margin-bottom: 7px; font-size: .97rem; }
-    .hr-card p  { font-size: .86rem; color: rgba(255,255,255,.55); line-height: 1.62; }
-    .hr-line { width: 32px; height: 3px; background: var(--teal-mid); border-radius: 2px; margin-bottom: 14px; }
+.digest-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px; margin-bottom: 32px;
+}
+.issue-card {
+  background: #fff;
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius);
+  overflow: hidden; transition: all .25s;
+  display: block;
+}
+.issue-card:hover {
+  border-color: var(--teal-mid);
+  box-shadow: var(--shadow);
+  transform: translateY(-4px);
+}
+.issue-cover {
+  height: 140px; padding: 20px;
+  display: flex; flex-direction: column; justify-content: flex-end;
+}
+.ic-1 { background: linear-gradient(135deg, #080F1A, #0F2033); }
+.ic-2 { background: linear-gradient(135deg, #0F2033, #1A8A7E 90%, #080F1A); }
+.ic-3 { background: linear-gradient(135deg, #080F1A, #1A3347); }
+.issue-series {
+  font-size: .54rem; font-weight: 700;
+  letter-spacing: .16em; text-transform: uppercase;
+  color: rgba(255,255,255,.3); margin-bottom: 5px;
+}
+.issue-cover-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.15rem; font-weight: 800;
+  color: #fff; line-height: 1.1;
+}
+.issue-cover-title em { font-style: italic; color: var(--teal-mid); }
+.issue-accent {
+  width: 20px; height: 2px;
+  background: var(--gold); border-radius: 2px; margin-top: 10px;
+}
+.issue-body { padding: 18px 20px; }
+.issue-num {
+  font-size: .6rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em;
+  color: var(--teal); margin-bottom: 5px;
+}
+.issue-name {
+  font-size: .88rem; font-weight: 700;
+  color: var(--navy); line-height: 1.3; margin-bottom: 5px;
+}
+.issue-desc {
+  font-size: .78rem; color: var(--gray-500);
+  line-height: 1.5; margin-bottom: 12px;
+}
+.issue-link { font-size: .75rem; font-weight: 700; color: var(--teal); }
 
-    /* ============ HOW I WORK ============ */
-    .section-how { background: var(--white); }
-    .how-intro { max-width: 680px; margin: 0 auto 56px; text-align: center; }
-    .how-intro h2 { color: var(--navy); margin-bottom: 16px; }
-    .how-intro p  { color: var(--gray-500); font-size: 1.05rem; }
-    .how-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; background: var(--gray-100); border-radius: var(--radius); overflow: hidden; }
-    .how-item { background: var(--white); padding: 40px 36px; }
-    .how-n    { font-size: 3.2rem; font-weight: 800; color: var(--gray-100); line-height: 1; margin-bottom: 16px; }
-    .how-item h3 { color: var(--navy); margin-bottom: 10px; font-size: 1.05rem; }
-    .how-item p  { color: var(--gray-500); font-size: .88rem; line-height: 1.68; }
+.digest-footer {
+  display: flex; align-items: center;
+  justify-content: space-between; gap: 16px; flex-wrap: wrap;
+}
+.digest-footer p { font-size: .85rem; color: var(--gray-500); }
+.btn-outline {
+  display: inline-block;
+  border: 1.5px solid var(--gray-300);
+  color: var(--navy); padding: 11px 26px;
+  border-radius: 50px; font-weight: 700; font-size: .85rem;
+  transition: all .22s;
+}
+.btn-outline:hover { border-color: var(--navy); background: var(--navy); color: #fff; }
 
-    /* ============ PRODUCTS STRIP ============ */
-    .section-products { background: var(--off-white); }
-    .products-intro { text-align: center; margin-bottom: 48px; }
-    .products-intro h2 { color: var(--navy); margin-bottom: 12px; }
-    .products-intro p  { color: var(--gray-500); max-width:480px; margin: 0 auto; }
-    .prod-strip { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
-    .prod-card  { background: var(--white); border: 1px solid var(--gray-300); border-radius: var(--radius); padding: 28px 26px; display: flex; flex-direction: column; gap: 12px; transition: all .25s; }
-    .prod-card:hover { border-color: var(--teal-light); box-shadow: var(--shadow); transform: translateY(-4px); }
-    .prod-badge { display: inline-block; font-size: .68rem; text-transform: uppercase; letter-spacing: .1em; font-weight: 700; padding: 4px 12px; border-radius: 50px; }
-    .b-course  { background: var(--teal-pale); color: var(--teal); }
-    .b-book    { background: var(--gold-pale);  color: #7A5200; }
-    .b-digest  { background: var(--gray-100);   color: var(--gray-700); }
-    .b-soon    { background: var(--gray-100);   color: var(--gray-500); }
-    .prod-card h3 { color: var(--navy); font-size: 1.08rem; }
-    .prod-card p  { font-size: .862rem; color: var(--gray-500); line-height: 1.64; flex: 1; }
-    .prod-link { color: var(--teal); font-weight: 700; font-size: .862rem; }
-    .prod-link:hover { text-decoration: underline; }
+/* ══════════════════════════════
+   04 · ОБО МНЕ
+══════════════════════════════ */
+.section-about { background: var(--navy); padding: 96px 10vw; }
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 80px; align-items: center;
+}
 
-    /* ============ CTA SECTION ============ */
-    .section-cta-end {
-      background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 100%);
-      padding: 100px 0; color: var(--white); text-align: center;
-    }
-    .cta-end-inner { max-width: 640px; margin: 0 auto; }
-    .cta-end-inner h2 { color: var(--white); margin-bottom: 20px; }
-    .cta-end-inner p  { color: rgba(255,255,255,.65); font-size: 1.05rem; line-height: 1.75; margin-bottom: 44px; }
-    .cta-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
-    .contact-line { display: flex; justify-content: center; gap: 28px; margin-top: 32px; flex-wrap: wrap; }
-    .contact-item { color: rgba(255,255,255,.5); font-size: .88rem; }
-    .contact-item a { color: var(--teal-mid); font-weight: 700; }
+/* Фото */
+.about-photo-wrap { position: relative; }
+.about-photo {
+  width: 100%; aspect-ratio: 3/4;
+  object-fit: cover; object-position: center top;
+  border-radius: var(--radius); display: block;
+}
+.about-ph {
+  width: 100%; aspect-ratio: 3/4;
+  background: linear-gradient(160deg, #1A3347, #1A8A7E);
+  border-radius: var(--radius);
+}
+/* Декоративная рамка */
+.about-frame {
+  position: absolute;
+  bottom: -14px; right: -14px;
+  width: 80px; height: 80px;
+  border: 1.5px solid rgba(96,196,184,.2);
+  border-radius: var(--radius);
+  pointer-events: none;
+}
 
-    /* ============ FOOTER ============ */
-    .footer     { background: var(--navy-deep); color: rgba(255,255,255,.42); padding: 72px 0 32px; }
-    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 56px; margin-bottom: 56px; }
-    .f-logo     { font-size: 1.3rem; font-weight: 800; color: var(--white); margin-bottom: 14px; letter-spacing: -.03em; }
-    .f-logo span { color: var(--teal-mid); }
-    .f-desc     { font-size: .87rem; color: rgba(255,255,255,.42); line-height: 1.7; margin-bottom: 22px; }
-    .f-socials  { display: flex; gap: 10px; }
-    .f-soc { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border: 1px solid rgba(255,255,255,.12); border-radius: 50%; color: rgba(255,255,255,.5); font-size: .78rem; font-weight: 700; transition: all .2s; }
-    .f-soc:hover { border-color: var(--teal); background: var(--teal); color: var(--white); }
-    .f-col h5   { color: var(--white); font-size: .72rem; text-transform: uppercase; letter-spacing: .14em; margin-bottom: 18px; }
-    .f-col a    { display: block; color: rgba(255,255,255,.42); font-size: .85rem; margin-bottom: 10px; transition: color .2s; }
-    .f-col a:hover { color: var(--teal-mid); }
-    .footer-bottom { border-top: 1px solid rgba(255,255,255,.07); padding-top: 28px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; font-size: .8rem; }
-    .footer-bottom a { color: var(--teal-mid); }
+/* Текст */
+.about-label { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .2em; color: var(--teal-mid); margin-bottom: 20px; display: block; }
+.about-text { font-size: 1rem; color: rgba(255,255,255,.65); line-height: 1.82; margin-bottom: 14px; }
+.about-text strong { color: #fff; font-weight: 700; }
+.about-companies { margin-top: 28px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.07); }
+.about-co-label { font-size: .58rem; font-weight: 700; text-transform: uppercase; letter-spacing: .16em; color: rgba(255,255,255,.22); margin-bottom: 10px; }
+.about-co-list { font-size: .85rem; font-weight: 600; color: rgba(255,255,255,.4); line-height: 1.9; }
+.about-co-list span { color: rgba(255,255,255,.6); }
+.about-link { display: inline-block; margin-top: 28px; font-size: .85rem; font-weight: 700; color: var(--teal-mid); border-bottom: 1px solid rgba(96,196,184,.35); padding-bottom: 2px; transition: opacity .2s; }
+.about-link:hover { opacity: .7; }
 
-    /* ============ SCROLL ANIMATION ============ */
-    @keyframes fadeUp { from { opacity:0; transform:translateY(26px); } to { opacity:1; transform:translateY(0); } }
-    .fade { opacity: 0; transform: translateY(24px); transition: opacity .65s ease, transform .65s ease; }
-    .fade.in { opacity: 1; transform: translateY(0); }
-    .hero-text > * { animation: fadeUp .65s ease backwards; }
-    .hero-text > *:nth-child(1) { animation-delay: .05s; }
-    .hero-text > *:nth-child(2) { animation-delay: .18s; }
-    .hero-text > *:nth-child(3) { animation-delay: .3s; }
-    .hero-text > *:nth-child(4) { animation-delay: .42s; }
+/* ══════════════════════════════
+   05 · КОНТАКТ
+══════════════════════════════ */
+.section-contact { background: var(--navy-deep); padding: 96px 10vw; }
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: start;
+}
+.contact-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 800; color: #fff;
+  line-height: 1.15; letter-spacing: -.015em;
+  margin-bottom: 16px;
+}
+.contact-sub { font-size: .95rem; color: rgba(255,255,255,.4); line-height: 1.72; margin-bottom: 24px; }
+.contact-tg { display: inline-flex; align-items: center; gap: 6px; color: var(--teal-mid); font-size: .85rem; font-weight: 700; border-bottom: 1px solid rgba(96,196,184,.3); padding-bottom: 2px; }
+.contact-tg:hover { border-color: var(--teal-mid); }
 
-    /* ============ RESPONSIVE ============ */
-    @media (max-width: 1024px) {
-      .hero { grid-template-columns: 1fr; min-height: auto; }
-      .hero-left  { padding: 120px 40px 72px; }
-      .hero-right { height: 55vw; max-height: 480px; }
-      .ceo-grid, .hr-grid  { grid-template-columns: 1fr; gap: 48px; }
-      .ceo-left, .hr-right { position: static; }
-      .hr-grid  { direction: ltr; }
-      .footer-top { grid-template-columns: 1fr 1fr; gap: 36px; }
-      .manifesto-inner { grid-template-columns: 1fr; }
-      .man-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,.08); }
-      .man-item:last-child { border-bottom: none; }
-    }
-    @media (max-width: 768px) {
-      h1 { font-size: 2.4rem; }
-      h2 { font-size: 1.9rem; }
-      .section { padding: 64px 0; }
-      .navbar-nav { display: none; }
-      .navbar-right .btn:not(:last-child) { display: none; }
-      .hamburger { display: flex; }
-      .hero-left { padding: 108px 28px 64px; }
-      .how-grid  { grid-template-columns: 1fr; }
-      .prod-strip { grid-template-columns: 1fr; }
-      .hero-paths, .cta-row { flex-direction: column; }
-      .footer-top { grid-template-columns: 1fr; gap: 28px; }
-      .footer-bottom { flex-direction: column; text-align: center; }
-      .contact-line { flex-direction: column; gap: 14px; }
-    }
+.contact-form { display: flex; flex-direction: column; gap: 14px; }
+.f-label { font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: rgba(255,255,255,.3); display: block; margin-bottom: 5px; }
+.f-input {
+  width: 100%;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 10px; padding: 13px 16px;
+  color: #fff; font-size: .95rem;
+  font-family: 'Manrope', sans-serif;
+  outline: none; transition: border-color .2s;
+}
+.f-input::placeholder { color: rgba(255,255,255,.22); }
+.f-input:focus { border-color: var(--teal-mid); }
+.f-submit {
+  width: 100%; background: var(--gold); color: var(--navy);
+  padding: 15px; border-radius: 50px;
+  font-weight: 700; font-size: .95rem;
+  border: none; cursor: pointer;
+  font-family: 'Manrope', sans-serif;
+  margin-top: 4px; transition: background .2s;
+}
+.f-submit:hover { background: #d4941f; }
+.f-email { text-align: center; margin-top: 10px; font-size: .8rem; color: rgba(255,255,255,.25); }
+.f-email a { color: var(--teal-mid); }
+
+/* ══ FOOTER ══ */
+footer {
+  background: #040A12;
+  padding: 48px 10vw 28px;
+  border-top: 1px solid rgba(255,255,255,.05);
+}
+.footer-inner {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px; margin-bottom: 40px;
+}
+.f-brand { font-size: 1rem; font-weight: 800; color: #fff; letter-spacing: -.02em; margin-bottom: 10px; display: block; }
+.f-brand em { font-style: normal; color: var(--teal-mid); }
+.f-brand-desc { font-size: .78rem; color: rgba(255,255,255,.28); line-height: 1.65; margin-bottom: 18px; }
+.f-socials { display: flex; gap: 8px; }
+.f-soc { width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.32); font-size: .7rem; font-weight: 700; transition: all .2s; }
+.f-soc:hover { border-color: var(--teal); background: var(--teal); color: #fff; }
+.f-col h5 { font-size: .58rem; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; color: rgba(255,255,255,.22); margin-bottom: 14px; }
+.f-col a { display: block; font-size: .78rem; color: rgba(255,255,255,.32); margin-bottom: 8px; transition: color .2s; }
+.f-col a:hover { color: var(--teal-mid); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,.05); padding-top: 20px; font-size: .7rem; color: rgba(255,255,255,.18); }
+
+/* ══ ANIMATIONS ══ */
+@keyframes fadeUp {
+  from { opacity:0; transform: translateY(16px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+.fade { opacity:0; transform: translateY(20px); transition: opacity .65s ease, transform .65s ease; }
+.fade.in { opacity:1; transform: translateY(0); }
+
+/* ══ RESPONSIVE ══ */
+@media (max-width: 900px) {
+  .navbar { padding: 18px 24px; }
+  .navbar.scrolled { padding: 12px 24px; }
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+
+  .section-anchor,
+  .section-digest,
+  .section-about,
+  .section-contact,
+  footer { padding-left: 24px; padding-right: 24px; }
+
+  .hero-headline { font-size: clamp(3rem, 10vw, 4.5rem); }
+
+  .digest-grid { grid-template-columns: 1fr; }
+
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .about-ph { aspect-ratio: 3/2; }
+
+  .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+
+  .footer-inner {
+    grid-template-columns: 1fr 1fr; gap: 24px 32px;
+  }
+  .footer-inner > div:first-child { grid-column: 1/-1; }
+}
+```
+
   </style>
 </head>
 <body>
 
-<!-- NAVBAR — новый (7 пунктов, без Обо мне) -->
+<!-- ══ NAV ══ -->
+
 <nav class="navbar" id="navbar">
-  <div class="container">
-    <div class="navbar-inner">
-      <a href="index.html" class="navbar-brand">hrdonline<span>.</span></a>
-      <div class="navbar-nav">
-        <a href="business.html">Бизнесу</a>
-        <a href="hr.html">Для HR</a>
-        <a href="books.html">Книги</a>
-        <a href="course.html">Курс</a>
-        <a href="series.html">Сериал</a>
-        <a href="platform.html">Платформа</a>
-        <a href="contacts.html">Контакты</a>
-      </div>
-      <div class="navbar-right">
-        <a href="contacts.html" class="navbar-cta">Написать</a>
-        <div class="hamburger" onclick="toggleMenu()">
-          <span></span><span></span><span></span>
-        </div>
-      </div>
-    </div>
+  <div class="nav-brand">hrdonline<em>.</em></div>
+  <ul class="nav-links">
+    <li><a href="business.html">Бизнесу</a></li>
+    <li><a href="#digest">Верхний этаж</a></li>
+    <li><a href="#about">Обо мне</a></li>
+    <li><a href="hr.html">Для HR</a></li>
+    <li><a href="#contact">Контакты</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Написать</a>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
   </div>
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
   <button class="mobile-close" onclick="toggleMenu()">&#10005;</button>
-  <a href="index.html"    onclick="toggleMenu()">Главная</a>
   <a href="business.html" onclick="toggleMenu()">Бизнесу</a>
+  <a href="#digest"       onclick="toggleMenu()">Верхний этаж</a>
+  <a href="#about"        onclick="toggleMenu()">Обо мне</a>
   <a href="hr.html"       onclick="toggleMenu()">Для HR</a>
-  <div class="m-divider"></div>
-  <a href="books.html"    onclick="toggleMenu()">Книги</a>
-  <a href="course.html"   onclick="toggleMenu()">Курс</a>
-  <a href="series.html"   onclick="toggleMenu()">Сериал</a>
-  <a href="platform.html" onclick="toggleMenu()">Платформа</a>
-  <div class="m-divider"></div>
-  <a href="contacts.html" onclick="toggleMenu()">Контакты</a>
+  <div class="m-div"></div>
+  <a href="#contact"      onclick="toggleMenu()">Написать</a>
 </div>
 
-<!-- ===== MOBILE MENU ===== -->
-<div class="mobile-menu" id="mobileMenu">
-  <button class="mobile-close" onclick="toggleMenu()">&#10005;</button>
-  <a href="index.html"    onclick="toggleMenu()">Главная</a>
-  <a href="business.html" onclick="toggleMenu()">Бизнесу</a>
-  <a href="hr.html"       onclick="toggleMenu()">HR</a>
-  <div class="m-divider"></div>
-  <a href="books.html"    onclick="toggleMenu()">Книги</a>
-  <a href="course.html"   onclick="toggleMenu()">Курс</a>
-  <a href="about.html"    onclick="toggleMenu()">Обо мне</a>
-  <a href="contacts.html" onclick="toggleMenu()">Контакты</a>
-</div>
+<!-- ══════════════════════════
+     01 · HERO — текст слева, фото справа
+══════════════════════════ -->
 
-<!-- ===== HERO ===== -->
-<div class="hero">
+<section class="hero">
+
+  <!-- ЛЕВАЯ КОЛОНКА: тёмный фон + текст -->
 
   <div class="hero-left">
-    <div class="hero-text">
-      <div class="hero-name">Зинаида Чумакова &nbsp;&middot;&nbsp; hrdonline</div>
-      <h1>Бизнес<br />строят<br /><em>люди.</em></h1>
-      <div class="hero-paths">
-        <a href="business.html" class="hero-path-btn gold">
-          <div>
-            <div class="hp-label">Я руковожу бизнесом </div>
-            <div class="hp-sub">Хочу команду, которая работает без меня </div>
-          </div>
-          <div class="hp-arrow">&rarr;</div>
-        </a>
-        <a href="hr.html" class="hero-path-btn">
-          <div>
-            <div class="hp-label">Я HR</div>
-            <div class="hp-sub">Хочу влиять на бизнес, а не просто исполнять </div>
-          </div>
-          <div class="hp-arrow">&rarr;</div>
-        </a>
-      </div>
-    </div>
+    <div class="hero-content">
+      <div class="hero-name">Зинаида Чумакова &nbsp;&middot;&nbsp; Независимый HRD</div>
+
+```
+  <h1 class="hero-headline">
+    <span class="static">Бизнес строят</span>
+    <span class="morph-line">
+      <span id="morphWord">люди.</span>
+    </span>
+  </h1>
+
+  <div class="hero-action">
+    <a href="#contact" class="btn-hero">Написать</a>
   </div>
+</div>
+
+<div class="scroll-hint">
+  <span>Листать</span>
+  <div class="scroll-line"></div>
+</div>
+```
+
+  </div>
+
+  <!-- ПРАВАЯ КОЛОНКА: фото -->
 
   <div class="hero-right">
-    <img src="foto-author.jpg" alt="Зинаида Чумакова"
-         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-    <div class="hero-photo-ph" style="display:none;">Фото Зинаиды Чумаковой</div>
+    <!-- Замените на реальное фото:
+    <img src="foto-author.jpg" alt="Зинаида Чумакова">
+    -->
+    <div class="hero-ph"></div>
   </div>
 
-</div>
-
-<!-- ===== MANIFESTO ===== -->
-<div class="manifesto">
-  <div class="container">
-    <div class="manifesto-inner">
-      <div class="man-item">
-        <p>«<strong>Я не говорю вам то, что вы хотите услышать.</strong> Я говорю то, что нужно сделать — даже если это неудобно.»</p>
-      </div>
-      <div class="man-item">
-        <p>«Правильные люди на правильных местах — это и есть стратегия. <strong>Всё остальное приложится.</strong>»</p>
-      </div>
-      <div class="man-item">
-        <p>«ИИ — это инструмент. <strong>Понимание людей — это профессия.</strong> Я занимаюсь и тем, и другим.»</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ===== CEO SECTION ===== -->
-<section class="section section-ceo">
-  <div class="container">
-    <div class="ceo-grid">
-
-      <div class="ceo-left fade">
-        <div class="ceo-label">Для CEO и собственников</div>
-        <h2>Вы строите бизнес.<br />Я помогу вам<br /><em>выстроить людей.</em></h2>
-        <p class="ceo-desc">За 20 лет я видела десятки компаний изнутри. Знаю, как выглядит бизнес, когда кадровые решения принимаются правильно — и как выглядит, когда нет. Я работаю с вами напрямую.</p>
-        <a href="business.html" class="btn btn-gold btn-lg">Услуги для бизнеса</a>
-      </div>
-
-      <div class="ceo-right">
-        <div class="pain-card fade">
-          <div class="pain-line"></div>
-          <h4>Лучшие уходят — и вы не понимаете почему</h4>
-          <p>Деньги платите, задачи интересные, атмосфера нормальная. А они уходят. Значит что-то ещё. Я помогу это найти.</p>
-        </div>
-        <div class="pain-card fade">
-          <div class="pain-line"></div>
-          <h4>У вас есть HR — но кадровые решения всё равно принимаете вы</h4>
-          <p>HR занят процессами. Стратегия людей остаётся на вас. Это не масштабируется. Вам нужен партнёр, а не администратор.</p>
-        </div>
-        <div class="pain-card fade">
-          <div class="pain-line"></div>
-          <h4>Нанимаете — и снова не то</h4>
-          <p>По резюме — идеально. На практике — разочарование. Потому что найм без правильной системы — это лотерея.</p>
-        </div>
-        <div class="pain-card fade">
-          <div class="pain-line"></div>
-          <h4>Хотите HRD уровня крупной компании — без найма в штат</h4>
-          <p>Фракционный HRD — это именно это. Полная экспертиза, конкретный результат, без постоянных затрат на содержание.</p>
-        </div>
-      <div class="pain-card fade">
-  <div class="pain-line"></div>
-  <h4>Хотите, чтобы HR-функция давала ощутимые результаты</h4>
-  <p>Я погружаюсь в компанию, разбираюсь в реальной ситуации.
-  Вместе с вашей HR-командой даю реальный результат.
-  Не снаружи — изнутри.</p>
-</div>
-
-<div class="pain-card pain-card-product fade">
-  <div class="pain-line pain-line-teal"></div>
-  <div class="prod-badge b-soon" style="margin-bottom:12px;">Книга · В работе</div>
-  <h4>ИИ для CEO — стратегическое руководство</h4>
-  <p>Как выстроить ИИ-стратегию компании, трансформировать
-  бизнес-функции и стать главным пользователем ИИ
-  в своей организации. Не про технологии —
-  про управленческие решения.</p>
-  <a href="books.html" style="display:inline-block; margin-top:10px;">
-    Следить за выходом →
-  </a>
-</div>
-
-    </div>
-  </div>
 </section>
 
-<!-- ===== HR SECTION ===== -->
-<section class="section section-hr">
-  <div class="container">
-    <div class="hr-grid">
+<!-- ══════════════════════════
+     02 · ЯКОРНАЯ ФРАЗА
+══════════════════════════ -->
 
-      <div class="hr-cards">
-        <div class="hr-card fade">
-          <div class="hr-line"></div>
-          <h4>Курс «ИИ в HR. Практика»</h4>
-          <p>8 недель, 7 модулей, весь путь сотрудника. Для HR любого уровня. Старт 14 апреля.</p>
-        </div>
-        <div class="hr-card fade">
-          <div class="hr-line"></div>
-          <h4>Книга «ИИ в HR»</h4>
-          <p>Руководство по работе с интеллектом — своим и искусственным. Участники первого потока получают до выхода в издательстве.</p>
-        </div>
-        <div class="hr-card fade">
-          <div class="hr-line"></div>
-          <h4>Дайджест ИИ для HR</h4>
-          <p>Инструменты, кейсы, тренды — регулярно. Для тех, кто хочет быть впереди.</p>
-        </div>
-        <div class="hr-card fade">
-          <div class="hr-line"></div>
-          <h4>Личная работа и консультирование</h4>
-          <p>Карьерный разбор, разбор кейсов, личное обучение. Для тех, кому нужна работа один на один.</p>
-        </div>
-      </div>
-
-      <div class="hr-right fade">
-        <div class="audience-text">
-          <div class="audience-text">
-            <div class="audience-text">
-
-  <div class="audience-label" style="color: #2dd4bf; font-size: 0.75rem; 
-    letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px;">
-    ДЛЯ HR
-  </div>
-
-  <h2 class="audience-title" style="color: #ffffff; font-size: 2.6rem; 
-    font-weight: 800; line-height: 1.15; margin-bottom: 24px;">
-    Хотите быть HR,<br>
-    которому CEO<br>
-    <span style="color: #2dd4bf;">доверяет?</span>
-  </h2>
-
-  <p class="audience-desc" style="color: #cbd5e1; font-size: 1rem; 
-    line-height: 1.7; margin-bottom: 32px;">
-    Большинство HR работают хорошо. Но CEO всё равно 
-    не видит в нас стратегического партнёра. Потому что 
-    между «хорошим HR» и «незаменимым HR-партнёром, 
-    влияющим на бизнес-результаты» — конкретная дистанция. 
-    Я знаю, что на этой дистанции — и как её пройти.
+<section class="section-anchor">
+  <p class="anchor-phrase fade">
+    Правильные люди на правильных местах —<br>
+    <em>это и есть стратегия.</em><br>
+    Всё остальное приложится.
   </p>
-
-  <a href="hr.html" class="btn-primary" style="background: #f0a500; 
-    color: #000; padding: 14px 32px; border-radius: 50px; 
-    font-weight: 700; text-decoration: none; display: inline-block;">
-    Услуги для HR
-  </a>
-
-</div>
-    </div>
-  </div>
+  <p class="anchor-sub fade">
+    За 20 лет я видела десятки компаний изнутри.
+    Знаю, как выглядит бизнес, когда кадровые решения
+    принимаются правильно — и как выглядит, когда нет.
+  </p>
 </section>
 
-<!-- ===== HOW I WORK ===== -->
-<section class="section section-how">
-  <div class="container">
-    <div class="how-intro fade">
-      <div class="eyebrow">Как я работаю</div>
-      <h2>Три принципа</h2>
-      <p>Работаю как думающий партнёр — с реальным вниманием к вашей компании и конкретной ситуации.</p>
-    </div>
-    <div class="how-grid">
-      <div class="how-item fade">
-        <div class="how-n">01</div>
-        <h3>Сначала разобраться</h3>
-        <p>Прежде чем что-то предложить — хочу понять. Что происходит на самом деле, где болит и почему. Правильный диагноз важнее быстрого совета.</p>
-      </div>
-      <div class="how-item fade">
-        <div class="how-n">02</div>
-        <h3>Говорить прямо</h3>
-        <p>Я не буду смягчать неудобные выводы и не буду затягивать проект ради счёта. Вы платите за честность и результат — не за красивый отчёт.</p>
-      </div>
-      <div class="how-item fade">
-        <div class="how-n">03</div>
-        <h3>Работать с ИИ как с инструментом</h3>
-        <p>AI-агенты ускоряют аналитику, поиск и документы. Но решения о людях принимаю я — с пониманием контекста, которое алгоритм не заменит.</p>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- ══════════════════════════
+     03 · ВЕРХНИЙ ЭТАЖ
+══════════════════════════ -->
 
-<!-- ===== PRODUCTS ===== -->
-<section class="section section-products">
-  <div class="container">
-    <div class="products-intro fade">
-      <div class="eyebrow">Продукты</div>
-      <h2>Книги, курс и дайджесты</h2>
-      <p>Для тех, кто хочет разобраться самостоятельно — и для тех, кто хочет работать вместе</p>
-    </div>
-    <div class="prod-strip">
-      <div class="prod-card fade">
-        <div class="prod-badge b-course">Курс &middot; Старт 14 апреля</div>
-        <h3>ИИ в HR. Практика</h3>
-        <p>8 недель, 7 модулей. Весь путь сотрудника с ИИ — от найма до офбординга. Для HR любого уровня.</p>
-        <a href="course.html" class="prod-link">Подробнее &rarr;</a>
-      </div>
-      <div class="prod-card fade">
-        <div class="prod-badge b-book">Книга &middot; Готова</div>
-        <h3>ИИ в HR</h3>
-        <p>Руководство: своим интеллектом и искусственным. Участники первого потока получают до выхода.</p>
-        <a href="books.html" class="prod-link">О книге &rarr;</a>
-      </div>
-      <div class="prod-card fade">
-        <div class="prod-badge b-soon">Книга &middot; В работе</div>
-        <h3>ИИ для CEO</h3>
-        <p>Для собственников и топ-менеджеров. Как ИИ меняет управление компанией и людьми.</p>
-        <a href="books.html" class="prod-link">Следить за выходом &rarr;</a>
-      </div>
-      <div class="prod-card fade">
-        <div class="prod-badge b-soon">Книга &middot; В работе</div>
-        <h3>ИИ для финансов</h3>
-        <p>Финансовые команды и ИИ: от автоматизации до стратегии. Совместно с финансовыми экспертами.</p>
-        <a href="books.html" class="prod-link">Следить за выходом &rarr;</a>
-      </div>
-      <div class="prod-card fade">
-        <div class="prod-badge b-digest">Дайджест</div>
-        <h3>ИИ для HR</h3>
-        <p>Инструменты, кейсы и тренды для HR-практиков. Регулярно, по делу.</p>
-        <a href="hr.html#digest" class="prod-link">Подписаться &rarr;</a>
-      </div>
-      <div class="prod-card fade">
-        <div class="prod-badge b-digest">Дайджест</div>
-        <h3>Верхний этаж</h3>
-        <p>Для руководителей уровня C-level о том, как управлять коммпаниями и собой.</p>
-        <a href="business.html#digest" class="prod-link">Подписаться &rarr;</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== CTA END ===== -->
-<section style="background:#0f172a; padding:80px 24px; text-align:center;">
-  <div style="max-width:680px; margin:0 auto;">
-
-    <div style="color:#2dd4bf; font-size:0.75rem; letter-spacing:0.1em; 
-      text-transform:uppercase; margin-bottom:16px;">
-      СДЕЛАЙТЕ ПЕРВЫЙ ШАГ
-    </div>
-
-    <h2 style="color:#ffffff; font-size:2.6rem; font-weight:800; 
-      line-height:1.2; margin-bottom:16px;">
-      Напишите. Разберёмся вместе.
-    </h2>
-
-    <p style="color:#cbd5e1; font-size:1rem; line-height:1.7; 
-      margin-bottom:40px;">
-      Расскажите о своей ситуации — я отвечу: могу ли я помочь, 
-      в каком формате и с чего начать.
+<section class="section-digest" id="digest">
+  <div class="digest-header fade">
+    <span class="section-label">Авторский дайджест</span>
+    <h2 class="section-title">Верхний <em>этаж</em></h2>
+    <p class="section-desc">
+      О людях и решениях на верхнем уровне.
+      Для C-level и собственников — о том,
+      о чём говорят в кулуарах, но редко пишут открыто.
     </p>
+  </div>
 
-    <!-- Форма -->
-    <form action="https://formspree.io/f/xkopvegv" method="POST"
-      style="display:flex; flex-direction:column; gap:14px; 
-      text-align:left; margin-bottom:24px;">
-
-      <input type="hidden" name="_subject" value="Новая заявка с hrdonline.ru">
-
-      <div style="display:flex; flex-direction:column; gap:6px;">
-        <label style="color:#94a3b8; font-size:0.75rem; font-weight:600; 
-          text-transform:uppercase; letter-spacing:0.05em;">ФИО</label>
-        <input type="text" name="name" placeholder="Иван Иванов" required
-          style="background:#1e293b; border:1px solid #334155; 
-          border-radius:10px; padding:12px 16px; color:#ffffff; 
-          font-size:1rem; outline:none; width:100%; box-sizing:border-box;">
+  <div class="digest-grid fade">
+    <a href="digest/4.html" class="issue-card">
+      <div class="issue-cover ic-1">
+        <div class="issue-series">Верхний этаж · Выпуск 4</div>
+        <div class="issue-cover-title">Корпоративные<br><em>войны.</em></div>
+        <div class="issue-accent"></div>
       </div>
-
-      <div style="display:flex; flex-direction:column; gap:6px;">
-        <label style="color:#94a3b8; font-size:0.75rem; font-weight:600; 
-          text-transform:uppercase; letter-spacing:0.05em;">Компания</label>
-        <input type="text" name="company" placeholder="Название компании" required
-          style="background:#1e293b; border:1px solid #334155; 
-          border-radius:10px; padding:12px 16px; color:#ffffff; 
-          font-size:1rem; outline:none; width:100%; box-sizing:border-box;">
+      <div class="issue-body">
+        <div class="issue-num">Выпуск 4 · 2026</div>
+        <div class="issue-name">Корпоративные войны на верхнем этаже</div>
+        <div class="issue-desc">Как распознать до того, как стало очевидно. Пять паттернов и пять типажей.</div>
+        <div class="issue-link">Читать →</div>
       </div>
-
-      <div style="display:flex; flex-direction:column; gap:6px;">
-        <label style="color:#94a3b8; font-size:0.75rem; font-weight:600; 
-          text-transform:uppercase; letter-spacing:0.05em;">Должность</label>
-        <input type="text" name="position" placeholder="Ваша должность" required
-          style="background:#1e293b; border:1px solid #334155; 
-          border-radius:10px; padding:12px 16px; color:#ffffff; 
-          font-size:1rem; outline:none; width:100%; box-sizing:border-box;">
-      </div>
-<div style="display:flex; flex-direction:column; gap:6px;">
-  <label style="color:#94a3b8; font-size:0.75rem; font-weight:600; 
-    text-transform:uppercase; letter-spacing:0.05em;">Телефон</label>
-  <input type="tel" name="phone" placeholder="+7 900 000 00 00" required
-    style="background:#1e293b; border:1px solid #334155; 
-    border-radius:10px; padding:12px 16px; color:#ffffff; 
-    font-size:1rem; outline:none; width:100%; box-sizing:border-box;">
-</div>
-      <div style="display:flex; flex-direction:column; gap:6px;">
-        <label style="color:#94a3b8; font-size:0.75rem; font-weight:600; 
-          text-transform:uppercase; letter-spacing:0.05em;">Email</label>
-        <input type="email" name="email" placeholder="you@company.com" required
-          style="background:#1e293b; border:1px solid #334155; 
-          border-radius:10px; padding:12px 16px; color:#ffffff; 
-          font-size:1rem; outline:none; width:100%; box-sizing:border-box;">
-      </div>
-
-      <button type="submit" style="background:#f0a500; color:#000; 
-        padding:14px 32px; border-radius:50px; font-weight:700; 
-        font-size:1rem; border:none; cursor:pointer; margin-top:8px;
-        width:100%;">
-        Отправить заявку
-      </button>
-
-    </form>
-
-    <!-- Только email -->
-    <a href="mailto:info@hrdonline.ru" style="color:#2dd4bf; 
-      font-size:1rem; text-decoration:none; font-weight:600;">
-      info@hrdonline.ru
     </a>
 
+```
+<a href="digest/3.html" class="issue-card">
+  <div class="issue-cover ic-2">
+    <div class="issue-series">Верхний этаж · Выпуск 3</div>
+    <div class="issue-cover-title">То, что редко<br><em>говорят.</em></div>
+    <div class="issue-accent"></div>
+  </div>
+  <div class="issue-body">
+    <div class="issue-num">Выпуск 3 · 2026</div>
+    <div class="issue-name">То, что редко говорят топ-менеджеру на входе</div>
+    <div class="issue-desc">Оффер — это не мандат. Как войти в компанию на верхнем уровне.</div>
+    <div class="issue-link">Читать →</div>
+  </div>
+</a>
+
+<a href="digest/1.html" class="issue-card">
+  <div class="issue-cover ic-3">
+    <div class="issue-series">Верхний этаж · Выпуск 1</div>
+    <div class="issue-cover-title">Рынок<br><em>C-level.</em></div>
+    <div class="issue-accent"></div>
+  </div>
+  <div class="issue-body">
+    <div class="issue-num">Выпуск 1 · 2026</div>
+    <div class="issue-name">Рынок найма C-level: пять гипотез</div>
+    <div class="issue-desc">Почему сильные управленцы не доходят до разговора с ЛПР.</div>
+    <div class="issue-link">Читать →</div>
+  </div>
+</a>
+```
+
+  </div>
+
+  <div class="digest-footer fade">
+    <p>Новые выпуски — в Telegram-канале</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+      <a href="https://t.me/chumakova_HRD" target="_blank" class="btn-outline">Подписаться</a>
+      <a href="digest.html" class="btn-outline">Все выпуски</a>
+    </div>
   </div>
 </section>
-        
-<footer class="footer">
-  <div class="container">
-    <div class="footer-top">
 
-      <div>
-        <div class="f-logo">hrdonline<span>.</span></div>
-        <p class="f-desc">Зинаида Чумакова — независимый HRD. 20 лет опыта. Работаю напрямую с бизнесом и HR.</p>
-        <div class="f-socials">
-          <a href="https://t.me/chumakova_HRD" target="_blank" class="f-soc">TG</a>
-          <a href="https://t.me/ZinaidaChu"    target="_blank" class="f-soc">DM</a>
-        </div>
-      </div>
+<!-- ══════════════════════════
+     04 · ОБО МНЕ
+══════════════════════════ -->
 
-      <div class="f-col">
-        <h5>Бизнесу</h5>
-        <a href="business.html">Форматы работы</a>
-        <a href="contacts.html">Написать</a>
-      </div>
-
-      <div class="f-col">
-        <h5>Для HR</h5>
-        <a href="hr.html">Сессии и проекты</a>
-        <a href="course.html">Курс ИИ в HR</a>
-        <a href="books.html">Книги</a>
-        <a href="series.html">Сериал</a>
-        <a href="platform.html">Платформа</a>
-      </div>
-
-      <div class="f-col">
-        <h5>Контакты</h5>
-        <a href="contacts.html">Написать</a>
-        <a href="https://t.me/chumakova_HRD" target="_blank">Telegram-канал</a>
-        <a href="https://t.me/ZinaidaChu"    target="_blank">Личный Telegram</a>
-        <a href="mailto:info@hrdonline.ru">info@hrdonline.ru</a>
-      </div>
-
+<section class="section-about" id="about">
+  <div class="about-grid fade">
+    <div class="about-photo-wrap">
+      <!-- <img src="foto-author.jpg" alt="Зинаида Чумакова" class="about-photo"> -->
+      <div class="about-ph"></div>
+      <div class="about-frame"></div>
     </div>
-    <div class="footer-bottom">
-      <span>&copy; 2026 hrdonline.ru &mdash; Зинаида Чумакова</span>
-      <span><a href="https://t.me/ZinaidaChu">@ZinaidaChu</a></span>
+
+```
+<div>
+  <span class="about-label">Зинаида Чумакова</span>
+  <p class="about-text">
+    Я HRD с 20-летним опытом. Работала в ритейле, логистике, девелопменте, HoReCa, банках — от среднего бизнеса до холдингов уровня <strong>X5 Group</strong>.
+  </p>
+  <p class="about-text">
+    Открывала компании с нуля, проводила трансформации, собирала топ-команды. Знаю как работать с собственниками и советами директоров — про результат, про бизнес и про людей.
+  </p>
+  <p class="about-text">
+    Сейчас — независимая практика. Работаю напрямую с CEO и собственниками как стратегический партнёр по людям.
+  </p>
+
+  <div class="about-companies">
+    <div class="about-co-label">Опыт работы</div>
+    <div class="about-co-list">
+      <span>X5 Group</span> &nbsp;·&nbsp;
+      <span>Capital Alliance</span> &nbsp;·&nbsp;
+      <span>KFC</span> &nbsp;·&nbsp;
+      <span>МегаФон</span> &nbsp;·&nbsp;
+      <span>АТБ Банк</span> &nbsp;·&nbsp;
+      <span>Евросеть</span>
     </div>
   </div>
+
+  <a href="about.html" class="about-link">Подробнее →</a>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- ══════════════════════════
+     05 · КОНТАКТ
+══════════════════════════ -->
+
+<section class="section-contact" id="contact">
+  <div class="contact-grid">
+    <div class="fade">
+      <span class="section-label" style="color:var(--teal-mid);">Сделайте первый шаг</span>
+      <h2 class="contact-title">Напишите.<br>Разберёмся<br>вместе.</h2>
+      <p class="contact-sub">
+        Расскажите о своей ситуации — я отвечу: могу ли помочь, в каком формате и с чего начать.
+      </p>
+      <a href="https://t.me/ZinaidaChu" target="_blank" class="contact-tg">
+        → Telegram
+      </a>
+    </div>
+
+```
+<form class="contact-form fade" action="https://formspree.io/f/xkopvegv" method="POST">
+  <input type="hidden" name="_subject" value="Новая заявка с hrdonline.ru">
+  <div>
+    <label class="f-label">Имя</label>
+    <input class="f-input" type="text" name="name" placeholder="Иван Иванов" required>
+  </div>
+  <div>
+    <label class="f-label">Телефон</label>
+    <input class="f-input" type="tel" name="phone" placeholder="+7 900 000 00 00" required>
+  </div>
+  <div>
+    <label class="f-label">Email</label>
+    <input class="f-input" type="email" name="email" placeholder="you@company.com" required>
+  </div>
+  <button type="submit" class="f-submit">Отправить</button>
+  <div class="f-email">или <a href="mailto:info@hrdonline.ru">info@hrdonline.ru</a></div>
+</form>
+```
+
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <span class="f-brand">hrdonline<em>.</em></span>
+      <p class="f-brand-desc">Зинаида Чумакова — независимый HRD.<br>20 лет опыта. Работаю напрямую с бизнесом.</p>
+      <div class="f-socials">
+        <a href="https://t.me/chumakova_HRD" target="_blank" class="f-soc">TG</a>
+        <a href="https://t.me/ZinaidaChu"    target="_blank" class="f-soc">DM</a>
+      </div>
+    </div>
+    <div class="f-col">
+      <h5>Бизнесу</h5>
+      <a href="business.html">Форматы работы</a>
+      <a href="#digest">Верхний этаж</a>
+      <a href="#contact">Написать</a>
+    </div>
+    <div class="f-col">
+      <h5>Для HR</h5>
+      <a href="hr.html">Сессии и проекты</a>
+      <a href="course.html">Курс ИИ в HR</a>
+      <a href="books.html">Книги</a>
+    </div>
+    <div class="f-col">
+      <h5>Контакты</h5>
+      <a href="https://t.me/chumakova_HRD" target="_blank">Telegram-канал</a>
+      <a href="https://t.me/ZinaidaChu"    target="_blank">Личный Telegram</a>
+      <a href="mailto:info@hrdonline.ru">info@hrdonline.ru</a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 hrdonline.ru — Зинаида Чумакова</div>
 </footer>
 
 <script>
@@ -724,19 +800,35 @@
     document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
   });
 
-  /* Mobile menu */
+  /* Mobile */
   function toggleMenu() {
     var m = document.getElementById('mobileMenu');
     var open = m.classList.toggle('open');
     document.body.style.overflow = open ? 'hidden' : '';
   }
 
-  /* Scroll animations */
+  /* Морфинг */
+  var words = ['люди.', 'команды.', 'лидеры.', 'решения.'];
+  var cur = 0;
+  var el = document.getElementById('morphWord');
+  function morph() {
+    el.classList.remove('enter');
+    el.classList.add('exit');
+    setTimeout(function() {
+      cur = (cur + 1) % words.length;
+      el.textContent = words[cur];
+      el.classList.remove('exit');
+      el.classList.add('enter');
+    }, 300);
+  }
+  setTimeout(function() { morph(); setInterval(morph, 2800); }, 2800);
+
+  /* Scroll fade */
   var io = new IntersectionObserver(function(entries) {
     entries.forEach(function(e) {
       if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.08 });
   document.querySelectorAll('.fade').forEach(function(el) { io.observe(el); });
 </script>
 
