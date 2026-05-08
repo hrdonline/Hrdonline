@@ -4,512 +4,652 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hrdonline · Зинаида Чумакова</title>
-  <meta name="description" content="Независимый HRD. Зинаида Чумакова — работаю напрямую с CEO и собственниками." />
+  <title>Зинаида Чумакова · hrdonline</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --navy:      #0F2033;
-      --navy-deep: #080F1A;
-      --teal:      #1A8A7E;
-      --teal-mid:  #60C4B8;
-      --gold:      #E8A730;
-      --white:     #FFFFFF;
-      --off-white: #F8FAFB;
-      --gray-100:  #F3F4F6;
-      --gray-300:  #D1D5DB;
-      --gray-500:  #6B7280;
-      --radius:    16px;
-      --shadow:    0 4px 24px rgba(15,32,51,.1);
-    }
 
 ```
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --black:     #0A0A0A;
+  --white:     #FFFFFF;
+  --off-white: #F5F2EE;
+  --warm-gray: #8A8480;
+  --teal:      #1A8A7E;
+  --teal-mid:  #60C4B8;
+  --gold:      #C8A96E;
+  --gold-light:#E8D5A8;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
   font-family: 'Manrope', sans-serif;
-  color: var(--gray-500);
-  background: var(--white);
-  line-height: 1.6;
+  background: var(--black);
+  color: var(--off-white);
   overflow-x: hidden;
+  cursor: none;
 }
 a { color: inherit; text-decoration: none; }
 
-/* ══ NAVBAR ══ */
-.navbar {
-  position: fixed; top: 0; left: 0; right: 0;
-  z-index: 200;
-  padding: 24px 48px;
-  display: flex; align-items: center; justify-content: space-between;
-  transition: all .3s;
+/* ── CURSOR ── */
+.cursor {
+  width: 8px; height: 8px;
+  background: var(--gold);
+  border-radius: 50%;
+  position: fixed; z-index: 9999;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: width .2s, height .2s, background .2s;
+  mix-blend-mode: difference;
 }
-.navbar.scrolled {
-  background: rgba(8,15,26,.95);
-  backdrop-filter: blur(16px);
-  padding: 14px 48px;
-  box-shadow: 0 2px 24px rgba(0,0,0,.3);
+.cursor-ring {
+  width: 36px; height: 36px;
+  border: 1px solid rgba(200,169,110,.4);
+  border-radius: 50%;
+  position: fixed; z-index: 9998;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: all .12s ease-out;
+}
+a:hover ~ .cursor,
+button:hover ~ .cursor { width: 16px; height: 16px; }
+
+/* ── NAVBAR ── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 32px 48px;
+  display: flex; align-items: center; justify-content: space-between;
+  mix-blend-mode: difference;
 }
 .nav-brand {
-  font-size: .78rem; font-weight: 800;
-  letter-spacing: .14em; text-transform: uppercase;
-  color: rgba(255,255,255,.9);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem; font-weight: 300;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: var(--white);
 }
-.nav-brand em { font-style: normal; color: var(--teal-mid); }
-.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links {
+  display: flex; gap: 36px; list-style: none;
+}
 .nav-links a {
-  font-size: .76rem; font-weight: 600; letter-spacing: .05em;
-  color: rgba(255,255,255,.55); transition: color .2s;
+  font-size: .68rem; font-weight: 500;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: rgba(255,255,255,.55);
+  transition: color .3s;
 }
-.nav-links a:hover { color: #fff; }
+.nav-links a:hover { color: var(--white); }
 .nav-cta {
-  font-size: .76rem; font-weight: 700;
-  color: var(--teal-mid);
-  border-bottom: 1px solid var(--teal-mid);
-  padding-bottom: 1px; transition: opacity .2s;
+  font-size: .68rem; font-weight: 600;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--gold);
+  border-bottom: 1px solid rgba(200,169,110,.4);
+  padding-bottom: 2px;
+  transition: all .3s;
 }
-.nav-cta:hover { opacity: .65; }
-.hamburger {
-  display: none; flex-direction: column;
-  gap: 5px; cursor: pointer; padding: 6px; width: 34px;
-}
-.hamburger span { display: block; height: 2px; background: #fff; border-radius: 2px; }
+.nav-cta:hover { border-color: var(--gold); }
 
-/* ══ MOBILE ══ */
-.mobile-menu {
-  position: fixed; inset: 0; z-index: 199;
-  background: var(--navy-deep);
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center; gap: 8px;
-  opacity: 0; visibility: hidden; transition: all .3s;
-}
-.mobile-menu.open { opacity: 1; visibility: visible; }
-.mobile-menu a {
-  color: #fff; font-size: 1.2rem; font-weight: 700;
-  padding: 12px 32px; border-radius: 10px; transition: all .2s;
-}
-.mobile-menu a:hover { background: rgba(255,255,255,.07); color: var(--teal-mid); }
-.mobile-close {
-  position: absolute; top: 22px; right: 26px;
-  background: none; border: none; color: #fff; font-size: 1.4rem; cursor: pointer;
-}
-.m-div { width: 36px; height: 1px; background: rgba(255,255,255,.1); margin: 4px 0; }
-
-/* ══════════════════════════════
-   01 · HERO — split: текст слева, фото справа
-   как Susan David
-══════════════════════════════ */
+/* ── HERO ── */
 .hero {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  position: relative;
   width: 100%; height: 100vh;
-  min-height: 640px;
   overflow: hidden;
 }
 
-/* Левая половина — тёмный фон с текстом */
-.hero-left {
-  background: linear-gradient(160deg, var(--navy-deep) 0%, var(--navy) 100%);
-  display: flex; align-items: center;
-  padding: 140px 64px 80px;
-  position: relative; overflow: hidden;
+/* Фото */
+.hero-photo {
+  position: absolute; inset: 0;
+  z-index: 0;
 }
-.hero-left::before {
-  content: ''; position: absolute; inset: 0; pointer-events: none;
-  background:
-    radial-gradient(ellipse at 0% 80%, rgba(26,138,126,.15) 0%, transparent 55%),
-    radial-gradient(ellipse at 100% 10%, rgba(232,167,48,.05) 0%, transparent 50%);
-}
-
-/* Правая половина — фото */
-.hero-right {
-  position: relative; overflow: hidden;
-}
-.hero-right img {
+.hero-photo img {
   width: 100%; height: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center 20%;
   display: block;
-}
-/* Плейсхолдер */
-.hero-ph {
-  width: 100%; height: 100%;
-  background: linear-gradient(150deg, #1A3347 0%, #0F2033 40%, #1A8A7E 100%);
-}
-/* Лёгкий оверлей на фото */
-.hero-right::after {
-  content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(to right, rgba(8,15,26,.2) 0%, transparent 40%);
-  pointer-events: none;
+  filter: grayscale(15%) contrast(1.05);
 }
 
-/* Контент слева */
-.hero-content {
-  position: relative; z-index: 2;
-  text-align: left;
-  max-width: 520px;
+/* Градиент поверх фото */
+.hero-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background:
+    linear-gradient(to bottom,
+      rgba(10,10,10,.55) 0%,
+      rgba(10,10,10,.1)  35%,
+      rgba(10,10,10,.05) 55%,
+      rgba(10,10,10,.7)  100%);
 }
 
-.hero-name {
-  font-size: .68rem; font-weight: 700;
-  letter-spacing: .24em; text-transform: uppercase;
-  color: var(--teal-mid);
-  margin-bottom: 32px;
-  opacity: 0;
-  animation: fadeUp .7s .1s ease forwards;
-}
-
-.hero-headline {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(3.6rem, 8vw, 6.5rem);
-  font-weight: 800;
-  line-height: 1.0;
-  letter-spacing: -.02em;
-  color: #fff;
-  margin-bottom: 48px;
-  opacity: 0;
-  animation: fadeUp .7s .25s ease forwards;
-}
-.hero-headline .static {
-  display: block;
-  margin-bottom: 0;
-}
-/* Строка с морфингом — фиксированная высота */
-.hero-headline .morph-line {
-  display: block;
-  height: 1.05em;
-  overflow: hidden;
-  position: relative;
-}
-#morphWord {
-  display: block;
-  font-style: italic;
-  color: var(--teal-mid);
-}
-#morphWord.exit  { animation: wExit  .3s ease forwards; }
-#morphWord.enter { animation: wEnter .3s ease forwards; }
-
-@keyframes wExit  {
-  from { opacity:1; transform:translateY(0); }
-  to   { opacity:0; transform:translateY(-24px); }
-}
-@keyframes wEnter {
-  from { opacity:0; transform:translateY(24px); }
-  to   { opacity:1; transform:translateY(0); }
-}
-
-.hero-action {
-  opacity: 0;
-  animation: fadeUp .7s .4s ease forwards;
-}
-.btn-hero {
-  display: inline-block;
-  background: var(--gold); color: var(--navy);
-  padding: 16px 44px; border-radius: 50px;
-  font-family: 'Manrope', sans-serif;
-  font-weight: 700; font-size: .95rem;
-  transition: all .25s;
-}
-.btn-hero:hover {
-  background: #d4941f; transform: translateY(-2px);
-  box-shadow: 0 10px 28px rgba(232,167,48,.4);
-}
-
-/* Индикатор скролла */
-.scroll-hint {
-  position: absolute; bottom: 32px; left: 50%;
-  transform: translateX(-50%);
+/* Нижняя строка */
+.hero-bottom {
+  position: absolute; bottom: 0; left: 0; right: 0;
   z-index: 2;
-  display: flex; flex-direction: column; align-items: center; gap: 8px;
-  opacity: 0; animation: fadeIn 1s 1.2s ease forwards;
+  padding: 0 48px 52px;
+  display: flex; align-items: flex-end; justify-content: space-between;
 }
-.scroll-dot {
-  width: 1px; height: 40px;
-  background: rgba(255,255,255,.2);
+
+.hero-line {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.4rem, 5vw, 4.2rem);
+  font-weight: 300;
+  letter-spacing: -.01em;
+  color: var(--white);
+  line-height: 1.05;
+  opacity: 0;
+  transform: translateY(24px);
+  animation: heroIn .9s .4s cubic-bezier(.16,1,.3,1) forwards;
+}
+.hero-line em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+
+.hero-scroll {
+  display: flex; flex-direction: column; align-items: flex-end; gap: 10px;
+  opacity: 0;
+  animation: heroIn .9s .8s cubic-bezier(.16,1,.3,1) forwards;
+}
+.hero-scroll span {
+  font-size: .6rem; font-weight: 500;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: rgba(255,255,255,.4);
+  writing-mode: vertical-rl;
+}
+.scroll-bar {
+  width: 1px; height: 48px;
+  background: rgba(255,255,255,.15);
   position: relative; overflow: hidden;
 }
-.scroll-dot::after {
+.scroll-bar::after {
   content: '';
   position: absolute; top: -100%; left: 0;
-  width: 100%; height: 100%;
-  background: var(--teal-mid);
-  animation: scrollLine 2s 1.5s ease infinite;
+  width: 100%; height: 50%;
+  background: var(--gold);
+  animation: scrollDown 2s 1.4s ease infinite;
 }
-@keyframes scrollLine {
-  0%   { top: -100%; }
+@keyframes scrollDown {
+  0%   { top: -50%; }
   100% { top: 100%; }
 }
 
-/* ══════════════════════════════
-   02 · ЯКОРНАЯ ФРАЗА
-══════════════════════════════ */
+/* Имя сверху слева */
+.hero-name {
+  position: absolute; top: 92px; left: 48px;
+  z-index: 2;
+  opacity: 0;
+  animation: heroIn .9s .1s cubic-bezier(.16,1,.3,1) forwards;
+}
+.hero-name span {
+  font-size: .62rem; font-weight: 500;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: rgba(255,255,255,.55);
+}
+.hero-name span em {
+  font-style: normal;
+  color: var(--gold);
+}
+
+@keyframes heroIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── SECTION: ANCHOR ── */
 .section-anchor {
-  background: var(--navy-deep);
-  padding: 96px 10vw;
+  background: var(--black);
+  padding: 120px 48px 100px;
+  position: relative;
+}
+.section-anchor::before {
+  content: '';
+  position: absolute; top: 0; left: 48px; right: 48px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(200,169,110,.3), transparent);
+}
+
+.anchor-inner {
+  max-width: 900px;
+}
+.anchor-label {
+  font-size: .6rem; font-weight: 500;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: var(--teal-mid);
+  margin-bottom: 32px;
+  display: block;
 }
 .anchor-phrase {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(2rem, 3.8vw, 3.2rem);
-  font-weight: 700;
-  line-height: 1.25;
-  letter-spacing: -.015em;
-  color: #fff;
-  max-width: 700px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 4vw, 3.6rem);
+  font-weight: 300;
+  line-height: 1.3;
+  letter-spacing: -.005em;
+  color: var(--off-white);
 }
 .anchor-phrase em {
   font-style: italic;
-  color: var(--teal-mid);
+  color: var(--gold-light);
 }
 .anchor-sub {
-  margin-top: 24px;
-  font-size: .97rem;
-  color: rgba(255,255,255,.4);
-  max-width: 460px;
-  line-height: 1.75;
+  margin-top: 28px;
+  font-size: .95rem; font-weight: 300;
+  color: rgba(245,242,238,.45);
+  max-width: 480px; line-height: 1.8;
 }
 
-/* ══════════════════════════════
-   03 · ВЕРХНИЙ ЭТАЖ
-══════════════════════════════ */
-.section-digest { background: var(--off-white); padding: 96px 10vw; }
-
-.digest-header { margin-bottom: 48px; }
-.section-label {
-  font-size: .65rem; font-weight: 700;
-  text-transform: uppercase; letter-spacing: .2em;
-  color: var(--teal); margin-bottom: 10px;
+/* ── SECTION: PRODUCTS ── */
+.section-products {
+  background: var(--off-white);
+  padding: 100px 48px;
+}
+.products-label {
+  font-size: .6rem; font-weight: 500;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 56px;
   display: block;
 }
-.section-title {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(2rem, 3.5vw, 2.8rem);
-  font-weight: 800; letter-spacing: -.015em;
-  color: var(--navy); line-height: 1.1;
-  margin-bottom: 14px;
+
+.products-list {
+  display: flex; flex-direction: column; gap: 0;
 }
-.section-title em { font-style: italic; color: var(--teal); }
-.section-desc {
-  font-size: .97rem; color: var(--gray-500);
-  max-width: 500px; line-height: 1.72;
+.product-row {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  gap: 0 48px;
+  align-items: start;
+  padding: 44px 0;
+  border-bottom: 1px solid rgba(10,10,10,.08);
+  transition: all .3s;
+  cursor: pointer;
+}
+.product-row:first-child { border-top: 1px solid rgba(10,10,10,.08); }
+.product-row:hover .product-name { color: var(--teal); }
+.product-row:hover .product-arrow { opacity: 1; transform: translateX(0); }
+
+.product-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem; font-weight: 300;
+  color: rgba(10,10,10,.25);
+  letter-spacing: .1em;
+  padding-top: 5px;
+}
+.product-content {}
+.product-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 400;
+  color: var(--black);
+  line-height: 1.1;
+  letter-spacing: -.01em;
+  margin-bottom: 12px;
+  transition: color .3s;
+}
+.product-desc {
+  font-size: .85rem; font-weight: 400;
+  color: rgba(10,10,10,.45);
+  line-height: 1.75;
+  max-width: 560px;
+}
+.product-arrow {
+  font-size: 1.4rem;
+  color: var(--teal);
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: all .3s;
+  padding-top: 8px;
+}
+
+/* ── SECTION: DIGEST ── */
+.section-digest {
+  background: var(--black);
+  padding: 100px 48px;
+  position: relative;
+}
+.section-digest::before {
+  content: '';
+  position: absolute; top: 0; left: 48px; right: 48px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(200,169,110,.2), transparent);
+}
+
+.digest-header {
+  display: flex; align-items: flex-end;
+  justify-content: space-between; gap: 32px;
+  margin-bottom: 56px;
+}
+.digest-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 300;
+  color: var(--off-white);
+  letter-spacing: -.01em;
+  line-height: 1.1;
+}
+.digest-title em { font-style: italic; color: var(--gold-light); }
+.digest-sub {
+  font-size: .82rem; font-weight: 300;
+  color: rgba(245,242,238,.35);
+  max-width: 280px; line-height: 1.7; text-align: right;
 }
 
 .digest-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px; margin-bottom: 32px;
+  gap: 1px;
+  background: rgba(255,255,255,.05);
 }
-.issue-card {
-  background: #fff;
-  border: 1px solid var(--gray-300);
-  border-radius: var(--radius);
-  overflow: hidden; transition: all .25s;
+.digest-card {
+  background: var(--black);
+  padding: 36px 32px;
+  transition: background .3s;
   display: block;
 }
-.issue-card:hover {
-  border-color: var(--teal-mid);
-  box-shadow: var(--shadow);
-  transform: translateY(-4px);
+.digest-card:hover { background: #111; }
+.digest-card-num {
+  font-size: .58rem; font-weight: 500;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--teal-mid);
+  margin-bottom: 20px;
+  display: block;
 }
-.issue-cover {
-  height: 140px; padding: 20px;
-  display: flex; flex-direction: column; justify-content: flex-end;
+.digest-card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem; font-weight: 400;
+  color: var(--off-white);
+  line-height: 1.2;
+  margin-bottom: 12px;
 }
-.ic-1 { background: linear-gradient(135deg, #080F1A, #0F2033); }
-.ic-2 { background: linear-gradient(135deg, #0F2033, #1A8A7E 90%, #080F1A); }
-.ic-3 { background: linear-gradient(135deg, #080F1A, #1A3347); }
-.issue-series {
-  font-size: .54rem; font-weight: 700;
-  letter-spacing: .16em; text-transform: uppercase;
-  color: rgba(255,255,255,.3); margin-bottom: 5px;
+.digest-card-title em { font-style: italic; color: var(--gold-light); }
+.digest-card-desc {
+  font-size: .78rem; font-weight: 300;
+  color: rgba(245,242,238,.35);
+  line-height: 1.65;
+  margin-bottom: 24px;
 }
-.issue-cover-title {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 1.15rem; font-weight: 800;
-  color: #fff; line-height: 1.1;
+.digest-card-link {
+  font-size: .65rem; font-weight: 500;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--gold);
+  border-bottom: 1px solid rgba(200,169,110,.3);
+  padding-bottom: 2px;
+  transition: border-color .2s;
 }
-.issue-cover-title em { font-style: italic; color: var(--teal-mid); }
-.issue-accent {
-  width: 20px; height: 2px;
-  background: var(--gold); border-radius: 2px; margin-top: 10px;
-}
-.issue-body { padding: 18px 20px; }
-.issue-num {
-  font-size: .6rem; font-weight: 700;
-  text-transform: uppercase; letter-spacing: .1em;
-  color: var(--teal); margin-bottom: 5px;
-}
-.issue-name {
-  font-size: .88rem; font-weight: 700;
-  color: var(--navy); line-height: 1.3; margin-bottom: 5px;
-}
-.issue-desc {
-  font-size: .78rem; color: var(--gray-500);
-  line-height: 1.5; margin-bottom: 12px;
-}
-.issue-link { font-size: .75rem; font-weight: 700; color: var(--teal); }
+.digest-card:hover .digest-card-link { border-color: var(--gold); }
 
 .digest-footer {
+  margin-top: 48px;
   display: flex; align-items: center;
-  justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  justify-content: space-between; flex-wrap: wrap; gap: 16px;
 }
-.digest-footer p { font-size: .85rem; color: var(--gray-500); }
-.btn-outline {
+.digest-footer p {
+  font-size: .78rem; font-weight: 300;
+  color: rgba(245,242,238,.3);
+}
+.btn-ghost {
   display: inline-block;
-  border: 1.5px solid var(--gray-300);
-  color: var(--navy); padding: 11px 26px;
-  border-radius: 50px; font-weight: 700; font-size: .85rem;
-  transition: all .22s;
+  border: 1px solid rgba(200,169,110,.3);
+  color: var(--gold);
+  padding: 12px 28px; border-radius: 0;
+  font-size: .68rem; font-weight: 500;
+  letter-spacing: .14em; text-transform: uppercase;
+  transition: all .3s;
 }
-.btn-outline:hover { border-color: var(--navy); background: var(--navy); color: #fff; }
+.btn-ghost:hover {
+  border-color: var(--gold);
+  background: rgba(200,169,110,.08);
+}
 
-/* ══════════════════════════════
-   04 · ОБО МНЕ
-══════════════════════════════ */
-.section-about { background: var(--navy); padding: 96px 10vw; }
+/* ── SECTION: ABOUT ── */
+.section-about {
+  background: #0F0F0F;
+  padding: 100px 48px;
+}
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: 80px; align-items: center;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 80px; align-items: start;
 }
-
-/* Фото */
 .about-photo-wrap { position: relative; }
 .about-photo {
   width: 100%; aspect-ratio: 3/4;
   object-fit: cover; object-position: center top;
-  border-radius: var(--radius); display: block;
+  display: block;
+  filter: grayscale(20%) contrast(1.05);
 }
 .about-ph {
   width: 100%; aspect-ratio: 3/4;
-  background: linear-gradient(160deg, #1A3347, #1A8A7E);
-  border-radius: var(--radius);
+  background: linear-gradient(160deg, #1A1A1A, #1A3347);
 }
-/* Декоративная рамка */
-.about-frame {
-  position: absolute;
-  bottom: -14px; right: -14px;
-  width: 80px; height: 80px;
-  border: 1.5px solid rgba(96,196,184,.2);
-  border-radius: var(--radius);
-  pointer-events: none;
+/* Золотая линия сбоку */
+.about-photo-wrap::before {
+  content: '';
+  position: absolute; top: 24px; left: -16px;
+  width: 1px; height: 60%;
+  background: linear-gradient(to bottom, var(--gold), transparent);
 }
 
-/* Текст */
-.about-label { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .2em; color: var(--teal-mid); margin-bottom: 20px; display: block; }
-.about-text { font-size: 1rem; color: rgba(255,255,255,.65); line-height: 1.82; margin-bottom: 14px; }
-.about-text strong { color: #fff; font-weight: 700; }
-.about-companies { margin-top: 28px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.07); }
-.about-co-label { font-size: .58rem; font-weight: 700; text-transform: uppercase; letter-spacing: .16em; color: rgba(255,255,255,.22); margin-bottom: 10px; }
-.about-co-list { font-size: .85rem; font-weight: 600; color: rgba(255,255,255,.4); line-height: 1.9; }
-.about-co-list span { color: rgba(255,255,255,.6); }
-.about-link { display: inline-block; margin-top: 28px; font-size: .85rem; font-weight: 700; color: var(--teal-mid); border-bottom: 1px solid rgba(96,196,184,.35); padding-bottom: 2px; transition: opacity .2s; }
-.about-link:hover { opacity: .7; }
+.about-label {
+  font-size: .6rem; font-weight: 500;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px; display: block;
+}
+.about-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.3rem, 2vw, 1.7rem);
+  font-weight: 300;
+  color: var(--off-white);
+  line-height: 1.65;
+  margin-bottom: 20px;
+}
+.about-text strong { font-weight: 600; color: var(--white); }
+.about-companies {
+  margin-top: 36px; padding-top: 28px;
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+.about-co-label {
+  font-size: .58rem; font-weight: 500;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: rgba(245,242,238,.22);
+  margin-bottom: 12px; display: block;
+}
+.about-co-list {
+  font-size: .82rem; font-weight: 300;
+  color: rgba(245,242,238,.38);
+  line-height: 2;
+}
+.about-co-list span { color: rgba(245,242,238,.6); }
+.about-link {
+  display: inline-block; margin-top: 32px;
+  font-size: .65rem; font-weight: 500;
+  letter-spacing: .16em; text-transform: uppercase;
+  color: var(--gold);
+  border-bottom: 1px solid rgba(200,169,110,.3);
+  padding-bottom: 3px; transition: all .2s;
+}
+.about-link:hover { border-color: var(--gold); }
 
-/* ══════════════════════════════
-   05 · КОНТАКТ
-══════════════════════════════ */
-.section-contact { background: var(--navy-deep); padding: 96px 10vw; }
+/* ── SECTION: CONTACT ── */
+.section-contact {
+  background: var(--black);
+  padding: 100px 48px;
+  position: relative;
+}
+.section-contact::before {
+  content: '';
+  position: absolute; top: 0; left: 48px; right: 48px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(200,169,110,.2), transparent);
+}
+
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 80px; align-items: start;
 }
 .contact-title {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(2rem, 3.5vw, 2.8rem);
-  font-weight: 800; color: #fff;
-  line-height: 1.15; letter-spacing: -.015em;
-  margin-bottom: 16px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 300;
+  color: var(--off-white);
+  line-height: 1.15;
+  letter-spacing: -.01em;
+  margin-bottom: 20px;
 }
-.contact-sub { font-size: .95rem; color: rgba(255,255,255,.4); line-height: 1.72; margin-bottom: 24px; }
-.contact-tg { display: inline-flex; align-items: center; gap: 6px; color: var(--teal-mid); font-size: .85rem; font-weight: 700; border-bottom: 1px solid rgba(96,196,184,.3); padding-bottom: 2px; }
+.contact-title em { font-style: italic; color: var(--gold-light); }
+.contact-sub {
+  font-size: .9rem; font-weight: 300;
+  color: rgba(245,242,238,.38);
+  line-height: 1.8; margin-bottom: 28px;
+}
+.contact-tg {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: .65rem; font-weight: 500;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--teal-mid);
+  border-bottom: 1px solid rgba(96,196,184,.25);
+  padding-bottom: 2px; transition: all .2s;
+}
 .contact-tg:hover { border-color: var(--teal-mid); }
 
-.contact-form { display: flex; flex-direction: column; gap: 14px; }
-.f-label { font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: rgba(255,255,255,.3); display: block; margin-bottom: 5px; }
+.contact-form { display: flex; flex-direction: column; gap: 16px; }
+.f-group { display: flex; flex-direction: column; gap: 8px; }
+.f-label {
+  font-size: .58rem; font-weight: 500;
+  letter-spacing: .16em; text-transform: uppercase;
+  color: rgba(245,242,238,.25);
+}
 .f-input {
-  width: 100%;
-  background: rgba(255,255,255,.05);
-  border: 1px solid rgba(255,255,255,.1);
-  border-radius: 10px; padding: 13px 16px;
-  color: #fff; font-size: .95rem;
+  background: transparent;
+  border: none; border-bottom: 1px solid rgba(245,242,238,.12);
+  padding: 12px 0;
+  color: var(--off-white);
+  font-size: .95rem; font-weight: 300;
   font-family: 'Manrope', sans-serif;
-  outline: none; transition: border-color .2s;
+  outline: none; width: 100%;
+  transition: border-color .2s;
 }
-.f-input::placeholder { color: rgba(255,255,255,.22); }
-.f-input:focus { border-color: var(--teal-mid); }
+.f-input::placeholder { color: rgba(245,242,238,.2); }
+.f-input:focus { border-color: var(--gold); }
 .f-submit {
-  width: 100%; background: var(--gold); color: var(--navy);
-  padding: 15px; border-radius: 50px;
-  font-weight: 700; font-size: .95rem;
-  border: none; cursor: pointer;
+  margin-top: 8px;
+  background: transparent;
+  border: 1px solid rgba(200,169,110,.5);
+  color: var(--gold);
+  padding: 16px 36px;
+  font-size: .68rem; font-weight: 500;
+  letter-spacing: .18em; text-transform: uppercase;
   font-family: 'Manrope', sans-serif;
-  margin-top: 4px; transition: background .2s;
+  cursor: none;
+  transition: all .3s;
+  align-self: flex-start;
 }
-.f-submit:hover { background: #d4941f; }
-.f-email { text-align: center; margin-top: 10px; font-size: .8rem; color: rgba(255,255,255,.25); }
-.f-email a { color: var(--teal-mid); }
+.f-submit:hover {
+  background: rgba(200,169,110,.08);
+  border-color: var(--gold);
+}
+.f-note {
+  font-size: .72rem; font-weight: 300;
+  color: rgba(245,242,238,.2);
+  margin-top: 6px;
+}
+.f-note a { color: var(--teal-mid); }
 
-/* ══ FOOTER ══ */
+/* ── FOOTER ── */
 footer {
-  background: #040A12;
-  padding: 48px 10vw 28px;
-  border-top: 1px solid rgba(255,255,255,.05);
+  background: #060606;
+  padding: 48px;
+  border-top: 1px solid rgba(255,255,255,.04);
+  display: flex; align-items: center;
+  justify-content: space-between; gap: 24px; flex-wrap: wrap;
 }
-.footer-inner {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 48px; margin-bottom: 40px;
+.footer-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .85rem; font-weight: 300;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: rgba(245,242,238,.3);
 }
-.f-brand { font-size: 1rem; font-weight: 800; color: #fff; letter-spacing: -.02em; margin-bottom: 10px; display: block; }
-.f-brand em { font-style: normal; color: var(--teal-mid); }
-.f-brand-desc { font-size: .78rem; color: rgba(255,255,255,.28); line-height: 1.65; margin-bottom: 18px; }
-.f-socials { display: flex; gap: 8px; }
-.f-soc { width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.32); font-size: .7rem; font-weight: 700; transition: all .2s; }
-.f-soc:hover { border-color: var(--teal); background: var(--teal); color: #fff; }
-.f-col h5 { font-size: .58rem; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; color: rgba(255,255,255,.22); margin-bottom: 14px; }
-.f-col a { display: block; font-size: .78rem; color: rgba(255,255,255,.32); margin-bottom: 8px; transition: color .2s; }
-.f-col a:hover { color: var(--teal-mid); }
-.footer-bottom { border-top: 1px solid rgba(255,255,255,.05); padding-top: 20px; font-size: .7rem; color: rgba(255,255,255,.18); }
-
-/* ══ ANIMATIONS ══ */
-@keyframes fadeUp {
-  from { opacity:0; transform: translateY(16px); }
-  to   { opacity:1; transform: translateY(0); }
+.footer-brand em { font-style: normal; color: var(--gold); }
+.footer-links { display: flex; gap: 28px; flex-wrap: wrap; }
+.footer-links a {
+  font-size: .6rem; font-weight: 500;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: rgba(245,242,238,.2);
+  transition: color .2s;
 }
-@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+.footer-links a:hover { color: var(--teal-mid); }
+.footer-copy {
+  font-size: .6rem; font-weight: 300;
+  color: rgba(245,242,238,.15);
+}
 
-.fade { opacity:0; transform: translateY(20px); transition: opacity .65s ease, transform .65s ease; }
-.fade.in { opacity:1; transform: translateY(0); }
+/* ── SCROLL ANIMATIONS ── */
+.reveal {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity .8s cubic-bezier(.16,1,.3,1),
+              transform .8s cubic-bezier(.16,1,.3,1);
+}
+.reveal.in { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: .1s; }
+.reveal-delay-2 { transition-delay: .2s; }
+.reveal-delay-3 { transition-delay: .3s; }
 
-/* ══ RESPONSIVE ══ */
+/* ── MOBILE ── */
+.hamburger {
+  display: none; flex-direction: column;
+  gap: 5px; cursor: none; padding: 6px; width: 32px;
+}
+.hamburger span { display: block; height: 1px; background: var(--white); }
+.mobile-menu {
+  position: fixed; inset: 0; z-index: 99;
+  background: var(--black);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 12px;
+  opacity: 0; visibility: hidden; transition: all .3s;
+}
+.mobile-menu.open { opacity: 1; visibility: visible; }
+.mobile-menu a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem; font-weight: 300;
+  color: var(--off-white); letter-spacing: .05em;
+  transition: color .2s;
+}
+.mobile-menu a:hover { color: var(--gold); }
+.mobile-close {
+  position: absolute; top: 28px; right: 44px;
+  background: none; border: none;
+  color: var(--white); font-size: 1.2rem; cursor: none;
+}
+
 @media (max-width: 900px) {
-  .navbar { padding: 18px 24px; }
-  .navbar.scrolled { padding: 12px 24px; }
+  .nav { padding: 24px; }
   .nav-links, .nav-cta { display: none; }
   .hamburger { display: flex; }
 
+  .hero-name { left: 24px; top: 80px; }
+  .hero-bottom { padding: 0 24px 40px; }
+  .hero-line { font-size: 2rem; }
+
   .section-anchor,
+  .section-products,
   .section-digest,
   .section-about,
   .section-contact,
   footer { padding-left: 24px; padding-right: 24px; }
 
-  .hero-headline { font-size: clamp(3rem, 10vw, 4.5rem); }
+  .product-row { grid-template-columns: 48px 1fr; }
+  .product-arrow { display: none; }
 
   .digest-grid { grid-template-columns: 1fr; }
+  .digest-header { flex-direction: column; align-items: flex-start; }
+  .digest-sub { text-align: left; }
 
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
   .about-ph { aspect-ratio: 3/2; }
 
-  .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 56px; }
 
-  .footer-inner {
-    grid-template-columns: 1fr 1fr; gap: 24px 32px;
-  }
-  .footer-inner > div:first-child { grid-column: 1/-1; }
+  footer { flex-direction: column; align-items: flex-start; gap: 16px; }
 }
 ```
 
@@ -517,16 +657,18 @@ footer {
 </head>
 <body>
 
-<!-- ══ NAV ══ -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
-<nav class="navbar" id="navbar">
-  <div class="nav-brand">hrdonline<em>.</em></div>
+<!-- NAV -->
+
+<nav class="nav">
+  <div class="nav-brand">hrdonline<em style="font-style:normal;color:var(--gold)">.</em></div>
   <ul class="nav-links">
-    <li><a href="business.html">Бизнесу</a></li>
+    <li><a href="#products">Бизнесу</a></li>
     <li><a href="#digest">Верхний этаж</a></li>
     <li><a href="#about">Обо мне</a></li>
     <li><a href="hr.html">Для HR</a></li>
-    <li><a href="#contact">Контакты</a></li>
   </ul>
   <a href="#contact" class="nav-cta">Написать</a>
   <div class="hamburger" onclick="toggleMenu()">
@@ -535,202 +677,197 @@ footer {
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
-  <button class="mobile-close" onclick="toggleMenu()">&#10005;</button>
-  <a href="business.html" onclick="toggleMenu()">Бизнесу</a>
-  <a href="#digest"       onclick="toggleMenu()">Верхний этаж</a>
-  <a href="#about"        onclick="toggleMenu()">Обо мне</a>
-  <a href="hr.html"       onclick="toggleMenu()">Для HR</a>
-  <div class="m-div"></div>
-  <a href="#contact"      onclick="toggleMenu()">Написать</a>
+  <button class="mobile-close" onclick="toggleMenu()">✕</button>
+  <a href="#products" onclick="toggleMenu()">Бизнесу</a>
+  <a href="#digest"   onclick="toggleMenu()">Верхний этаж</a>
+  <a href="#about"    onclick="toggleMenu()">Обо мне</a>
+  <a href="hr.html"   onclick="toggleMenu()">Для HR</a>
+  <a href="#contact"  onclick="toggleMenu()">Написать</a>
 </div>
 
-<!-- ══════════════════════════
-     01 · HERO — текст слева, фото справа
-══════════════════════════ -->
+<!-- ════ HERO ════ -->
 
 <section class="hero">
-
-  <!-- ЛЕВАЯ КОЛОНКА: тёмный фон + текст -->
-
-  <div class="hero-left">
-    <div class="hero-content">
-      <div class="hero-name">Зинаида Чумакова &nbsp;&middot;&nbsp; Независимый HRD</div>
-
-```
-  <h1 class="hero-headline">
-    <span class="static">Бизнес строят</span>
-    <span class="morph-line">
-      <span id="morphWord">люди.</span>
-    </span>
-  </h1>
-
-  <div class="hero-action">
-    <a href="#contact" class="btn-hero">Написать</a>
+  <div class="hero-photo">
+    <img src="/mnt/user-data/uploads/foto-author.jpg" alt="Зинаида Чумакова"
+         onerror="this.parentElement.style.background='linear-gradient(150deg,#1A3347,#0A0A0A)'">
   </div>
-</div>
+  <div class="hero-overlay"></div>
 
-<div class="scroll-hint">
-  <span>Листать</span>
-  <div class="scroll-line"></div>
-</div>
-```
-
+  <div class="hero-name">
+    <span>Зинаида Чумакова &nbsp;<em>·</em>&nbsp; Независимый HRD</span>
   </div>
 
-  <!-- ПРАВАЯ КОЛОНКА: фото -->
-
-  <div class="hero-right">
-    <!-- Замените на реальное фото:
-    <img src="foto-author.jpg" alt="Зинаида Чумакова">
-    -->
-    <div class="hero-ph"></div>
+  <div class="hero-bottom">
+    <h1 class="hero-line">
+      Бизнес строят <em>люди.</em>
+    </h1>
+    <div class="hero-scroll">
+      <span>scroll</span>
+      <div class="scroll-bar"></div>
+    </div>
   </div>
-
 </section>
 
-<!-- ══════════════════════════
-     02 · ЯКОРНАЯ ФРАЗА
-══════════════════════════ -->
+<!-- ════ ANCHOR ════ -->
 
 <section class="section-anchor">
-  <p class="anchor-phrase fade">
-    Правильные люди на правильных местах —<br>
-    <em>это и есть стратегия.</em><br>
-    Всё остальное приложится.
-  </p>
-  <p class="anchor-sub fade">
-    За 20 лет я видела десятки компаний изнутри.
-    Знаю, как выглядит бизнес, когда кадровые решения
-    принимаются правильно — и как выглядит, когда нет.
-  </p>
-</section>
-
-<!-- ══════════════════════════
-     03 · ВЕРХНИЙ ЭТАЖ
-══════════════════════════ -->
-
-<section class="section-digest" id="digest">
-  <div class="digest-header fade">
-    <span class="section-label">Авторский дайджест</span>
-    <h2 class="section-title">Верхний <em>этаж</em></h2>
-    <p class="section-desc">
-      О людях и решениях на верхнем уровне.
-      Для C-level и собственников — о том,
-      о чём говорят в кулуарах, но редко пишут открыто.
+  <div class="anchor-inner">
+    <span class="anchor-label reveal">Позиция</span>
+    <p class="anchor-phrase reveal reveal-delay-1">
+      Команды которые понимают<br>
+      на что влияют —<br>
+      <em>дают результат.</em>
+    </p>
+    <p class="anchor-sub reveal reveal-delay-2">
+      Я выстраиваю эту связь: между целями бизнеса
+      и работой каждого человека.
     </p>
   </div>
-
-  <div class="digest-grid fade">
-    <a href="digest/4.html" class="issue-card">
-      <div class="issue-cover ic-1">
-        <div class="issue-series">Верхний этаж · Выпуск 4</div>
-        <div class="issue-cover-title">Корпоративные<br><em>войны.</em></div>
-        <div class="issue-accent"></div>
-      </div>
-      <div class="issue-body">
-        <div class="issue-num">Выпуск 4 · 2026</div>
-        <div class="issue-name">Корпоративные войны на верхнем этаже</div>
-        <div class="issue-desc">Как распознать до того, как стало очевидно. Пять паттернов и пять типажей.</div>
-        <div class="issue-link">Читать →</div>
-      </div>
-    </a>
-
-```
-<a href="digest/3.html" class="issue-card">
-  <div class="issue-cover ic-2">
-    <div class="issue-series">Верхний этаж · Выпуск 3</div>
-    <div class="issue-cover-title">То, что редко<br><em>говорят.</em></div>
-    <div class="issue-accent"></div>
-  </div>
-  <div class="issue-body">
-    <div class="issue-num">Выпуск 3 · 2026</div>
-    <div class="issue-name">То, что редко говорят топ-менеджеру на входе</div>
-    <div class="issue-desc">Оффер — это не мандат. Как войти в компанию на верхнем уровне.</div>
-    <div class="issue-link">Читать →</div>
-  </div>
-</a>
-
-<a href="digest/1.html" class="issue-card">
-  <div class="issue-cover ic-3">
-    <div class="issue-series">Верхний этаж · Выпуск 1</div>
-    <div class="issue-cover-title">Рынок<br><em>C-level.</em></div>
-    <div class="issue-accent"></div>
-  </div>
-  <div class="issue-body">
-    <div class="issue-num">Выпуск 1 · 2026</div>
-    <div class="issue-name">Рынок найма C-level: пять гипотез</div>
-    <div class="issue-desc">Почему сильные управленцы не доходят до разговора с ЛПР.</div>
-    <div class="issue-link">Читать →</div>
-  </div>
-</a>
-```
-
-  </div>
-
-  <div class="digest-footer fade">
-    <p>Новые выпуски — в Telegram-канале</p>
-    <div style="display:flex;gap:12px;flex-wrap:wrap;">
-      <a href="https://t.me/chumakova_HRD" target="_blank" class="btn-outline">Подписаться</a>
-      <a href="digest.html" class="btn-outline">Все выпуски</a>
-    </div>
-  </div>
 </section>
 
-<!-- ══════════════════════════
-     04 · ОБО МНЕ
-══════════════════════════ -->
+<!-- ════ PRODUCTS ════ -->
 
-<section class="section-about" id="about">
-  <div class="about-grid fade">
-    <div class="about-photo-wrap">
-      <!-- <img src="foto-author.jpg" alt="Зинаида Чумакова" class="about-photo"> -->
-      <div class="about-ph"></div>
-      <div class="about-frame"></div>
-    </div>
+<section class="section-products" id="products">
+  <span class="products-label reveal">Форматы работы</span>
+  <div class="products-list">
 
 ```
-<div>
-  <span class="about-label">Зинаида Чумакова</span>
-  <p class="about-text">
-    Я HRD с 20-летним опытом. Работала в ритейле, логистике, девелопменте, HoReCa, банках — от среднего бизнеса до холдингов уровня <strong>X5 Group</strong>.
-  </p>
-  <p class="about-text">
-    Открывала компании с нуля, проводила трансформации, собирала топ-команды. Знаю как работать с собственниками и советами директоров — про результат, про бизнес и про людей.
-  </p>
-  <p class="about-text">
-    Сейчас — независимая практика. Работаю напрямую с CEO и собственниками как стратегический партнёр по людям.
-  </p>
-
-  <div class="about-companies">
-    <div class="about-co-label">Опыт работы</div>
-    <div class="about-co-list">
-      <span>X5 Group</span> &nbsp;·&nbsp;
-      <span>Capital Alliance</span> &nbsp;·&nbsp;
-      <span>KFC</span> &nbsp;·&nbsp;
-      <span>МегаФон</span> &nbsp;·&nbsp;
-      <span>АТБ Банк</span> &nbsp;·&nbsp;
-      <span>Евросеть</span>
+<div class="product-row reveal">
+  <div class="product-num">01</div>
+  <div class="product-content">
+    <div class="product-name">Рывок</div>
+    <div class="product-desc">
+      Акционеры ждут результата. Год идёт — и где-то цифры не дотягивают.
+      До конца года ещё есть время но его мало. Я захожу туда где не хватает —
+      и за три месяца выстраиваю команду и процессы так чтобы показатели пошли вверх.
     </div>
   </div>
+  <div class="product-arrow">→</div>
+</div>
 
-  <a href="about.html" class="about-link">Подробнее →</a>
+<div class="product-row reveal reveal-delay-1">
+  <div class="product-num">02</div>
+  <div class="product-content">
+    <div class="product-name">Верхний этаж</div>
+    <div class="product-desc">
+      Каждый топ отвечает за свой показатель — и это правильно.
+      Проблема когда своё становится важнее общего. Решения буксуют,
+      CEO становится арбитром между функциями, скорость падает.
+      Я выстраиваю работу топ-команды так чтобы они двигали компанию в одну сторону.
+    </div>
+  </div>
+  <div class="product-arrow">→</div>
+</div>
+
+<div class="product-row reveal reveal-delay-2">
+  <div class="product-num">03</div>
+  <div class="product-content">
+    <div class="product-name">Структура под цели бизнеса</div>
+    <div class="product-desc">
+      Бизнес меняется — структура за ним не успевает. Одни функции раздуты,
+      другие не закрыты, зоны ответственности размыты. Я перестраиваю структуру
+      под то куда идёт компания: прописываю роли, результаты каждой позиции
+      и как они складываются в цели бизнеса.
+    </div>
+  </div>
+  <div class="product-arrow">→</div>
 </div>
 ```
 
   </div>
 </section>
 
-<!-- ══════════════════════════
-     05 · КОНТАКТ
-══════════════════════════ -->
+<!-- ════ DIGEST ════ -->
+
+<section class="section-digest" id="digest">
+  <div class="digest-header reveal">
+    <h2 class="digest-title">Верхний <em>этаж</em></h2>
+    <p class="digest-sub">О людях и решениях на верхнем уровне. Для C-level и собственников.</p>
+  </div>
+
+  <div class="digest-grid reveal">
+    <a href="digest/4.html" class="digest-card">
+      <span class="digest-card-num">Выпуск 4 · 2026</span>
+      <div class="digest-card-title">Корпоративные <em>войны</em></div>
+      <div class="digest-card-desc">Как распознать до того, как стало очевидно. Пять паттернов и пять типажей.</div>
+      <span class="digest-card-link">Читать</span>
+    </a>
+    <a href="digest/3.html" class="digest-card">
+      <span class="digest-card-num">Выпуск 3 · 2026</span>
+      <div class="digest-card-title">То, что редко <em>говорят</em></div>
+      <div class="digest-card-desc">Оффер — это не мандат. Как войти в компанию на верхнем уровне и дать результат.</div>
+      <span class="digest-card-link">Читать</span>
+    </a>
+    <a href="digest/1.html" class="digest-card">
+      <span class="digest-card-num">Выпуск 1 · 2026</span>
+      <div class="digest-card-title">Рынок <em>C-level</em></div>
+      <div class="digest-card-desc">Почему сильные управленцы не доходят до разговора с ЛПР. Структурный анализ.</div>
+      <span class="digest-card-link">Читать</span>
+    </a>
+  </div>
+
+  <div class="digest-footer reveal">
+    <p>Новые выпуски — в Telegram-канале</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+      <a href="https://t.me/chumakova_HRD" target="_blank" class="btn-ghost">Подписаться</a>
+      <a href="digest.html" class="btn-ghost">Все выпуски</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════ ABOUT ════ -->
+
+<section class="section-about" id="about">
+  <div class="about-grid reveal">
+    <div class="about-photo-wrap">
+      <img src="/mnt/user-data/uploads/Zinaida1.jpg"
+           alt="Зинаида Чумакова" class="about-photo"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <div class="about-ph" style="display:none;"></div>
+    </div>
+    <div>
+      <span class="about-label">Зинаида Чумакова</span>
+      <p class="about-text">
+        Я HRD с 20-летним опытом. Работала в ритейле, логистике,
+        девелопменте, HoReCa, банках — от среднего бизнеса до холдингов
+        уровня <strong>X5 Group</strong>.
+      </p>
+      <p class="about-text">
+        Открывала компании с нуля, проводила трансформации,
+        собирала топ-команды. Знаю как работать с собственниками
+        напрямую — про результат, про бизнес и про людей.
+      </p>
+      <p class="about-text">
+        Сейчас — независимая практика.
+        Работаю с CEO и собственниками как стратегический партнёр.
+      </p>
+      <div class="about-companies">
+        <span class="about-co-label">Опыт работы</span>
+        <div class="about-co-list">
+          <span>X5 Group</span> &nbsp;·&nbsp;
+          <span>Capital Alliance</span> &nbsp;·&nbsp;
+          <span>KFC</span> &nbsp;·&nbsp;
+          <span>МегаФон</span> &nbsp;·&nbsp;
+          <span>АТБ Банк</span> &nbsp;·&nbsp;
+          <span>Евросеть</span>
+        </div>
+      </div>
+      <a href="about.html" class="about-link">Подробнее →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════ CONTACT ════ -->
 
 <section class="section-contact" id="contact">
   <div class="contact-grid">
-    <div class="fade">
-      <span class="section-label" style="color:var(--teal-mid);">Сделайте первый шаг</span>
-      <h2 class="contact-title">Напишите.<br>Разберёмся<br>вместе.</h2>
+    <div class="reveal">
+      <span class="anchor-label">Сделайте первый шаг</span>
+      <h2 class="contact-title">Напишите.<br><em>Разберёмся</em><br>вместе.</h2>
       <p class="contact-sub">
-        Расскажите о своей ситуации — я отвечу: могу ли помочь, в каком формате и с чего начать.
+        Расскажите о своей ситуации — я отвечу:
+        могу ли помочь, в каком формате и с чего начать.
       </p>
       <a href="https://t.me/ZinaidaChu" target="_blank" class="contact-tg">
         → Telegram
@@ -738,98 +875,92 @@ footer {
     </div>
 
 ```
-<form class="contact-form fade" action="https://formspree.io/f/xkopvegv" method="POST">
+<form class="contact-form reveal reveal-delay-1"
+      action="https://formspree.io/f/xkopvegv" method="POST">
   <input type="hidden" name="_subject" value="Новая заявка с hrdonline.ru">
-  <div>
+  <div class="f-group">
     <label class="f-label">Имя</label>
     <input class="f-input" type="text" name="name" placeholder="Иван Иванов" required>
   </div>
-  <div>
+  <div class="f-group">
     <label class="f-label">Телефон</label>
     <input class="f-input" type="tel" name="phone" placeholder="+7 900 000 00 00" required>
   </div>
-  <div>
+  <div class="f-group">
     <label class="f-label">Email</label>
     <input class="f-input" type="email" name="email" placeholder="you@company.com" required>
   </div>
   <button type="submit" class="f-submit">Отправить</button>
-  <div class="f-email">или <a href="mailto:info@hrdonline.ru">info@hrdonline.ru</a></div>
+  <p class="f-note">или <a href="mailto:info@hrdonline.ru">info@hrdonline.ru</a></p>
 </form>
 ```
 
   </div>
 </section>
 
-<!-- ══ FOOTER ══ -->
+<!-- FOOTER -->
 
 <footer>
-  <div class="footer-inner">
-    <div>
-      <span class="f-brand">hrdonline<em>.</em></span>
-      <p class="f-brand-desc">Зинаида Чумакова — независимый HRD.<br>20 лет опыта. Работаю напрямую с бизнесом.</p>
-      <div class="f-socials">
-        <a href="https://t.me/chumakova_HRD" target="_blank" class="f-soc">TG</a>
-        <a href="https://t.me/ZinaidaChu"    target="_blank" class="f-soc">DM</a>
-      </div>
-    </div>
-    <div class="f-col">
-      <h5>Бизнесу</h5>
-      <a href="business.html">Форматы работы</a>
-      <a href="#digest">Верхний этаж</a>
-      <a href="#contact">Написать</a>
-    </div>
-    <div class="f-col">
-      <h5>Для HR</h5>
-      <a href="hr.html">Сессии и проекты</a>
-      <a href="course.html">Курс ИИ в HR</a>
-      <a href="books.html">Книги</a>
-    </div>
-    <div class="f-col">
-      <h5>Контакты</h5>
-      <a href="https://t.me/chumakova_HRD" target="_blank">Telegram-канал</a>
-      <a href="https://t.me/ZinaidaChu"    target="_blank">Личный Telegram</a>
-      <a href="mailto:info@hrdonline.ru">info@hrdonline.ru</a>
-    </div>
+  <div class="footer-brand">hrdonline<em>.</em></div>
+  <div class="footer-links">
+    <a href="#products">Бизнесу</a>
+    <a href="#digest">Верхний этаж</a>
+    <a href="hr.html">Для HR</a>
+    <a href="https://t.me/chumakova_HRD" target="_blank">Telegram</a>
+    <a href="mailto:info@hrdonline.ru">Email</a>
   </div>
-  <div class="footer-bottom">© 2026 hrdonline.ru — Зинаида Чумакова</div>
+  <div class="footer-copy">© 2026 hrdonline.ru — Зинаида Чумакова</div>
 </footer>
 
 <script>
-  /* Navbar */
+  /* Custom cursor */
+  var cursor = document.getElementById('cursor');
+  var ring = document.getElementById('cursorRing');
+  var mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', function(e) {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px';
+    cursor.style.top  = my + 'px';
+  });
+  function animRing() {
+    rx += (mx - rx) * .12;
+    ry += (my - ry) * .12;
+    ring.style.left = rx + 'px';
+    ring.style.top  = ry + 'px';
+    requestAnimationFrame(animRing);
+  }
+  animRing();
+
+  /* Navbar scroll */
   window.addEventListener('scroll', function() {
-    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+    var nav = document.querySelector('.nav');
+    if (window.scrollY > 80) {
+      nav.style.mixBlendMode = 'normal';
+      nav.style.background = 'rgba(10,10,10,.92)';
+      nav.style.backdropFilter = 'blur(16px)';
+      nav.style.padding = '18px 48px';
+    } else {
+      nav.style.mixBlendMode = 'difference';
+      nav.style.background = 'transparent';
+      nav.style.backdropFilter = 'none';
+      nav.style.padding = '32px 48px';
+    }
   });
 
-  /* Mobile */
+  /* Mobile menu */
   function toggleMenu() {
     var m = document.getElementById('mobileMenu');
     var open = m.classList.toggle('open');
     document.body.style.overflow = open ? 'hidden' : '';
   }
 
-  /* Морфинг */
-  var words = ['люди.', 'команды.', 'лидеры.', 'решения.'];
-  var cur = 0;
-  var el = document.getElementById('morphWord');
-  function morph() {
-    el.classList.remove('enter');
-    el.classList.add('exit');
-    setTimeout(function() {
-      cur = (cur + 1) % words.length;
-      el.textContent = words[cur];
-      el.classList.remove('exit');
-      el.classList.add('enter');
-    }, 300);
-  }
-  setTimeout(function() { morph(); setInterval(morph, 2800); }, 2800);
-
-  /* Scroll fade */
+  /* Scroll reveal */
   var io = new IntersectionObserver(function(entries) {
     entries.forEach(function(e) {
       if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
     });
   }, { threshold: 0.08 });
-  document.querySelectorAll('.fade').forEach(function(el) { io.observe(el); });
+  document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
 </script>
 
 </body>
