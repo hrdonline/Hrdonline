@@ -254,49 +254,54 @@ button:hover ~ .cursor { width: 16px; height: 16px; }
 }
 .product-row {
   display: grid;
+  color: inherit;
   grid-template-columns: 80px 1fr auto;
   gap: 0 48px;
-  align-items: start;
-  padding: 44px 0;
+  align-items: center;
+  padding: 36px 0;
   border-bottom: 1px solid rgba(10,10,10,.08);
-  transition: all .3s;
+  transition: all .35s;
   cursor: pointer;
 }
 .product-row:first-child { border-top: 1px solid rgba(10,10,10,.08); }
-.product-row:hover .product-name { color: var(--teal); }
+.product-row:hover { padding: 44px 0; background: transparent; }
+.product-row:hover .product-name { color: var(--gold); }
+.product-row:hover .product-desc { max-height: 80px; opacity: 1; margin-top: 10px; }
 .product-row:hover .product-arrow { opacity: 1; transform: translateX(0); }
 
 .product-num {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1rem; font-weight: 300;
-  color: rgba(10,10,10,.25);
+  font-size: .95rem; font-weight: 300;
+  color: rgba(10,10,10,.2);
   letter-spacing: .1em;
-  padding-top: 5px;
 }
 .product-content {}
 .product-name {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.8rem, 3vw, 2.8rem);
-  font-weight: 400;
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  font-weight: 300;
   color: var(--black);
-  line-height: 1.1;
-  letter-spacing: -.01em;
-  margin-bottom: 12px;
-  transition: color .3s;
+  line-height: 1.05;
+  letter-spacing: -.02em;
+  transition: color .35s;
 }
 .product-desc {
-  font-size: .85rem; font-weight: 400;
+  font-size: .84rem; font-weight: 300;
   color: rgba(10,10,10,.45);
   line-height: 1.75;
   max-width: 560px;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height .4s ease, opacity .35s ease, margin-top .35s ease;
+  margin-top: 0;
 }
 .product-arrow {
-  font-size: 1.4rem;
-  color: var(--teal);
+  font-size: 1.2rem;
+  color: var(--gold);
   opacity: 0;
   transform: translateX(-8px);
-  transition: all .3s;
-  padding-top: 8px;
+  transition: all .35s;
 }
 
 /* ── SECTION: DIGEST ── */
@@ -689,7 +694,7 @@ footer {
 
 <section class="hero">
   <div class="hero-photo">
-    <img src="/mnt/user-data/uploads/foto-author.jpg" alt="Зинаида Чумакова"
+    <img src="foto-author.jpg" alt="Зинаида Чумакова"
          onerror="this.parentElement.style.background='linear-gradient(150deg,#1A3347,#0A0A0A)'">
   </div>
   <div class="hero-overlay"></div>
@@ -720,8 +725,9 @@ footer {
       <em>дают результат.</em>
     </p>
     <p class="anchor-sub reveal reveal-delay-2">
-      Я выстраиваю эту связь: между целями бизнеса
-      и работой каждого человека.
+      Я выстраиваю эту связь между целями бизнеса
+      и работой каждого человека.<br>
+      И остаюсь пока она не заработала.
     </p>
   </div>
 </section>
@@ -729,50 +735,45 @@ footer {
 <!-- ════ PRODUCTS ════ -->
 
 <section class="section-products" id="products">
-  <span class="products-label reveal">Форматы работы</span>
+  <span class="products-label reveal">С чем я работаю</span>
   <div class="products-list">
 
 ```
-<div class="product-row reveal">
+<a href="product-c-ryvok.html" class="product-row reveal">
   <div class="product-num">01</div>
   <div class="product-content">
     <div class="product-name">Рывок</div>
-    <div class="product-desc">
-      Акционеры ждут результата. Год идёт — и где-то цифры не дотягивают.
-      До конца года ещё есть время но его мало. Я захожу туда где не хватает —
-      и за три месяца выстраиваю команду и процессы так чтобы показатели пошли вверх.
-    </div>
+    <div class="product-desc">Есть цели на год. Есть команда. И есть вероятность что мы отстаём от целей. Сделаем вместе рывок и сменим тренд.</div>
   </div>
   <div class="product-arrow">→</div>
-</div>
+</a>
 
-<div class="product-row reveal reveal-delay-1">
+<a href="product-c-lineyka.html" class="product-row reveal reveal-delay-1">
   <div class="product-num">02</div>
   <div class="product-content">
-    <div class="product-name">Верхний этаж</div>
-    <div class="product-desc">
-      Каждый топ отвечает за свой показатель — и это правильно.
-      Проблема когда своё становится важнее общего. Решения буксуют,
-      CEO становится арбитром между функциями, скорость падает.
-      Я выстраиваю работу топ-команды так чтобы они двигали компанию в одну сторону.
-    </div>
+    <div class="product-name">Первая линейка</div>
+    <div class="product-desc">Первая линейка определяет всё. Я работаю с ней напрямую — чтобы сильные люди давали сильный общий результат.</div>
   </div>
   <div class="product-arrow">→</div>
-</div>
+</a>
 
-<div class="product-row reveal reveal-delay-2">
+<a href="product-c-hrd.html" class="product-row reveal reveal-delay-2">
   <div class="product-num">03</div>
   <div class="product-content">
-    <div class="product-name">Структура под цели бизнеса</div>
-    <div class="product-desc">
-      Бизнес меняется — структура за ним не успевает. Одни функции раздуты,
-      другие не закрыты, зоны ответственности размыты. Я перестраиваю структуру
-      под то куда идёт компания: прописываю роли, результаты каждой позиции
-      и как они складываются в цели бизнеса.
-    </div>
+    <div class="product-name">Опытный HRD</div>
+    <div class="product-desc">Не в штат. На постоянной основе. Погружаюсь в вашу компанию — и работаю как ваш HRD со всей экспертизой крупного бизнеса.</div>
   </div>
   <div class="product-arrow">→</div>
-</div>
+</a>
+
+<a href="product-c-struktura.html" class="product-row reveal reveal-delay-3">
+  <div class="product-num">04</div>
+  <div class="product-content">
+    <div class="product-name">Структура под цели</div>
+    <div class="product-desc">Простая структура — это умная структура. Каждый знает за что отвечает и как это влияет на бизнес.</div>
+  </div>
+  <div class="product-arrow">→</div>
+</a>
 ```
 
   </div>
@@ -821,7 +822,7 @@ footer {
 <section class="section-about" id="about">
   <div class="about-grid reveal">
     <div class="about-photo-wrap">
-      <img src="/mnt/user-data/uploads/Zinaida1.jpg"
+      <img src="Zinaida1.jpg"
            alt="Зинаида Чумакова" class="about-photo"
            onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
       <div class="about-ph" style="display:none;"></div>
@@ -861,40 +862,24 @@ footer {
 <!-- ════ CONTACT ════ -->
 
 <section class="section-contact" id="contact">
-  <div class="contact-grid">
-    <div class="reveal">
-      <span class="anchor-label">Сделайте первый шаг</span>
-      <h2 class="contact-title">Напишите.<br><em>Разберёмся</em><br>вместе.</h2>
-      <p class="contact-sub">
-        Расскажите о своей ситуации — я отвечу:
-        могу ли помочь, в каком формате и с чего начать.
-      </p>
-      <a href="https://t.me/ZinaidaChu" target="_blank" class="contact-tg">
-        → Telegram
-      </a>
-    </div>
-
-```
-<form class="contact-form reveal reveal-delay-1"
-      action="https://formspree.io/f/xkopvegv" method="POST">
-  <input type="hidden" name="_subject" value="Новая заявка с hrdonline.ru">
-  <div class="f-group">
-    <label class="f-label">Имя</label>
-    <input class="f-input" type="text" name="name" placeholder="Иван Иванов" required>
-  </div>
-  <div class="f-group">
-    <label class="f-label">Телефон</label>
-    <input class="f-input" type="tel" name="phone" placeholder="+7 900 000 00 00" required>
-  </div>
-  <div class="f-group">
-    <label class="f-label">Email</label>
-    <input class="f-input" type="email" name="email" placeholder="you@company.com" required>
-  </div>
-  <button type="submit" class="f-submit">Отправить</button>
-  <p class="f-note">или <a href="mailto:info@hrdonline.ru">info@hrdonline.ru</a></p>
-</form>
-```
-
+  <div style="max-width:520px; margin:0 auto;">
+    <form class="contact-form reveal"
+          action="https://formspree.io/f/xkopvegv" method="POST">
+      <input type="hidden" name="_subject" value="Новая заявка с hrdonline.ru">
+      <div class="f-group">
+        <label class="f-label">Имя</label>
+        <input class="f-input" type="text" name="name" placeholder="Иван Иванов" required>
+      </div>
+      <div class="f-group">
+        <label class="f-label">Телефон</label>
+        <input class="f-input" type="tel" name="phone" placeholder="+7 900 000 00 00" required>
+      </div>
+      <div class="f-group">
+        <label class="f-label">Email</label>
+        <input class="f-input" type="email" name="email" placeholder="you@company.com" required>
+      </div>
+      <button type="submit" class="f-submit" style="width:100%;">Написать</button>
+    </form>
   </div>
 </section>
 
